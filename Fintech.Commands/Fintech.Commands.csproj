@@ -14,4 +14,10 @@
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
+      <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
+      <ProjectReference Include="..\Fintech.Services\Fintech.Services.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -525,6 +525,78 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
+      },
+      "Fintech.Commands/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Fintech.Entities": "1.0.0",
+          "Fintech.Exceptions": "1.0.0",
+          "Fintech.Services": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Commands.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Commands.dll": {}
+        }
+      },
+      "Fintech.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Entities.dll": {}
+        }
+      },
+      "Fintech.Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Exceptions.dll": {}
+        }
+      },
+      "Fintech.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Fintech.Entities": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Services.dll": {}
+        }
       }
     }
   },
@@ -1434,10 +1506,31 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "Fintech.Commands/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Commands/Fintech.Commands.csproj",
+      "msbuildProject": "../Fintech.Commands/Fintech.Commands.csproj"
+    },
+    "Fintech.Entities/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Entities/Fintech.Entities.csproj",
+      "msbuildProject": "../Fintech.Entities/Fintech.Entities.csproj"
+    },
+    "Fintech.Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Exceptions/Fintech.Exceptions.csproj",
+      "msbuildProject": "../Fintech.Exceptions/Fintech.Exceptions.csproj"
+    },
+    "Fintech.Services/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Services/Fintech.Services.csproj",
+      "msbuildProject": "../Fintech.Services/Fintech.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Fintech.Commands >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.IdentityModel.JsonWebTokens >= 8.15.0",
@@ -1477,7 +1570,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
