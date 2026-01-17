@@ -1,0 +1,12 @@
+D:\D.AI-bank\Fintech.Records\bin\Debug\net8.0\Fintech.Records.deps.json
+D:\D.AI-bank\Fintech.Records\bin\Debug\net8.0\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Records\bin\Debug\net8.0\Fintech.Records.pdb
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.sourcelink.json
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\refint\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.pdb
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\ref\Fintech.Records.dll

@@ -1,44 +1,55 @@
-﻿using Fintech.Entities;
+﻿using Fintech.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Driver;
+using Microsoft.Extensions.Logging;
 
 namespace Fintech.Worker;
 
 public class OutboxWorker : BackgroundService
 {
-    private readonly IMongoCollection<OutboxMessage> _outbox;
-    // Injetar IBus ou KafkaProducer aqui
+    private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<OutboxWorker> _logger;
+
+    public OutboxWorker(IServiceProvider serviceProvider, ILogger<OutboxWorker> logger)
+    {
+        _serviceProvider = serviceProvider;
+        _logger = logger;
+    }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        _logger.LogInformation("OutboxWorker iniciado.");
+
         while (!stoppingToken.IsCancellationRequested)
         {
-            // Pega mensagens não processadas
-            var messages = await _outbox.Find(x => !x.Processed)
-                .Limit(50)
-                .ToListAsync();
-
-            foreach (var msg in messages)
+            try
             {
-                try 
-                {
-                    // 1. Publicar no RabbitMQ/Kafka
-                    // await _bus.Publish(msg.Topic, msg.PayloadJson);
+                using var scope = _serviceProvider.CreateScope();
+                var outboxRepo = scope.ServiceProvider.GetRequiredService<IOutboxRepository>();
+                var bus = scope.ServiceProvider.GetRequiredService<IMessageBus>();
 
-                    // 2. Marcar como processado (ou deletar)
-                    await _outbox.UpdateOneAsync(
-                        x => x.Id == msg.Id,
-                        Builders<OutboxMessage>.Update.Set(x => x.Processed, true)
-                    );
-                }
-                catch
+                var messages = await outboxRepo.GetPendingAsync(20);
+
+                foreach (var msg in messages)
                 {
-                    // Logar erro, mas não travar o loop. O retry vai pegar na próxima.
-                    // Idealmente implementar Backoff Exponencial aqui.
+                    try
+                    {
+                        await bus.PublishAsync(msg.Topic, msg.PayloadJson);
+                        await outboxRepo.MarkAsProcessedAsync(msg.Id);
+                        _logger.LogDebug("Mensagem outbox {Id} processada.", msg.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Erro ao processar mensagem outbox {Id}.", msg.Id);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro no ciclo do OutboxWorker.");
+            }
 
-            await Task.Delay(1000, stoppingToken); // Polling
+            await Task.Delay(5000, stoppingToken);
         }
     }
 }

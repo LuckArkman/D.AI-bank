@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Oh5HcSwFPZY=",
+  "dgSpecHash": "ZRTwU6rXe9U=",
   "success": true,
   "projectFilePath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MPLopes\\.nuget\\packages\\bcrypt\\1.0.0\\bcrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\commandliners\\1.0.45\\commandliners.1.0.45.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",

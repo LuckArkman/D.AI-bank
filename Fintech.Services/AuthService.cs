@@ -6,13 +6,14 @@ using Fintech.Exceptions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using Fintech.Interfaces;
 
 namespace Fintech.Services;
 
 public class AuthService
 {
     private readonly IMongoCollection<User> _users;
-    private readonly CreateAccountHandler _accountHandler; // Reutiliza lógica de criar conta
+    private readonly ICreateAccountHandler _accountHandler; // Reutiliza lógica de criar conta
     private readonly IConfiguration _config;
 
     public async Task<string> RegisterAsync(string email, string password)

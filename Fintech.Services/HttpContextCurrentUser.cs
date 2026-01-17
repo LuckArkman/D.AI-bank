@@ -13,13 +13,14 @@ public class HttpContextCurrentUser : ICurrentUser
         _accessor = accessor;
     }
 
-    public Guid AccountId 
+    public Guid AccountId
     {
-        get 
+        get
         {
             var claim = _accessor.HttpContext?.User?.FindFirst("AccountId");
             if (claim == null) throw new UnauthorizedAccessException("Token sem AccountId.");
             return Guid.Parse(claim.Value);
         }
+        set => throw new NotImplementedException();
     }
 }

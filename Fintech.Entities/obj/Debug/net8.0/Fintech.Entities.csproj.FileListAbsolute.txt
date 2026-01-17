@@ -14,3 +14,5 @@ D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.dll
 D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\refint\Fintech.Entities.dll
 D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.pdb
 D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\ref\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.ValueObjects.dll
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.ValueObjects.pdb

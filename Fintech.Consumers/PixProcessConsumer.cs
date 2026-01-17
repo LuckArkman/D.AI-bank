@@ -2,11 +2,9 @@
 using Fintech.Enums;
 using Fintech.Repositories;
 using Fintech.ValueObjects;
+using Fintech.Entities;
 
 namespace Fintech.Consumers;
-
-using Fintech.Interfaces;
-using Fintech.Entities;
 
 public class PixProcessConsumer
 {

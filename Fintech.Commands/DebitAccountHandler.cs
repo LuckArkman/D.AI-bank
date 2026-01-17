@@ -1,38 +1,52 @@
 ﻿using Fintech.Entities;
 using Fintech.Interfaces;
-using Fintech.ValueObjects;
+using Fintech.Repositories;
+using Fintech.Telemetry;
+using Fintech.ValueObjects; // Adicionado para acessar Money
+using System.Text.Json;
 
 namespace Fintech.Commands;
 
 public class DebitAccountHandler
 {
     private readonly ITransactionManager _txManager;
-    // Assumindo IAccountRepository e IOutboxRepository injetados via construtor
+    private readonly AccountRepository _accountRepo;
+    private readonly IOutboxRepository _outboxRepo;
+
+    public DebitAccountHandler(
+        ITransactionManager txManager,
+        AccountRepository accountRepo,
+        IOutboxRepository outboxRepo)
+    {
+        _txManager = txManager;
+        _accountRepo = accountRepo;
+        _outboxRepo = outboxRepo;
+    }
 
     public async Task Handle(Guid accountId, decimal amount, Guid correlationId)
     {
         using var uow = await _txManager.BeginTransactionAsync();
         try
         {
-            // 1. Carrega (exemplo simplificado)
-            var account = await _repo.GetByIdAsync(accountId); // Repository deve usar _context.Session
-            
-            // 2. Domínio
-            account.Debit(Money.BRL(amount));
-            
-            // 3. Persiste Estado
-            await _repo.UpdateAsync(account); // Usa Optimistic Concurrency no filtro
+            var account = await _accountRepo.GetByIdAsync(accountId);
 
-            // 4. Persiste Outbox (Mesma Transação)
-            var msg = new OutboxMessage("AccountDebited", new { AccountId = accountId, Amount = amount });
+            // Correção: Converter decimal para Money
+            account.Debit(Money.BRL(amount));
+
+            await _accountRepo.UpdateAsync(account);
+
+            var payload = JsonSerializer.Serialize(new { AccountId = accountId, Amount = amount, CorrelationId = correlationId });
+            var msg = new OutboxMessage("AccountDebited", payload);
             await _outboxRepo.AddAsync(msg);
 
-            // 5. Commit
             await uow.CommitAsync();
+            FintechMetrics.RecordDebit(amount);
+            FintechMetrics.RecordSuccess();
         }
         catch
         {
-            // Auto-rollback no dispose
+            Fintech.Telemetry.FintechMetrics.RecordFailure();
+            await uow.AbortAsync();
             throw;
         }
     }

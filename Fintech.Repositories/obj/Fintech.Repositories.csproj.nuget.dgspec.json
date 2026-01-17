@@ -35,6 +35,9 @@
             "projectReferences": {
               "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
+              },
+              "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"
               }
             }
           }
@@ -97,7 +100,7 @@
             },
             "RabbitMQ.Client": {
               "target": "Package",
-              "version": "[6.8.1, )"
+              "version": "[7.2.0, )"
             },
             "StackExchange.Redis": {
               "target": "Package",

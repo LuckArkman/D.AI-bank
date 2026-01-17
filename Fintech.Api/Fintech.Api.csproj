@@ -40,6 +40,10 @@
       <ProjectReference Include="..\Fintech.Middlewares\Fintech.Middlewares.csproj" />
       <ProjectReference Include="..\Fintech.Persistence\Fintech.Persistence.csproj" />
       <ProjectReference Include="..\Fintech.Telemetry\Fintech.Telemetry.csproj" />
+      <ProjectReference Include="..\Fintech.Repositories\Fintech.Repositories.csproj" />
+      <ProjectReference Include="..\Fintech.Services\Fintech.Services.csproj" />
+      <ProjectReference Include="..\Fintech.Messaging\Fintech.Messaging.csproj" />
+      <ProjectReference Include="..\Fintech.Commands\Fintech.Commands.csproj" />
     </ItemGroup>
 
 </Project>

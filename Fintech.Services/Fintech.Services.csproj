@@ -26,6 +26,8 @@
       <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
       <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
       <ProjectReference Include="..\Fintech.Interfaces\Fintech.Interfaces.csproj" />
+      <ProjectReference Include="..\Fintech.Records\Fintech.Records.csproj" />
+      <ProjectReference Include="..\Fintech.Repositories\Fintech.Repositories.csproj" />
     </ItemGroup>
 
 </Project>

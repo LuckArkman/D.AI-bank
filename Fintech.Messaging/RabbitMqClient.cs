@@ -1,29 +1,42 @@
 ﻿using RabbitMQ.Client;
 using System.Text;
 using Fintech.Interfaces;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Fintech.Messaging;
 
 public class RabbitMqClient : IMessageBus, IDisposable
 {
-    private readonly IModel _channel;
-    private readonly IConnection _connection;
+    private IChannel? _channel;
+    private IConnection? _connection;
+    private readonly ConnectionFactory _factory;
 
     public RabbitMqClient(IConfiguration config)
     {
-        var factory = new ConnectionFactory() { HostName = config["RabbitMQ:Host"] };
-        _connection = factory.CreateConnection();
-        _channel = _connection.CreateModel();
-        _channel.ExchangeDeclare("fintech.events", ExchangeType.Topic);
+        _factory = new ConnectionFactory() { HostName = config["RabbitMQ:Host"] ?? "localhost" };
     }
 
-    public void Publish(string routingKey, string message)
+    private async Task EnsureConnected()
     {
-        var body = Encoding.UTF8.GetBytes(message);
-        _channel.BasicPublish("fintech.events", routingKey, null, body);
+        if (_connection == null || !_connection.IsOpen)
+        {
+            _connection = await _factory.CreateConnectionAsync();
+            _channel = await _connection.CreateChannelAsync();
+            await _channel.ExchangeDeclareAsync("fintech.events", ExchangeType.Topic);
+        }
     }
 
-    public void Dispose() { _channel?.Close(); _connection?.Close(); }
+    public async Task PublishAsync(string routingKey, string message)
+    {
+        await EnsureConnected();
+        var body = Encoding.UTF8.GetBytes(message);
+        await _channel!.BasicPublishAsync("fintech.events", routingKey, body);
+    }
+
+    public void Dispose()
+    {
+        _channel?.Dispose();
+        _connection?.Dispose();
+    }
 }

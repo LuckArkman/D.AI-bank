@@ -30,25 +30,31 @@ public class TransferFundsHandler
         {
             // 1. Check de Idempotência
             var existing = await _idempotency.TryLockAsync(commandId, session);
-            if (existing != null) return; // Já processado, retorna ok silenciosamente ou lança exception específica
+            if (existing != null) return; 
 
             // 2. Carregar as duas contas
-            // Dica: Use Task.WhenAll para performance, mas cuidado com Deadlocks em updates cruzados.
-            // Para segurança máxima, ordene os IDs para evitar Deadlock (ex: sempre lockar o menor ID primeiro).
             var accFrom = await _accounts.Find(session, x => x.Id == fromAccountId).FirstOrDefaultAsync();
             var accTo = await _accounts.Find(session, x => x.Id == toAccountId).FirstOrDefaultAsync();
 
             if (accFrom == null || accTo == null) throw new Exception("Conta inválida");
-            if (accFrom.Balances < amount) throw new InvalidOperationException("Saldo insuficiente");
+            
+            // Correção: Verificar saldo BRL no dicionário
+            // Verifica se a chave existe e se o Amount do Money é suficiente
+            if (!accFrom.Balances.ContainsKey("BRL") || accFrom.Balances["BRL"].Amount < amount) 
+                throw new InvalidOperationException("Saldo insuficiente");
 
             // 3. Preparar Updates (Optimistic Concurrency)
+            // Correção: Atualizar o campo Amount dentro do objeto Money no dicionário Balances
+            // Nota: No MongoDB, dicionários C# são serializados como subdocumentos.
+            // Para "Balances['BRL']", o caminho é "Balances.BRL.Amount".
+            
             var updateFrom = Builders<Account>.Update
-                .Inc(x => x.Balances, -amount)
+                .Inc("Balances.BRL.Amount", -amount) // Decrementa valor
                 .Inc(x => x.Version, 1)
                 .Set(x => x.LastUpdated, DateTime.UtcNow);
 
             var updateTo = Builders<Account>.Update
-                .Inc(x => x.Balances, amount)
+                .Inc("Balances.BRL.Amount", amount) // Incrementa valor
                 .Inc(x => x.Version, 1)
                 .Set(x => x.LastUpdated, DateTime.UtcNow);
 
