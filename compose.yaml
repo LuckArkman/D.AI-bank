@@ -1,0 +1,12 @@
+﻿services:
+  fintech.api:
+    image: fintech.api
+    build:
+      context: .
+      dockerfile: Fintech.Api/Dockerfile
+
+  fintech.api-1:
+    image: fintech.api-1
+    build:
+      context: .
+      dockerfile: Fintech.Api/Dockerfile

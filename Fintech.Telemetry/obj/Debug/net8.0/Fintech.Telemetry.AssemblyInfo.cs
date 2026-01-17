@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Telemetry")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75f58e94f5cb3f2db12baad620ca0bbed125e8e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90e0a52d6bcd0c3eec48f8325edcdeee29cabea5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Telemetry")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Telemetry")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

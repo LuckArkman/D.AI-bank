@@ -44,6 +44,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.ArchitectureTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.LoadTests", "Fintech.LoadTests\Fintech.LoadTests.csproj", "{8BE2E01C-149A-4467-AE1F-CBEA225961DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Interfaces", "Fintech.Interfaces\Fintech.Interfaces.csproj", "{4DA0FBD8-A4A3-4788-A7E4-ED0ED5B8B104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositories", "Fintech.Repositories\Fintech.Repositories.csproj", "{92F231EB-BF12-400F-B2D9-AC7C7FCA6CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Consumers", "Fintech.Consumers\Fintech.Consumers.csproj", "{5B3245F0-BE23-4AF3-905E-391DBD84E8A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{724527A0-07F1-4DCB-B9F2-EF69680C62C1}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+		main.tf = main.tf
+		prometheus.yml = prometheus.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,5 +151,17 @@ Global
 		{8BE2E01C-149A-4467-AE1F-CBEA225961DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BE2E01C-149A-4467-AE1F-CBEA225961DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BE2E01C-149A-4467-AE1F-CBEA225961DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA0FBD8-A4A3-4788-A7E4-ED0ED5B8B104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA0FBD8-A4A3-4788-A7E4-ED0ED5B8B104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA0FBD8-A4A3-4788-A7E4-ED0ED5B8B104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA0FBD8-A4A3-4788-A7E4-ED0ED5B8B104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F231EB-BF12-400F-B2D9-AC7C7FCA6CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F231EB-BF12-400F-B2D9-AC7C7FCA6CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F231EB-BF12-400F-B2D9-AC7C7FCA6CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F231EB-BF12-400F-B2D9-AC7C7FCA6CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B3245F0-BE23-4AF3-905E-391DBD84E8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3245F0-BE23-4AF3-905E-391DBD84E8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3245F0-BE23-4AF3-905E-391DBD84E8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3245F0-BE23-4AF3-905E-391DBD84E8A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
