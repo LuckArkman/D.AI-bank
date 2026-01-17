@@ -23,4 +23,12 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Fintech.Controllers\Fintech.Controllers.csproj" />
+      <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
+      <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
+      <ProjectReference Include="..\Fintech.Interfaces\Fintech.Interfaces.csproj" />
+      <ProjectReference Include="..\Fintech.Telemetry\Fintech.Telemetry.csproj" />
+    </ItemGroup>
+
 </Project>
