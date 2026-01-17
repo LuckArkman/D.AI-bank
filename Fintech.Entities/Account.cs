@@ -3,7 +3,7 @@
 public class Account
 {
     public Guid Id { get; set; } // AccountId
-    public decimal AvailableBalance { get; private set; }
+    public decimal Balances { get; private set; }
     public long Version { get; private set; } // Optimistic Concurrency Control
     public DateTime LastUpdated { get; private set; }
 
@@ -11,7 +11,7 @@ public class Account
     public Account(Guid id, decimal initialBalance) 
     {
         Id = id;
-        AvailableBalance = initialBalance;
+        Balances = initialBalance;
         Version = 1;
         LastUpdated = DateTime.UtcNow;
     }

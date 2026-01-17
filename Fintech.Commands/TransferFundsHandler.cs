@@ -39,16 +39,16 @@ public class TransferFundsHandler
             var accTo = await _accounts.Find(session, x => x.Id == toAccountId).FirstOrDefaultAsync();
 
             if (accFrom == null || accTo == null) throw new Exception("Conta inválida");
-            if (accFrom.AvailableBalance < amount) throw new InvalidOperationException("Saldo insuficiente");
+            if (accFrom.Balances < amount) throw new InvalidOperationException("Saldo insuficiente");
 
             // 3. Preparar Updates (Optimistic Concurrency)
             var updateFrom = Builders<Account>.Update
-                .Inc(x => x.AvailableBalance, -amount)
+                .Inc(x => x.Balances, -amount)
                 .Inc(x => x.Version, 1)
                 .Set(x => x.LastUpdated, DateTime.UtcNow);
 
             var updateTo = Builders<Account>.Update
-                .Inc(x => x.AvailableBalance, amount)
+                .Inc(x => x.Balances, amount)
                 .Inc(x => x.Version, 1)
                 .Set(x => x.LastUpdated, DateTime.UtcNow);
 

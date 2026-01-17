@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Enums\bin\Debug\net8.0\Fintech.Enums.deps.json
+D:\D.AI-bank\Fintech.Enums\bin\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Enums\bin\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.sourcelink.json
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\refint\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.Enums\obj\Debug\net8.0\ref\Fintech.Enums.dll

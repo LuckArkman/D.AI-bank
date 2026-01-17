@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Interfaces.deps.json
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Interfaces.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Interfaces.pdb
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.sourcelink.json
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.dll
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\refint\Fintech.Interfaces.dll
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.pdb
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\ref\Fintech.Interfaces.dll

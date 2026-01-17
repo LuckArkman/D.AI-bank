@@ -13,6 +13,8 @@
       <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.15.0" />
       <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
       <PackageReference Include="NetArchTest.Rules" Version="1.3.2" />
+      <PackageReference Include="OpenTelemetry" Version="1.14.0" />
+      <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
       <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
       <PackageReference Include="StackExchange.Redis" Version="2.10.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
@@ -21,7 +23,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
       <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
+      <ProjectReference Include="..\Fintech.Repositories\Fintech.Repositories.csproj" />
       <ProjectReference Include="..\Fintech.Services\Fintech.Services.csproj" />
+      <ProjectReference Include="..\Fintech.ValueObjects\Fintech.ValueObjects.csproj" />
     </ItemGroup>
 
 </Project>

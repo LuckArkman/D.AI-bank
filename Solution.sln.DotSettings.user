@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=12a7fe37_002D83f8_002D46e6_002Da098_002Dae9cbcf6c3e7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LayerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7D7A9903-4C97-431E-9661-669FAC2E2180::net8.0::Fintech.ArchitectureTests.LayerTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=41167770_002D65b4_002D46b3_002D876c_002D0873842fc579/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Domain_Should_Not_Depend_On_Infrastructure" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7D7A9903-4C97-431E-9661-669FAC2E2180::net8.0::Fintech.ArchitectureTests.LayerTests.Domain_Should_Not_Depend_On_Infrastructure&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

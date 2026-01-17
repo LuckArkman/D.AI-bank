@@ -1,0 +1,16 @@
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Entities.deps.json
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Entities.pdb
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.sourcelink.json
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech..FAAE457A.Up2Date
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\refint\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\Fintech.Entities.pdb
+D:\D.AI-bank\Fintech.Entities\obj\Debug\net8.0\ref\Fintech.Entities.dll

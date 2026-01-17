@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Middlewares")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35a0975f544d6df85655255129c632e3c464c5a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13a3d75f5d252252b2dfe603b90f8487a9cee1fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Middlewares")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Middlewares")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,6 @@
-﻿namespace Fintech.IntegrationTests;
+﻿using Fintech.Interfaces;
+
+namespace Fintech.IntegrationTests;
 
 using Testcontainers.MongoDb;
 using Xunit;
@@ -18,7 +20,7 @@ public class TransactionTests : IAsyncLifetime
         var services = new ServiceCollection();
         services.AddSingleton<IMongoClient>(new MongoClient(_mongo.GetConnectionString()));
         services.AddScoped<MongoContext>();
-        services.AddScoped<Fintech.Core.Interfaces.ITransactionManager>(sp => sp.GetRequiredService<MongoContext>());
+        services.AddScoped<ITransactionManager>(sp => sp.GetRequiredService<MongoContext>());
         // Registrar outros serviços...
         _sp = services.BuildServiceProvider();
     }
