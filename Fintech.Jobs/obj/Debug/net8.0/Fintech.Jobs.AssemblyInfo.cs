@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Jobs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75f58e94f5cb3f2db12baad620ca0bbed125e8e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+719220c7d7fb414652c1eebfc890c712d00a7c1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Jobs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Jobs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
