@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b8d1d61c5c8945344d45294ea77025f45bee7cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c02c130596e662b8fd27d86ae1bc0d83c8aaa63")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
