@@ -11,3 +11,8 @@ D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.dll
 D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\refint\Fintech.Interfaces.dll
 D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech.Interfaces.pdb
 D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\ref\Fintech.Interfaces.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Entities.pdb
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech..AD77B336.Up2Date

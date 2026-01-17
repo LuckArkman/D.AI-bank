@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.ValueObjects\bin\Debug\net8.0\Fintech.ValueObjects.deps.json
+D:\D.AI-bank\Fintech.ValueObjects\bin\Debug\net8.0\Fintech.ValueObjects.dll
+D:\D.AI-bank\Fintech.ValueObjects\bin\Debug\net8.0\Fintech.ValueObjects.pdb
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.sourcelink.json
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.dll
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\refint\Fintech.ValueObjects.dll
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\Fintech.ValueObjects.pdb
+D:\D.AI-bank\Fintech.ValueObjects\obj\Debug\net8.0\ref\Fintech.ValueObjects.dll

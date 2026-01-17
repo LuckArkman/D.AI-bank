@@ -57,7 +57,9 @@ public class AccountRepository
 
     public async Task AddAsync(Account account)
     {
-        await _collection.InsertOneAsync(account);
-        
+        if (_context.Session != null)
+            await _collection.InsertOneAsync(_context.Session, account);
+        else
+            await _collection.InsertOneAsync(account);
     }
 }

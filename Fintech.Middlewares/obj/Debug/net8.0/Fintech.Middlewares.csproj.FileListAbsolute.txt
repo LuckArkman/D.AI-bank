@@ -1,0 +1,6 @@
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.sourcelink.json

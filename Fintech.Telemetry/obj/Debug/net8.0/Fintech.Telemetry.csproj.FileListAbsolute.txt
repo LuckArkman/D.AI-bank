@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Telemetry\bin\Debug\net8.0\Fintech.Telemetry.deps.json
+D:\D.AI-bank\Fintech.Telemetry\bin\Debug\net8.0\Fintech.Telemetry.dll
+D:\D.AI-bank\Fintech.Telemetry\bin\Debug\net8.0\Fintech.Telemetry.pdb
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.sourcelink.json
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.dll
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\refint\Fintech.Telemetry.dll
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\Fintech.Telemetry.pdb
+D:\D.AI-bank\Fintech.Telemetry\obj\Debug\net8.0\ref\Fintech.Telemetry.dll
