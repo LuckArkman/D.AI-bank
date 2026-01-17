@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt" Version="1.0.0" />
+      <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
@@ -22,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
+      <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
       <ProjectReference Include="..\Fintech.Interfaces\Fintech.Interfaces.csproj" />
     </ItemGroup>
 
