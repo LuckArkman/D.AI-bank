@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Exceptions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b90eb187da33e57c3679f3d95ad8d1993e42147")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7daed1b494492779d7b354d5836cd534e333adf")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Exceptions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Exceptions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
