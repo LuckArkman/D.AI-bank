@@ -1,7 +1,6 @@
 ﻿using Fintech.Entities;
 using Fintech.Interfaces;
 using Fintech.Repositories;
-using Fintech.Services;
 
 namespace Fintech.Commands;
 
@@ -9,9 +8,9 @@ public class SendPixHandler
 {
     private readonly SagaRepository _sagaRepo;
     private readonly ITransactionManager _txManager;
-    private readonly PixOrchestrator _orchestrator;
+    private readonly IPixOrchestrator _orchestrator;
 
-    public SendPixHandler(SagaRepository sagaRepo, ITransactionManager txManager, PixOrchestrator orchestrator)
+    public SendPixHandler(SagaRepository sagaRepo, ITransactionManager txManager, IPixOrchestrator orchestrator)
     {
         _sagaRepo = sagaRepo;
         _txManager = txManager;

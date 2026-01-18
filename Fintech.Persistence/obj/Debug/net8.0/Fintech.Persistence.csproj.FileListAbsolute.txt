@@ -20,3 +20,7 @@ D:\D.AI-bank\Fintech.Persistence\obj\Debug\net8.0\Fintech.Persistence.dll
 D:\D.AI-bank\Fintech.Persistence\obj\Debug\net8.0\refint\Fintech.Persistence.dll
 D:\D.AI-bank\Fintech.Persistence\obj\Debug\net8.0\Fintech.Persistence.pdb
 D:\D.AI-bank\Fintech.Persistence\obj\Debug\net8.0\ref\Fintech.Persistence.dll
+D:\D.AI-bank\Fintech.Persistence\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Persistence\bin\Debug\net8.0\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Persistence\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Persistence\bin\Debug\net8.0\Fintech.Records.pdb

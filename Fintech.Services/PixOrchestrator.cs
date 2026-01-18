@@ -6,7 +6,7 @@ using Fintech.ValueObjects;
 
 namespace Fintech.Services;
 
-public class PixOrchestrator
+public class PixOrchestrator : IPixOrchestrator
 {
     private readonly SagaRepository _sagaRepo;
     private readonly AccountRepository _accountRepo;

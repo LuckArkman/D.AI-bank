@@ -20,3 +20,7 @@ D:\D.AI-bank\Fintech.Messaging\obj\Debug\net8.0\Fintech.Messaging.pdb
 D:\D.AI-bank\Fintech.Messaging\obj\Debug\net8.0\ref\Fintech.Messaging.dll
 D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.ValueObjects.dll
 D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.ValueObjects.pdb
+D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Messaging\bin\Debug\net8.0\Fintech.Records.pdb

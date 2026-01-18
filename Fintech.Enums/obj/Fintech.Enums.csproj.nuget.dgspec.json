@@ -74,6 +74,10 @@
             "OpenTelemetry.Extensions.Hosting": {
               "target": "Package",
               "version": "[1.14.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [

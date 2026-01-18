@@ -100,3 +100,12 @@ D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.Records.pdb
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.ValueObjects.pdb
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\CommandLine.dll
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\CommandLiners.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Docker.DotNet.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Docker.DotNet.X509.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\ICSharpCode.SharpZipLib.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Renci.SshNet.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Testcontainers.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Testcontainers.MongoDb.dll

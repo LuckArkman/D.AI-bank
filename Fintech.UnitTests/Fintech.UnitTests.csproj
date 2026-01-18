@@ -13,24 +13,35 @@
         <PackageReference Include="BCrypt" Version="1.0.0" />
         <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
+        <PackageReference Include="FluentAssertions" Version="8.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
         <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.15.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
         <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
+        <PackageReference Include="Moq" Version="4.20.72" />
         <PackageReference Include="NetArchTest.Rules" Version="1.3.2" />
         <PackageReference Include="OpenTelemetry" Version="1.14.0" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
         <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
         <PackageReference Include="StackExchange.Redis" Version="2.10.1" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+        <PackageReference Include="Testcontainers.MongoDb" Version="4.10.0" />
         <PackageReference Include="xunit" Version="2.5.3"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3"/>
     </ItemGroup>
 
     <ItemGroup>
         <Using Include="Xunit"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Fintech.Commands\Fintech.Commands.csproj" />
+      <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
+      <ProjectReference Include="..\Fintech.Interfaces\Fintech.Interfaces.csproj" />
+      <ProjectReference Include="..\Fintech.Services\Fintech.Services.csproj" />
+      <ProjectReference Include="..\Fintech.ValueObjects\Fintech.ValueObjects.csproj" />
     </ItemGroup>
 
 </Project>

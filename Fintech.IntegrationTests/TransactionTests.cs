@@ -25,7 +25,7 @@ public class TransactionTests : IAsyncLifetime
         _sp = services.BuildServiceProvider();
     }
 
-    public Task DisposeAsync() => _mongo.DisposeAsync();
+    public async Task DisposeAsync() => _mongo.DisposeAsync();
 
     [Fact]
     public async Task Rollback_Deve_Funcionar_Se_Erro_Ocorrer()

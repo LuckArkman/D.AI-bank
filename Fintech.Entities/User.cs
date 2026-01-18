@@ -1,19 +1,23 @@
-﻿namespace Fintech.Entities;
+﻿namespace Fintech.Core.Entities;
 
 public class User
 {
     public Guid Id { get; private set; }
+    public string Name { get; private set; }
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
-    public Guid AccountId { get; private set; } // Link 1:1 com a Conta Bancária
-    public string Role { get; private set; } // "CLIENT", "ADMIN"
+    public Guid AccountId { get; private set; } // FK para a Conta Bancária
+    public List<string> Roles { get; private set; }
+    public DateTime CreatedAt { get; private set; }
 
-    public User(string email, string passwordHash, Guid accountId, string role = "CLIENT")
+    public User(string name, string email, string passwordHash, Guid accountId)
     {
         Id = Guid.NewGuid();
-        Email = email;
+        Name = name;
+        Email = email.ToLowerInvariant();
         PasswordHash = passwordHash;
         AccountId = accountId;
-        Role = role;
+        Roles = new List<string> { "Client" };
+        CreatedAt = DateTime.UtcNow;
     }
 }

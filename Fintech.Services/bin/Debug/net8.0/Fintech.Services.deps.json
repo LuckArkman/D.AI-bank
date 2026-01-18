@@ -10,6 +10,7 @@
         "dependencies": {
           "BCrypt": "1.0.0",
           "BCrypt.Net-Core": "1.6.0",
+          "Fintech.Commands": "1.0.0",
           "Fintech.Entities": "1.0.0",
           "Fintech.Exceptions": "1.0.0",
           "Fintech.Interfaces": "1.0.0",
@@ -25,7 +26,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Services.dll": {}
@@ -47,11 +49,57 @@
           }
         }
       },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.2.46322"
+          }
+        }
+      },
+      "CommandLineParser/2.9.1": {
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "assemblyVersion": "2.9.1.0",
+            "fileVersion": "2.9.1.0"
+          }
+        }
+      },
+      "CommandLiners/1.0.45": {
+        "runtime": {
+          "lib/netstandard2.0/CommandLiners.dll": {
+            "assemblyVersion": "1.0.45.0",
+            "fileVersion": "1.0.45.0"
+          }
+        }
+      },
       "DnsClient/1.6.1": {
         "runtime": {
           "lib/net5.0/DnsClient.dll": {
             "assemblyVersion": "1.6.1.0",
             "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "Docker.DotNet.Enhanced/3.131.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
+        },
+        "runtime": {
+          "lib/net8.0/Docker.DotNet.dll": {
+            "assemblyVersion": "3.131.0.0",
+            "fileVersion": "3.131.1.1"
+          }
+        }
+      },
+      "Docker.DotNet.Enhanced.X509/3.131.1": {
+        "dependencies": {
+          "Docker.DotNet.Enhanced": "3.131.1"
+        },
+        "runtime": {
+          "lib/net8.0/Docker.DotNet.X509.dll": {
+            "assemblyVersion": "3.131.0.0",
+            "fileVersion": "3.131.1.1"
           }
         }
       },
@@ -87,12 +135,32 @@
       },
       "Microsoft.Extensions.Caching.StackExchangeRedis/8.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "StackExchange.Redis": "2.10.1"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53112"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1325.6609"
           }
         }
       },
@@ -152,6 +220,7 @@
       },
       "Microsoft.IdentityModel.Tokens/8.15.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "Microsoft.IdentityModel.Logging": "8.15.0"
         },
         "runtime": {
@@ -172,6 +241,7 @@
       "MongoDB.Driver/3.5.2": {
         "dependencies": {
           "DnsClient": "1.6.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "MongoDB.Bson": "3.5.2",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
@@ -239,6 +309,7 @@
       },
       "OpenTelemetry.Api.ProviderBuilderExtensions/1.14.0": {
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
           "OpenTelemetry.Api": "1.14.0"
         },
         "runtime": {
@@ -283,6 +354,14 @@
           }
         }
       },
+      "SharpZipLib/1.4.2": {
+        "runtime": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "assemblyVersion": "1.4.2.13",
+            "fileVersion": "1.4.2.13"
+          }
+        }
+      },
       "Snappier/1.0.0": {
         "runtime": {
           "lib/net5.0/Snappier.dll": {
@@ -291,8 +370,21 @@
           }
         }
       },
+      "SSH.NET/2025.1.0": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.2",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
+        },
+        "runtime": {
+          "lib/net8.0/Renci.SshNet.dll": {
+            "assemblyVersion": "2025.1.0.1",
+            "fileVersion": "2025.1.0.1"
+          }
+        }
+      },
       "StackExchange.Redis/2.10.1": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "Pipelines.Sockets.Unofficial": "2.2.8",
           "System.IO.Hashing": "9.0.10"
         },
@@ -331,6 +423,32 @@
           }
         }
       },
+      "Testcontainers/4.10.0": {
+        "dependencies": {
+          "Docker.DotNet.Enhanced": "3.131.1",
+          "Docker.DotNet.Enhanced.X509": "3.131.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "SSH.NET": "2025.1.0",
+          "SharpZipLib": "1.4.2"
+        },
+        "runtime": {
+          "lib/net8.0/Testcontainers.dll": {
+            "assemblyVersion": "4.10.0.0",
+            "fileVersion": "4.10.0.0"
+          }
+        }
+      },
+      "Testcontainers.MongoDb/4.10.0": {
+        "dependencies": {
+          "Testcontainers": "4.10.0"
+        },
+        "runtime": {
+          "lib/net8.0/Testcontainers.MongoDb.dll": {
+            "assemblyVersion": "4.10.0.0",
+            "fileVersion": "4.10.0.0"
+          }
+        }
+      },
       "ZstdSharp.Port/0.7.3": {
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {
@@ -339,11 +457,17 @@
           }
         }
       },
-      "Fintech.Entities/1.0.0": {
+      "Fintech.Commands/1.0.0": {
         "dependencies": {
           "BCrypt": "1.0.0",
           "BCrypt.Net-Core": "1.6.0",
-          "Fintech.Enums": "1.0.0",
+          "CommandLineParser": "2.9.1",
+          "CommandLiners": "1.0.45",
+          "Fintech.Entities": "1.0.0",
+          "Fintech.Exceptions": "1.0.0",
+          "Fintech.Interfaces": "1.0.0",
+          "Fintech.Repositories": "1.0.0",
+          "Fintech.Telemetry": "1.0.0",
           "Fintech.ValueObjects": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
@@ -355,7 +479,35 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
+        },
+        "runtime": {
+          "Fintech.Commands.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Fintech.Entities/1.0.0": {
+        "dependencies": {
+          "BCrypt": "1.0.0",
+          "BCrypt.Net-Core": "1.6.0",
+          "Fintech.Enums": "1.0.0",
+          "Fintech.Exceptions": "1.0.0",
+          "Fintech.ValueObjects": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "NetArchTest.Rules": "1.3.2",
+          "OpenTelemetry": "1.14.0",
+          "OpenTelemetry.Extensions.Hosting": "1.14.0",
+          "RabbitMQ.Client": "7.2.0",
+          "StackExchange.Redis": "2.10.1",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Entities.dll": {
@@ -371,7 +523,8 @@
           "MongoDB.Driver": "3.5.2",
           "NetArchTest.Rules": "1.3.2",
           "OpenTelemetry": "1.14.0",
-          "OpenTelemetry.Extensions.Hosting": "1.14.0"
+          "OpenTelemetry.Extensions.Hosting": "1.14.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Enums.dll": {
@@ -394,7 +547,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Exceptions.dll": {
@@ -408,13 +562,15 @@
           "BCrypt": "1.0.0",
           "BCrypt.Net-Core": "1.6.0",
           "Fintech.Entities": "1.0.0",
+          "Fintech.Records": "1.0.0",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
           "MongoDB.Driver": "3.5.2",
           "NetArchTest.Rules": "1.3.2",
           "OpenTelemetry": "1.14.0",
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
-          "StackExchange.Redis": "2.10.1"
+          "StackExchange.Redis": "2.10.1",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Interfaces.dll": {
@@ -439,7 +595,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Persistence.dll": {
@@ -449,6 +606,9 @@
         }
       },
       "Fintech.Records/1.0.0": {
+        "dependencies": {
+          "Testcontainers.MongoDb": "4.10.0"
+        },
         "runtime": {
           "Fintech.Records.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -469,10 +629,35 @@
           "OpenTelemetry": "1.14.0",
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
-          "StackExchange.Redis": "2.10.1"
+          "StackExchange.Redis": "2.10.1",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.Repositories.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Fintech.Telemetry/1.0.0": {
+        "dependencies": {
+          "BCrypt": "1.0.0",
+          "BCrypt.Net-Core": "1.6.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "NetArchTest.Rules": "1.3.2",
+          "OpenTelemetry": "1.14.0",
+          "OpenTelemetry.Extensions.Hosting": "1.14.0",
+          "RabbitMQ.Client": "7.2.0",
+          "StackExchange.Redis": "2.10.1",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
+        },
+        "runtime": {
+          "Fintech.Telemetry.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -492,7 +677,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "runtime": {
           "Fintech.ValueObjects.dll": {
@@ -523,12 +709,47 @@
       "path": "bcrypt.net-core/1.6.0",
       "hashPath": "bcrypt.net-core.1.6.0.nupkg.sha512"
     },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
+    },
+    "CommandLineParser/2.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OE0sl1/sQ37bjVsPKKtwQlWDgqaxWgtme3xZz7JssWUzg5JpMIyHgCTY9MVMxOg48fJ1AgGT3tgdH5m/kQ5xhA==",
+      "path": "commandlineparser/2.9.1",
+      "hashPath": "commandlineparser.2.9.1.nupkg.sha512"
+    },
+    "CommandLiners/1.0.45": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mpuqwg2+QC2JRSB8vjwQUgAiDJPFGu0SdC4bqYqDj4Ogk4TswuTBi7245twDPjl5a2YTiIpc37v9K4XZ3XC9Ww==",
+      "path": "commandliners/1.0.45",
+      "hashPath": "commandliners.1.0.45.nupkg.sha512"
+    },
     "DnsClient/1.6.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-4H/f2uYJOZ+YObZjpY9ABrKZI+JNw3uizp6oMzTXwDw6F+2qIPhpRl/1t68O/6e98+vqNiYGu+lswmwdYUy3gg==",
       "path": "dnsclient/1.6.1",
       "hashPath": "dnsclient.1.6.1.nupkg.sha512"
+    },
+    "Docker.DotNet.Enhanced/3.131.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hGLHCNUsQbT2Ab/HUznRnNqYZQs40zInXa3eLwYjeNyfUYbw1pqqDGqcOLl5uGepS8IuigEYakEdAcVT/2ezYg==",
+      "path": "docker.dotnet.enhanced/3.131.1",
+      "hashPath": "docker.dotnet.enhanced.3.131.1.nupkg.sha512"
+    },
+    "Docker.DotNet.Enhanced.X509/3.131.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8FU7zmttFQzp0xb0EPupxQ0nGtC2cTpukgh3jMxMT8luj5TSDyzIKTnroDpXCjpg9P2fV+6JIvC+IetsMEfyBA==",
+      "path": "docker.dotnet.enhanced.x509/3.131.1",
+      "hashPath": "docker.dotnet.enhanced.x509.3.131.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0": {
       "type": "package",
@@ -557,6 +778,20 @@
       "sha512": "sha512-kyjUU0VujU4WcQoS/3EkMgTWIF4Trqfp2hDFSd21jnb0otyNXvDwx8dtMi37IwGt95imz34wEuTnFzSrPGb1tA==",
       "path": "microsoft.extensions.caching.stackexchangeredis/8.0.0",
       "hashPath": "microsoft.extensions.caching.stackexchangeredis.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.3",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Abstractions/8.15.0": {
       "type": "package",
@@ -677,12 +912,26 @@
       "path": "sharpcompress/0.30.1",
       "hashPath": "sharpcompress.0.30.1.nupkg.sha512"
     },
+    "SharpZipLib/1.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A==",
+      "path": "sharpziplib/1.4.2",
+      "hashPath": "sharpziplib.1.4.2.nupkg.sha512"
+    },
     "Snappier/1.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-rFtK2KEI9hIe8gtx3a0YDXdHOpedIf9wYCEYtBEmtlyiWVX3XlCNV03JrmmAi/Cdfn7dxK+k0sjjcLv4fpHnqA==",
       "path": "snappier/1.0.0",
       "hashPath": "snappier.1.0.0.nupkg.sha512"
+    },
+    "SSH.NET/2025.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jrnbtf0ItVaXAe6jE8X/kSLa6uC+0C+7W1vepcnRQB/rD88qy4IxG7Lf1FIbWmkoc4iVXv0pKrz+Wc6J4ngmHw==",
+      "path": "ssh.net/2025.1.0",
+      "hashPath": "ssh.net.2025.1.0.nupkg.sha512"
     },
     "StackExchange.Redis/2.10.1": {
       "type": "package",
@@ -712,12 +961,31 @@
       "path": "system.io.hashing/9.0.10",
       "hashPath": "system.io.hashing.9.0.10.nupkg.sha512"
     },
+    "Testcontainers/4.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a7tH+s9IRME6QEeMRgl/mTqQyudgtGNJmJRPn1+LwW8w/2L11cJzRJd7Io0QoSrP+i6lAOETX2SRY7cLbElcdQ==",
+      "path": "testcontainers/4.10.0",
+      "hashPath": "testcontainers.4.10.0.nupkg.sha512"
+    },
+    "Testcontainers.MongoDb/4.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uSoR1rcXWrhEsBYxAOnAJY30hHzz7xmpcnGVLJLwPAifnbu/5ElaMvoxxNK4u81h5J/d1HiKSvxg8MFtehjP/Q==",
+      "path": "testcontainers.mongodb/4.10.0",
+      "hashPath": "testcontainers.mongodb.4.10.0.nupkg.sha512"
+    },
     "ZstdSharp.Port/0.7.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+    },
+    "Fintech.Commands/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Fintech.Entities/1.0.0": {
       "type": "project",
@@ -750,6 +1018,11 @@
       "sha512": ""
     },
     "Fintech.Repositories/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fintech.Telemetry/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

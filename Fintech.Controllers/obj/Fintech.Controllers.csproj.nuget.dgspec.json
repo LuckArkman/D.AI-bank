@@ -45,9 +45,6 @@
               "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj"
               },
-              "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
-                "projectPath": "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
-              },
               "D:\\D.AI-bank\\Fintech.Telemetry\\Fintech.Telemetry.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Telemetry\\Fintech.Telemetry.csproj"
               },
@@ -132,6 +129,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -191,6 +192,9 @@
               },
               "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
+              },
+              "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
               }
             }
           }
@@ -262,6 +266,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -382,6 +390,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -435,6 +447,9 @@
             "projectReferences": {
               "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
+              },
+              "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj"
               },
               "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"
@@ -509,6 +524,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -601,6 +620,10 @@
             "OpenTelemetry.Extensions.Hosting": {
               "target": "Package",
               "version": "[1.14.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -721,6 +744,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -774,6 +801,9 @@
             "projectReferences": {
               "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+              },
+              "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
               }
             }
           }
@@ -829,6 +859,10 @@
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.10.1, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -956,6 +990,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -1024,6 +1062,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -1136,6 +1180,10 @@
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.10.1, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -1187,6 +1235,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+              },
               "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
               },
@@ -1272,6 +1323,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -1392,6 +1447,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [
@@ -1512,6 +1571,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
             }
           },
           "imports": [

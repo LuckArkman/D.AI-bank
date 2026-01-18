@@ -25,7 +25,7 @@ public class LedgerArchiver : BackgroundService
             if (DateTime.UtcNow.Hour == 3) // Roda às 03:00 AM
             {
                 var cutoff = DateTime.UtcNow.AddMonths(-6);
-                var filter = Builders<LedgerEvent>.Filter.Lt(x => x.CreatedAt, cutoff);
+                var filter = Builders<LedgerEvent>.Filter.Lt(x => x.Timestamp, cutoff);
                 
                 // Lógica simplificada de mover e deletar
                 // Em prod: fazer em batches com Transaction

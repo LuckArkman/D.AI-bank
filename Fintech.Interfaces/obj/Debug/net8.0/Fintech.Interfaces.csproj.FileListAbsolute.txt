@@ -18,3 +18,7 @@ D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Enums.pdb
 D:\D.AI-bank\Fintech.Interfaces\obj\Debug\net8.0\Fintech..AD77B336.Up2Date
 D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.ValueObjects.dll
 D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.ValueObjects.pdb
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Records.dll
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Records.pdb
+D:\D.AI-bank\Fintech.Interfaces\bin\Debug\net8.0\Fintech.Exceptions.pdb

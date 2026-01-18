@@ -1,101 +1,58 @@
-﻿using Fintech.Entities;
+﻿using Fintech.Core.Interfaces;
+using Fintech.Entities;
 using Fintech.Exceptions;
-using Fintech.Services;
+using Fintech.Interfaces;
+using Fintech.ValueObjects;
 using MongoDB.Driver;
 
 namespace Fintech.Commands;
 
 public class TransferFundsHandler
 {
-    private readonly IMongoClient _client;
-    private readonly IMongoCollection<Account> _accounts;
-    private readonly IMongoCollection<LedgerEvent> _ledger;
-    private readonly IdempotencyService _idempotency;
+    private readonly ITransactionManager _txManager;
+    private readonly IAccountRepository _accountRepo;
+    private readonly ILedgerRepository _ledgerRepo;
 
-    public TransferFundsHandler(IMongoClient client, IdempotencyService idempotency)
+    public TransferFundsHandler(
+        ITransactionManager txManager,
+        IAccountRepository accountRepo,
+        ILedgerRepository ledgerRepo)
     {
-        _client = client;
-        _idempotency = idempotency;
-        var db = _client.GetDatabase("FintechDB");
-        _accounts = db.GetCollection<Account>("accounts");
-        _ledger = db.GetCollection<LedgerEvent>("ledger");
+        _txManager = txManager;
+        _accountRepo = accountRepo;
+        _ledgerRepo = ledgerRepo;
     }
 
-    public async Task HandleAsync(Guid fromAccountId, Guid toAccountId, decimal amount, Guid commandId)
+    public async Task Handle(Guid fromAccountId, Guid toAccountId, decimal amount)
     {
-        using var session = await _client.StartSessionAsync();
-        session.StartTransaction();
+        if (fromAccountId == toAccountId) throw new DomainException("Origem e destino iguais.");
 
+        using var uow = await _txManager.BeginTransactionAsync();
         try
         {
-            // 1. Check de Idempotência
-            var existing = await _idempotency.TryLockAsync(commandId, session);
-            if (existing != null) return; 
+            // 1. Carrega as duas contas (Lock otimista será aplicado no Update)
+            var fromAcc = await _accountRepo.GetByIdAsync(fromAccountId);
+            var toAcc = await _accountRepo.GetByIdAsync(toAccountId);
 
-            // 2. Carregar as duas contas
-            var accFrom = await _accounts.Find(session, x => x.Id == fromAccountId).FirstOrDefaultAsync();
-            var accTo = await _accounts.Find(session, x => x.Id == toAccountId).FirstOrDefaultAsync();
+            // 2. Regras de Negócio
+            fromAcc.Debit(Money.BRL(amount));
+            toAcc.Credit(Money.BRL(amount));
 
-            if (accFrom == null || accTo == null) throw new Exception("Conta inválida");
-            
-            // Correção: Verificar saldo BRL no dicionário
-            // Verifica se a chave existe e se o Amount do Money é suficiente
-            if (!accFrom.Balances.ContainsKey("BRL") || accFrom.Balances["BRL"].Amount < amount) 
-                throw new InvalidOperationException("Saldo insuficiente");
+            // 3. Persistência
+            await _accountRepo.UpdateAsync(fromAcc);
+            await _accountRepo.UpdateAsync(toAcc);
 
-            // 3. Preparar Updates (Optimistic Concurrency)
-            // Correção: Atualizar o campo Amount dentro do objeto Money no dicionário Balances
-            // Nota: No MongoDB, dicionários C# são serializados como subdocumentos.
-            // Para "Balances['BRL']", o caminho é "Balances.BRL.Amount".
-            
-            var updateFrom = Builders<Account>.Update
-                .Inc("Balances.BRL.Amount", -amount) // Decrementa valor
-                .Inc(x => x.Version, 1)
-                .Set(x => x.LastUpdated, DateTime.UtcNow);
+            // 4. Ledger (Dupla entrada para rastreabilidade)
+            var correlationId = Guid.NewGuid();
+            await _ledgerRepo.AddAsync(new LedgerEvent(fromAccountId, "TRANSFER_SENT", amount, correlationId));
+            await _ledgerRepo.AddAsync(new LedgerEvent(toAccountId, "TRANSFER_RECEIVED", amount, correlationId));
 
-            var updateTo = Builders<Account>.Update
-                .Inc("Balances.BRL.Amount", amount) // Incrementa valor
-                .Inc(x => x.Version, 1)
-                .Set(x => x.LastUpdated, DateTime.UtcNow);
-
-            // 4. Executar Débito
-            var resFrom = await _accounts.UpdateOneAsync(session, 
-                x => x.Id == fromAccountId && x.Version == accFrom.Version, updateFrom);
-            
-            if (resFrom.ModifiedCount == 0) throw new ConcurrencyException("Falha no débito (concorrência)");
-
-            // 5. Executar Crédito
-            var resTo = await _accounts.UpdateOneAsync(session, 
-                x => x.Id == toAccountId && x.Version == accTo.Version, updateTo);
-
-            if (resTo.ModifiedCount == 0) throw new ConcurrencyException("Falha no crédito (concorrência)");
-
-            // 6. Gravar Ledger (Dupla entrada)
-            var debitEvent = CreateLedgerEvent(fromAccountId, "TRANSFER_SENT", -amount, commandId);
-            var creditEvent = CreateLedgerEvent(toAccountId, "TRANSFER_RECEIVED", amount, commandId);
-
-            await _ledger.InsertManyAsync(session, new[] { debitEvent, creditEvent });
-
-            // 7. Finalizar Idempotência e Commit
-            await _idempotency.CompleteAsync(commandId, true, new { Status = "Transferido" }, session);
-            await session.CommitTransactionAsync();
+            await uow.CommitAsync();
         }
         catch
         {
-            await session.AbortTransactionAsync();
+            await uow.AbortAsync();
             throw;
         }
-    }
-
-    private LedgerEvent CreateLedgerEvent(Guid accId, string type, decimal amount, Guid corrId)
-    {
-        return new LedgerEvent 
-        { 
-            AccountId = accId, 
-            Type = type, 
-            Amount = amount, 
-            CorrelationId = corrId,
-            Timestamp = DateTime.UtcNow
-        };
     }
 }

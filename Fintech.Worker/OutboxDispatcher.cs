@@ -19,7 +19,9 @@ public class OutboxDispatcher : BackgroundService
             var messages = await outboxRepo.GetPendingAsync(50);
             foreach (var msg in messages)
             {
-                bus.Publish($"event.{msg.Type}", msg.Payload);
+                // Correção: Uso de PublishAsync (await) e propriedades corretas (Topic/PayloadJson)
+                await bus.PublishAsync($"event.{msg.Topic}", msg.PayloadJson);
+                
                 await outboxRepo.MarkAsProcessedAsync(msg.Id);
             }
             

@@ -107,6 +107,10 @@
               "target": "Package",
               "version": "[8.15.0, )"
             },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[6.0.0, )"

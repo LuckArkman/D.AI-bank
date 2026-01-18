@@ -24,6 +24,19 @@
           }
         }
       },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -38,6 +51,31 @@
           "lib/net5.0/DnsClient.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Docker.DotNet.Enhanced/3.131.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.IO.Pipelines": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Docker.DotNet.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Docker.DotNet.dll": {}
+        }
+      },
+      "Docker.DotNet.Enhanced.X509/3.131.1": {
+        "type": "package",
+        "dependencies": {
+          "Docker.DotNet.Enhanced": "3.131.1"
+        },
+        "compile": {
+          "lib/net8.0/Docker.DotNet.X509.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Docker.DotNet.X509.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0": {
@@ -241,7 +279,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -341,10 +379,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -769,6 +807,19 @@
           "lib/net5.0/SharpCompress.dll": {}
         }
       },
+      "SharpZipLib/1.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Snappier/1.0.0": {
         "type": "package",
         "compile": {
@@ -778,6 +829,23 @@
         },
         "runtime": {
           "lib/net5.0/Snappier.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SSH.NET/2025.1.0": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.2",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
+        },
+        "compile": {
+          "lib/net8.0/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Renci.SshNet.dll": {
             "related": ".xml"
           }
         }
@@ -958,6 +1026,42 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Testcontainers/4.10.0": {
+        "type": "package",
+        "dependencies": {
+          "Docker.DotNet.Enhanced": "3.131.1",
+          "Docker.DotNet.Enhanced.X509": "3.131.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "SSH.NET": "2025.1.0",
+          "SharpZipLib": "1.4.2"
+        },
+        "compile": {
+          "lib/net8.0/Testcontainers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Testcontainers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Testcontainers.MongoDb/4.10.0": {
+        "type": "package",
+        "dependencies": {
+          "Testcontainers": "4.10.0"
+        },
+        "compile": {
+          "lib/net8.0/Testcontainers.MongoDb.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Testcontainers.MongoDb.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "ZstdSharp.Port/0.7.3": {
         "type": "package",
         "compile": {
@@ -974,6 +1078,7 @@
           "BCrypt": "1.0.0",
           "BCrypt.Net-Core": "1.6.0",
           "Fintech.Enums": "1.0.0",
+          "Fintech.Exceptions": "1.0.0",
           "Fintech.ValueObjects": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
@@ -985,7 +1090,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "compile": {
           "bin/placeholder/Fintech.Entities.dll": {}
@@ -1003,13 +1109,53 @@
           "MongoDB.Driver": "3.5.2",
           "NetArchTest.Rules": "1.3.2",
           "OpenTelemetry": "1.14.0",
-          "OpenTelemetry.Extensions.Hosting": "1.14.0"
+          "OpenTelemetry.Extensions.Hosting": "1.14.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "compile": {
           "bin/placeholder/Fintech.Enums.dll": {}
         },
         "runtime": {
           "bin/placeholder/Fintech.Enums.dll": {}
+        }
+      },
+      "Fintech.Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BCrypt": "1.0.0",
+          "BCrypt.Net-Core": "1.6.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.15.0",
+          "MongoDB.Driver": "3.5.2",
+          "NetArchTest.Rules": "1.3.2",
+          "OpenTelemetry": "1.14.0",
+          "OpenTelemetry.Extensions.Hosting": "1.14.0",
+          "RabbitMQ.Client": "7.2.0",
+          "StackExchange.Redis": "2.10.1",
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Exceptions.dll": {}
+        }
+      },
+      "Fintech.Records/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Testcontainers.MongoDb": "4.10.0"
+        },
+        "compile": {
+          "bin/placeholder/Fintech.Records.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Fintech.Records.dll": {}
         }
       },
       "Fintech.ValueObjects/1.0.0": {
@@ -1028,7 +1174,8 @@
           "OpenTelemetry.Extensions.Hosting": "1.14.0",
           "RabbitMQ.Client": "7.2.0",
           "StackExchange.Redis": "2.10.1",
-          "System.IdentityModel.Tokens.Jwt": "8.15.0"
+          "System.IdentityModel.Tokens.Jwt": "8.15.0",
+          "Testcontainers.MongoDb": "4.10.0"
         },
         "compile": {
           "bin/placeholder/Fintech.ValueObjects.dll": {}
@@ -1075,6 +1222,26 @@
         "lib/netstandard2.0/BCrypt.Net-Core.pdb"
       ]
     },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "sha512": "7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "type": "package",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "bouncycastle.cryptography.2.6.2.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
+      ]
+    },
     "DnsClient/1.6.1": {
       "sha512": "4H/f2uYJOZ+YObZjpY9ABrKZI+JNw3uizp6oMzTXwDw6F+2qIPhpRl/1t68O/6e98+vqNiYGu+lswmwdYUy3gg==",
       "type": "package",
@@ -1097,6 +1264,42 @@
         "lib/netstandard2.0/DnsClient.xml",
         "lib/netstandard2.1/DnsClient.dll",
         "lib/netstandard2.1/DnsClient.xml"
+      ]
+    },
+    "Docker.DotNet.Enhanced/3.131.1": {
+      "sha512": "hGLHCNUsQbT2Ab/HUznRnNqYZQs40zInXa3eLwYjeNyfUYbw1pqqDGqcOLl5uGepS8IuigEYakEdAcVT/2ezYg==",
+      "type": "package",
+      "path": "docker.dotnet.enhanced/3.131.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "docker.dotnet.enhanced.3.131.1.nupkg.sha512",
+        "docker.dotnet.enhanced.nuspec",
+        "icon.png",
+        "lib/net10.0/Docker.DotNet.dll",
+        "lib/net8.0/Docker.DotNet.dll",
+        "lib/net9.0/Docker.DotNet.dll",
+        "lib/netstandard2.0/Docker.DotNet.dll",
+        "lib/netstandard2.1/Docker.DotNet.dll"
+      ]
+    },
+    "Docker.DotNet.Enhanced.X509/3.131.1": {
+      "sha512": "8FU7zmttFQzp0xb0EPupxQ0nGtC2cTpukgh3jMxMT8luj5TSDyzIKTnroDpXCjpg9P2fV+6JIvC+IetsMEfyBA==",
+      "type": "package",
+      "path": "docker.dotnet.enhanced.x509/3.131.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "docker.dotnet.enhanced.x509.3.131.1.nupkg.sha512",
+        "docker.dotnet.enhanced.x509.nuspec",
+        "icon.png",
+        "lib/net10.0/Docker.DotNet.X509.dll",
+        "lib/net8.0/Docker.DotNet.X509.dll",
+        "lib/net9.0/Docker.DotNet.X509.dll",
+        "lib/netstandard2.0/Docker.DotNet.X509.dll",
+        "lib/netstandard2.1/Docker.DotNet.X509.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0": {
@@ -1369,10 +1572,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
-      "sha512": "cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+      "sha512": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1396,7 +1599,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1522,10 +1725,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
-      "sha512": "arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+      "sha512": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "path": "microsoft.extensions.logging.abstractions/8.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1590,7 +1793,7 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2201,6 +2404,27 @@
         "sharpcompress.nuspec"
       ]
     },
+    "SharpZipLib/1.4.2": {
+      "sha512": "yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A==",
+      "type": "package",
+      "path": "sharpziplib/1.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/sharpziplib-nuget-256x256.png",
+        "lib/net6.0/ICSharpCode.SharpZipLib.dll",
+        "lib/net6.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/net6.0/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.xml",
+        "sharpziplib.1.4.2.nupkg.sha512",
+        "sharpziplib.nuspec"
+      ]
+    },
     "Snappier/1.0.0": {
       "sha512": "rFtK2KEI9hIe8gtx3a0YDXdHOpedIf9wYCEYtBEmtlyiWVX3XlCNV03JrmmAi/Cdfn7dxK+k0sjjcLv4fpHnqA==",
       "type": "package",
@@ -2219,6 +2443,27 @@
         "lib/netstandard2.1/Snappier.xml",
         "snappier.1.0.0.nupkg.sha512",
         "snappier.nuspec"
+      ]
+    },
+    "SSH.NET/2025.1.0": {
+      "sha512": "jrnbtf0ItVaXAe6jE8X/kSLa6uC+0C+7W1vepcnRQB/rD88qy4IxG7Lf1FIbWmkoc4iVXv0pKrz+Wc6J4ngmHw==",
+      "type": "package",
+      "path": "ssh.net/2025.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "SS-NET-icon-h500.png",
+        "lib/net462/Renci.SshNet.dll",
+        "lib/net462/Renci.SshNet.xml",
+        "lib/net8.0/Renci.SshNet.dll",
+        "lib/net8.0/Renci.SshNet.xml",
+        "lib/net9.0/Renci.SshNet.dll",
+        "lib/net9.0/Renci.SshNet.xml",
+        "lib/netstandard2.0/Renci.SshNet.dll",
+        "lib/netstandard2.0/Renci.SshNet.xml",
+        "ssh.net.2025.1.0.nupkg.sha512",
+        "ssh.net.nuspec"
       ]
     },
     "StackExchange.Redis/2.10.1": {
@@ -2573,6 +2818,56 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Testcontainers/4.10.0": {
+      "sha512": "a7tH+s9IRME6QEeMRgl/mTqQyudgtGNJmJRPn1+LwW8w/2L11cJzRJd7Io0QoSrP+i6lAOETX2SRY7cLbElcdQ==",
+      "type": "package",
+      "path": "testcontainers/4.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "docs/banner.png",
+        "docs/logo.png",
+        "lib/net10.0/Testcontainers.dll",
+        "lib/net10.0/Testcontainers.xml",
+        "lib/net8.0/Testcontainers.dll",
+        "lib/net8.0/Testcontainers.xml",
+        "lib/net9.0/Testcontainers.dll",
+        "lib/net9.0/Testcontainers.xml",
+        "lib/netstandard2.0/Testcontainers.dll",
+        "lib/netstandard2.0/Testcontainers.xml",
+        "lib/netstandard2.1/Testcontainers.dll",
+        "lib/netstandard2.1/Testcontainers.xml",
+        "testcontainers.4.10.0.nupkg.sha512",
+        "testcontainers.nuspec"
+      ]
+    },
+    "Testcontainers.MongoDb/4.10.0": {
+      "sha512": "uSoR1rcXWrhEsBYxAOnAJY30hHzz7xmpcnGVLJLwPAifnbu/5ElaMvoxxNK4u81h5J/d1HiKSvxg8MFtehjP/Q==",
+      "type": "package",
+      "path": "testcontainers.mongodb/4.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "docs/banner.png",
+        "docs/logo.png",
+        "lib/net10.0/Testcontainers.MongoDb.dll",
+        "lib/net10.0/Testcontainers.MongoDb.xml",
+        "lib/net8.0/Testcontainers.MongoDb.dll",
+        "lib/net8.0/Testcontainers.MongoDb.xml",
+        "lib/net9.0/Testcontainers.MongoDb.dll",
+        "lib/net9.0/Testcontainers.MongoDb.xml",
+        "lib/netstandard2.0/Testcontainers.MongoDb.dll",
+        "lib/netstandard2.0/Testcontainers.MongoDb.xml",
+        "lib/netstandard2.1/Testcontainers.MongoDb.dll",
+        "lib/netstandard2.1/Testcontainers.MongoDb.xml",
+        "testcontainers.mongodb.4.10.0.nupkg.sha512",
+        "testcontainers.mongodb.nuspec"
+      ]
+    },
     "ZstdSharp.Port/0.7.3": {
       "sha512": "U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "type": "package",
@@ -2601,6 +2896,16 @@
       "path": "../Fintech.Enums/Fintech.Enums.csproj",
       "msbuildProject": "../Fintech.Enums/Fintech.Enums.csproj"
     },
+    "Fintech.Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Exceptions/Fintech.Exceptions.csproj",
+      "msbuildProject": "../Fintech.Exceptions/Fintech.Exceptions.csproj"
+    },
+    "Fintech.Records/1.0.0": {
+      "type": "project",
+      "path": "../Fintech.Records/Fintech.Records.csproj",
+      "msbuildProject": "../Fintech.Records/Fintech.Records.csproj"
+    },
     "Fintech.ValueObjects/1.0.0": {
       "type": "project",
       "path": "../Fintech.ValueObjects/Fintech.ValueObjects.csproj",
@@ -2612,13 +2917,15 @@
       "BCrypt >= 1.0.0",
       "BCrypt.Net-Core >= 1.6.0",
       "Fintech.Entities >= 1.0.0",
+      "Fintech.Records >= 1.0.0",
       "Microsoft.Extensions.Caching.StackExchangeRedis >= 8.0.0",
       "MongoDB.Driver >= 3.5.2",
       "NetArchTest.Rules >= 1.3.2",
       "OpenTelemetry >= 1.14.0",
       "OpenTelemetry.Extensions.Hosting >= 1.14.0",
       "RabbitMQ.Client >= 7.2.0",
-      "StackExchange.Redis >= 2.10.1"
+      "StackExchange.Redis >= 2.10.1",
+      "Testcontainers.MongoDb >= 4.10.0"
     ]
   },
   "packageFolders": {
@@ -2656,6 +2963,9 @@
           "projectReferences": {
             "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+            },
+            "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
             }
           }
         }
@@ -2711,6 +3021,10 @@
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[2.10.1, )"
+          },
+          "Testcontainers.MongoDb": {
+            "target": "Package",
+            "version": "[4.10.0, )"
           }
         },
         "imports": [

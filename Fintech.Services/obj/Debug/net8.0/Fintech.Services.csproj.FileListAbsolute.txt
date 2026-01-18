@@ -28,3 +28,7 @@ D:\D.AI-bank\Fintech.Services\obj\Debug\net8.0\Fintech.Services.dll
 D:\D.AI-bank\Fintech.Services\obj\Debug\net8.0\refint\Fintech.Services.dll
 D:\D.AI-bank\Fintech.Services\obj\Debug\net8.0\Fintech.Services.pdb
 D:\D.AI-bank\Fintech.Services\obj\Debug\net8.0\ref\Fintech.Services.dll
+D:\D.AI-bank\Fintech.Services\bin\Debug\net8.0\Fintech.Commands.dll
+D:\D.AI-bank\Fintech.Services\bin\Debug\net8.0\Fintech.Telemetry.dll
+D:\D.AI-bank\Fintech.Services\bin\Debug\net8.0\Fintech.Commands.pdb
+D:\D.AI-bank\Fintech.Services\bin\Debug\net8.0\Fintech.Telemetry.pdb

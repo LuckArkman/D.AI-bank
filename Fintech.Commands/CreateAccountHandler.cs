@@ -1,4 +1,5 @@
-﻿using Fintech.Entities;
+﻿using Fintech.Core.Interfaces;
+using Fintech.Entities;
 using Fintech.Interfaces;
 using Fintech.Repositories;
 
@@ -22,7 +23,7 @@ public class CreateAccountHandler : ICreateAccountHandler
 
     public async Task<Guid> Handle(decimal initialBalance)
     {
-        using var uow = await _txManager.BeginTransactionAsync();
+        //using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             var accountId = Guid.NewGuid();
@@ -39,12 +40,12 @@ public class CreateAccountHandler : ICreateAccountHandler
             };
             await _ledgerRepo.AddAsync(ledger);
 
-            await uow.CommitAsync();
+            //await uow.CommitAsync();
             return accountId;
         }
         catch
         {
-            await uow.AbortAsync();
+            //await uow.AbortAsync();
             throw;
         }
     }

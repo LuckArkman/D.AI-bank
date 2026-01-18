@@ -20,10 +20,12 @@
       <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
       <PackageReference Include="StackExchange.Redis" Version="2.10.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+      <PackageReference Include="Testcontainers.MongoDb" Version="4.10.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Fintech.Enums\Fintech.Enums.csproj" />
+      <ProjectReference Include="..\Fintech.Exceptions\Fintech.Exceptions.csproj" />
       <ProjectReference Include="..\Fintech.ValueObjects\Fintech.ValueObjects.csproj" />
     </ItemGroup>
 

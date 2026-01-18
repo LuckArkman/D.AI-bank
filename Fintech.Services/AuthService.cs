@@ -1,64 +1,91 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Fintech.Entities;
-using Fintech.Exceptions;
-using Microsoft.Extensions.Configuration;
+using Fintech.Commands;
+using Fintech.Core.Entities;
+using Fintech.Core.Interfaces;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Driver;
 using Fintech.Interfaces;
+using Fintech.Records;
+using Microsoft.Extensions.Configuration;
 
 namespace Fintech.Services;
 
 public class AuthService
 {
-    private readonly IMongoCollection<User> _users;
-    private readonly ICreateAccountHandler _accountHandler; // Reutiliza lógica de criar conta
+    private readonly IUserRepository _userRepo;
+    private readonly CreateAccountHandler _createAccountHandler;
+    private readonly ITransactionManager _txManager;
     private readonly IConfiguration _config;
 
-    public async Task<string> RegisterAsync(string email, string password)
+    public AuthService(
+        IUserRepository userRepo,
+        CreateAccountHandler createAccountHandler,
+        ITransactionManager txManager,
+        IConfiguration config)
     {
-        // 1. Verifica duplicidade
-        if (await _users.Find(x => x.Email == email).AnyAsync())
-            throw new DomainException("Email já cadastrado.");
-
-        // 2. Cria a Conta Bancária (Lógica do Sprint Anterior)
-        // Isso garante que todo User tenha uma AccountId válida.
-        var accountId = await _accountHandler.Handle(initialBalance: 0);
-
-        // 3. Hash da Senha (Nunca salve em texto plano!)
-        var hash = BCrypt.Net.BCrypt.HashPassword(password);
-
-        // 4. Salva User
-        var user = new User(email, hash, accountId);
-        await _users.InsertOneAsync(user);
-
-        return GenerateJwt(user);
+        _userRepo = userRepo;
+        _createAccountHandler = createAccountHandler;
+        _txManager = txManager;
+        _config = config;
     }
 
-    public async Task<string> LoginAsync(string email, string password)
+    public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
     {
-        var user = await _users.Find(x => x.Email == email).FirstOrDefaultAsync();
-        
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-            throw new DomainException("Credenciais inválidas.");
+        //using var uow = await _txManager.BeginTransactionAsync();
+        try
+        {
+            if (await _userRepo.ExistsByEmailAsync(request.Email))
+                throw new Exception("Email já está em uso.");
 
-        return GenerateJwt(user);
+            var accountId = await _createAccountHandler.Handle(request.InitialDeposit);
+
+            var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            
+            // Agora User tem Name no construtor
+            var user = new User(request.Name, request.Email, hash, accountId);
+
+            await _userRepo.AddAsync(user);
+
+            //await uow.CommitAsync();
+
+            var token = GenerateJwt(user);
+            return new AuthResponse(token, user.Name, user.Email, user.AccountId);
+        }
+        catch
+        {
+            throw;
+        }
+    }
+
+    public async Task<AuthResponse> LoginAsync(LoginRequest request)
+    {
+        var user = await _userRepo.GetByEmailAsync(request.Email);
+
+        if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            throw new Exception("Email ou senha inválidos.");
+
+        var token = GenerateJwt(user);
+        return new AuthResponse(token, user.Name, user.Email, user.AccountId);
     }
 
     private string GenerateJwt(User user)
     {
-        var claims = new[]
+        var claims = new List<Claim>
         {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim("AccountId", user.AccountId.ToString()), // O Claim vital!
-            new Claim(ClaimTypes.Role, user.Role)
+            new Claim(ClaimTypes.Name, user.Name),
+            new Claim("AccountId", user.AccountId.ToString()), 
+            new Claim(ClaimTypes.Role, "Client")
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Secret"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
+            issuer: "Fintech.Api",
+            audience: "Fintech.App",
             claims: claims,
             expires: DateTime.UtcNow.AddHours(8),
             signingCredentials: creds

@@ -12,4 +12,16 @@ public class LedgerEvent
     
     // Metadata para LGPD (Ex: Quem autorizou, IP, Device) - NÃO coloque PII aqui direto
     public Dictionary<string, string> Metadata { get; set; }
+
+    // Construtor vazio para o MongoDB Driver
+    public LedgerEvent() { }
+
+    // Construtor utilitário para o código
+    public LedgerEvent(Guid accountId, string type, decimal amount, Guid correlationId)
+    {
+        AccountId = accountId;
+        Type = type;
+        Amount = amount;
+        CorrelationId = correlationId;
+    }
 }

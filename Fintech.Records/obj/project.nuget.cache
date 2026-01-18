@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "9aRMUT9sVQ0=",
+  "dgSpecHash": "dItcNThBACc=",
   "success": true,
   "projectFilePath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\MPLopes\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced\\3.131.1\\docker.dotnet.enhanced.3.131.1.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced.x509\\3.131.1\\docker.dotnet.enhanced.x509.3.131.1.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.3\\microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\ssh.net\\2025.1.0\\ssh.net.2025.1.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\testcontainers\\4.10.0\\testcontainers.4.10.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\testcontainers.mongodb\\4.10.0\\testcontainers.mongodb.4.10.0.nupkg.sha512"
+  ],
   "logs": []
 }

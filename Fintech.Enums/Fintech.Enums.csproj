@@ -13,6 +13,7 @@
       <PackageReference Include="NetArchTest.Rules" Version="1.3.2" />
       <PackageReference Include="OpenTelemetry" Version="1.14.0" />
       <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+      <PackageReference Include="Testcontainers.MongoDb" Version="4.10.0" />
     </ItemGroup>
 
 </Project>

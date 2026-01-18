@@ -10,6 +10,7 @@ public class PixSaga
     public PixStatus Status { get; private set; }
     public string? FailureReason { get; private set; }
     public DateTime UpdatedAt { get; private set; }
+    public string PixKey { get; set; }
 
     public PixSaga(Guid accountId, decimal amount)
     {
