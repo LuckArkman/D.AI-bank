@@ -87,6 +87,8 @@ builder.Services.AddScoped<ILedgerRepository, LedgerRepository>();
 builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();
 builder.Services.AddScoped<IPixKeyRepository, PixKeyRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 // Mantém os concretos para compatibilidade se necessário, mas as interfaces são preferidas
 builder.Services.AddScoped<AccountRepository>();
 builder.Services.AddScoped<SagaRepository>();
@@ -128,6 +130,8 @@ builder.Services.AddScoped<TransferFundsHandler>();
 builder.Services.AddScoped<GetStatementHandler>();
 builder.Services.AddScoped<SendPixHandler>();
 builder.Services.AddScoped<DebitAccountHandler>();
+builder.Services.AddScoped<IssueCardHandler>();
+builder.Services.AddScoped<RequestLoanHandler>();
 
 // --- CORREÇÃO PRINCIPAL AQUI ---
 // Registra a Interface vinculada à Implementação

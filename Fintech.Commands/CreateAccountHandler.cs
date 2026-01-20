@@ -2,6 +2,7 @@
 using Fintech.Entities;
 using Fintech.Interfaces;
 using Fintech.Repositories;
+using Fintech.Enums;
 
 namespace Fintech.Commands;
 
@@ -21,13 +22,14 @@ public class CreateAccountHandler : ICreateAccountHandler
         _ledgerRepo = ledgerRepo;
     }
 
-    public async Task<Guid> Handle(decimal initialBalance)
+    public async Task<Guid> Handle(decimal initialBalance, AccountProfileType profileType = AccountProfileType.StandardIndividual)
     {
         using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             var accountId = Guid.NewGuid();
-            var account = new Account(accountId);
+            var account = new Account(accountId, profileType);
+
 
             if (initialBalance > 0)
             {

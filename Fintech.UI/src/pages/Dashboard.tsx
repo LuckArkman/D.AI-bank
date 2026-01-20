@@ -20,8 +20,11 @@ import axios from 'axios';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import PixManagement from './PixManagement';
+import CardsPage from './CardsPage';
+import LoansPage from './LoansPage';
 import DepositModal from '../components/DepositModal';
 import PixTransferModal from '../components/PixTransferModal';
+import { Landmark } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -80,7 +83,9 @@ const Dashboard = () => {
                     <MenuLink to="/dashboard/history" icon={<History />} label="Extrato" />
                     <MenuLink to="/dashboard/pix" icon={<Zap />} label="Área Pix" />
                     <MenuLink to="/dashboard/cards" icon={<CreditCard />} label="Meus Cartões" />
+                    <MenuLink to="/dashboard/loans" icon={<Landmark />} label="Créditos" />
                     <MenuLink to="/dashboard/settings" icon={<Settings />} label="Configurações" />
+
                 </nav>
 
                 <button
@@ -271,7 +276,16 @@ const Dashboard = () => {
                     } />
 
                     <Route path="/pix" element={<PixManagement />} />
-                    <Route path="*" element={<div className="p-20 text-center text-surface-400">Página em desenvolvimento...</div>} />
+                    <Route path="/cards" element={<CardsPage />} />
+                    <Route path="/loans" element={<LoansPage />} />
+                    <Route path="*" element={
+                        <div className="p-20 text-center text-surface-400 flex flex-col items-center gap-4">
+                            <Settings className="w-12 h-12 animate-spin-slow text-surface-700" />
+                            <p className="text-xl font-medium">Recurso em desenvolvimento</p>
+                            <button onClick={() => navigate('/dashboard')} className="btn-secondary">Voltar ao Início</button>
+                        </div>
+                    } />
+
                 </Routes>
             </main>
 

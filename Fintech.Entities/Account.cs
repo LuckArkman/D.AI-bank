@@ -1,19 +1,23 @@
 ﻿using Fintech.ValueObjects;
+using Fintech.Enums;
 
 namespace Fintech.Entities;
 
 public class Account
 {
     public Guid Id { get; private set; }
+    public AccountProfileType ProfileType { get; private set; }
     // Correção: Alterado de decimal para Dictionary para suportar Money e indexação ["BRL"]
     public Dictionary<string, Money> Balances { get; private set; } = new();
     public long Version { get; private set; } // Optimistic Concurrency Control
     public DateTime LastUpdated { get; private set; }
 
-    public Account(Guid id)
+    public Account(Guid id, AccountProfileType profileType = AccountProfileType.StandardIndividual)
     {
         Id = id;
+        ProfileType = profileType;
         // Inicializa com zero BRL
+
         Balances["BRL"] = Money.BRL(0);
         Version = 1;
         LastUpdated = DateTime.UtcNow;
@@ -32,7 +36,7 @@ public class Account
 
         // Atualiza o saldo
         Balances[amount.Currency] = currentBalance - amount;
-        
+
         LastUpdated = DateTime.UtcNow;
     }
 

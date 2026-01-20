@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Fintech.Enums;
 
 namespace Fintech.Records;
 
@@ -6,7 +7,9 @@ public record RegisterRequest(
     [Required, EmailAddress] string Email,
     [Required, MinLength(6)] string Password,
     [Required] string Name,
-    [Range(0, 1000000)] decimal InitialDeposit = 0);
+    [Range(0, 1000000)] decimal InitialDeposit = 0,
+    AccountProfileType ProfileType = AccountProfileType.StandardIndividual);
+
 
 public record LoginRequest(
     [Required, EmailAddress] string Email,

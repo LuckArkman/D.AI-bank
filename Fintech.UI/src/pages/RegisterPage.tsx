@@ -11,17 +11,18 @@ const RegisterPage = () => {
         email: '',
         password: '',
         initialDeposit: 0,
+        profileType: 0, // StandardIndividual
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { login } = useAuthStore();
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: name === 'initialDeposit' ? parseFloat(value) || 0 : value
+            [name]: name === 'initialDeposit' ? parseFloat(value) || 0 : (name === 'profileType' ? parseInt(value) : value)
         }));
     };
 
@@ -31,11 +32,12 @@ const RegisterPage = () => {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5222/api/v1/auth/register', {
+            const response = await axios.post('/api/v1/auth/register', {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password,
                 initialDeposit: formData.initialDeposit,
+                profileType: formData.profileType,
             });
 
             const { token, name, email, accountId } = response.data;
@@ -119,6 +121,23 @@ const RegisterPage = () => {
                                     placeholder="Mín. 6 caracteres"
                                 />
                             </div>
+                        </div>
+
+                        <div className="space-y-2 col-span-2 md:col-span-1">
+                            <label className="text-sm font-medium text-surface-300 ml-1">Perfil de Conta</label>
+                            <select
+                                name="profileType"
+                                value={formData.profileType}
+                                onChange={handleInputChange}
+                                className="input-field w-full appearance-none bg-surface-900"
+                            >
+                                <option value={0}>Pessoa Física (Padrão)</option>
+                                <option value={1}>Pessoa Física (Premium)</option>
+                                <option value={2}>Empresarial (PJ)</option>
+                                <option value={3}>Microempreendedor (MEI)</option>
+                                <option value={4}>Conta Salário</option>
+                                <option value={5}>Conta de Pagamento</option>
+                            </select>
                         </div>
 
                         <div className="space-y-2 col-span-2 md:col-span-1">

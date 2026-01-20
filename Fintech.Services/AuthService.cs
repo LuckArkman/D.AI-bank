@@ -38,9 +38,10 @@ public class AuthService
             if (await _userRepo.ExistsByEmailAsync(request.Email))
                 throw new Exception("Email já está em uso.");
 
-            var accountId = await _createAccountHandler.Handle(request.InitialDeposit);
+            var accountId = await _createAccountHandler.Handle(request.InitialDeposit, request.ProfileType);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
 
             // Agora User tem Name no construtor
             var user = new User(request.Name, request.Email, hash, accountId);
