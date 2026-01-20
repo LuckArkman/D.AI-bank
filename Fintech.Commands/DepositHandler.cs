@@ -11,12 +11,14 @@ public class DepositHandler
     private readonly ITransactionManager _txManager;
     private readonly IAccountRepository _accountRepo;
     private readonly ILedgerRepository _ledgerRepo;
+    private readonly ITenantProvider _tenantProvider;
 
-    public DepositHandler(ITransactionManager txManager, IAccountRepository accountRepo, ILedgerRepository ledgerRepo)
+    public DepositHandler(ITransactionManager txManager, IAccountRepository accountRepo, ILedgerRepository ledgerRepo, ITenantProvider tenantProvider)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
         _ledgerRepo = ledgerRepo;
+        _tenantProvider = tenantProvider;
     }
 
 
@@ -35,7 +37,8 @@ public class DepositHandler
             await _accountRepo.UpdateAsync(account);
 
             // Registra no Ledger
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, "DEPOSIT_BOLETO", amount, Guid.NewGuid()));
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "DEPOSIT_BOLETO", amount, Guid.NewGuid()));
 
             await uow.CommitAsync();
         }

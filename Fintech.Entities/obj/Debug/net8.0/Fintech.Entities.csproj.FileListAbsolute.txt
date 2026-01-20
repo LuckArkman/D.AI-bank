@@ -18,3 +18,5 @@ D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.ValueObjects.dll
 D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.ValueObjects.pdb
 D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Exceptions.dll
 D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Entities\bin\Debug\net8.0\Fintech.Core.pdb

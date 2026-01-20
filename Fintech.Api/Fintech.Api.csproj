@@ -50,6 +50,7 @@
       <ProjectReference Include="..\Fintech.Services\Fintech.Services.csproj" />
       <ProjectReference Include="..\Fintech.Messaging\Fintech.Messaging.csproj" />
       <ProjectReference Include="..\Fintech.Commands\Fintech.Commands.csproj" />
+      <ProjectReference Include="..\Fintech.Regulatory\Fintech.Regulatory.csproj" />
     </ItemGroup>
 
 </Project>

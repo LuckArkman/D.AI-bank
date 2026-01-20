@@ -32,6 +32,7 @@
       <ProjectReference Include="..\Fintech.ValueObjects\Fintech.ValueObjects.csproj" />
       <ProjectReference Include="..\Fintech.Interfaces\Fintech.Interfaces.csproj" />
       <ProjectReference Include="..\Fintech.Telemetry\Fintech.Telemetry.csproj" />
+      <ProjectReference Include="..\Fintech.Regulatory\Fintech.Regulatory.csproj" />
     </ItemGroup>
 
 </Project>

@@ -12,17 +12,20 @@ public class InvestmentHandler
     private readonly IAccountRepository _accountRepo;
     private readonly ITransactionManager _txManager;
     private readonly ILedgerRepository _ledgerRepo;
+    private readonly ITenantProvider _tenantProvider;
 
     public InvestmentHandler(
         IInvestmentRepository investmentRepo,
         IAccountRepository accountRepo,
         ITransactionManager txManager,
-        ILedgerRepository ledgerRepo)
+        ILedgerRepository ledgerRepo,
+        ITenantProvider tenantProvider)
     {
         _investmentRepo = investmentRepo;
         _accountRepo = accountRepo;
         _txManager = txManager;
         _ledgerRepo = ledgerRepo;
+        _tenantProvider = tenantProvider;
     }
 
     public async Task InvestAsync(Guid accountId, string name, InvestmentType type, decimal amount)
@@ -38,11 +41,12 @@ public class InvestmentHandler
             await _accountRepo.UpdateAsync(account);
 
             // Cria investimento
-            var investment = new Investment(accountId, name, type, amount, 10.5m); // Taxa fixa simulada
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            var investment = new Investment(accountId, tenantId, name, type, amount, 10.5m); // Taxa fixa simulada
             await _investmentRepo.AddInvestmentAsync(investment);
 
             // Ledger
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, "INVESTMENT_DEBIT", amount, Guid.NewGuid()));
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "INVESTMENT_DEBIT", amount, Guid.NewGuid()));
 
             await uow.CommitAsync();
         }
@@ -55,7 +59,8 @@ public class InvestmentHandler
 
     public async Task CreateGoalAsync(Guid accountId, string name, decimal targetAmount, string color)
     {
-        var goal = new SavingsGoal(accountId, name, targetAmount, color);
+        var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+        var goal = new SavingsGoal(accountId, tenantId, name, targetAmount, color);
         await _investmentRepo.AddGoalAsync(goal);
     }
 
@@ -76,7 +81,8 @@ public class InvestmentHandler
             goal.AddFunds(amount);
             await _investmentRepo.UpdateGoalAsync(goal);
 
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, "GOAL_DEPOSIT", amount, Guid.NewGuid()));
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "GOAL_DEPOSIT", amount, Guid.NewGuid()));
 
             await uow.CommitAsync();
         }

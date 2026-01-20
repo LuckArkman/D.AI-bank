@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Messaging")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e96dc75800f70d9b0b7ec75839946276c3774ddd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06c1931e09e6ccdea452f02e02a10e4527ec9712")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Messaging")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Messaging")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

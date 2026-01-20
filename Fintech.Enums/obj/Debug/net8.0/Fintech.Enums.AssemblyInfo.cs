@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Enums")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eac2266c13edff00cc9fbc5428b373fd3658e249")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06c1931e09e6ccdea452f02e02a10e4527ec9712")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Enums")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Enums")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

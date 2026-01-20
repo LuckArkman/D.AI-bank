@@ -1,20 +1,24 @@
 ﻿using Fintech.ValueObjects;
 using Fintech.Enums;
 
+using Fintech.Core.Interfaces;
+
 namespace Fintech.Entities;
 
-public class Account
+public class Account : IMultiTenant
 {
     public Guid Id { get; private set; }
+    public Guid TenantId { get; private set; }
     public AccountProfileType ProfileType { get; private set; }
     // Correção: Alterado de decimal para Dictionary para suportar Money e indexação ["BRL"]
     public Dictionary<string, Money> Balances { get; private set; } = new();
     public long Version { get; private set; } // Optimistic Concurrency Control
     public DateTime LastUpdated { get; private set; }
 
-    public Account(Guid id, AccountProfileType profileType = AccountProfileType.StandardIndividual)
+    public Account(Guid id, Guid tenantId, AccountProfileType profileType = AccountProfileType.StandardIndividual)
     {
         Id = id;
+        TenantId = tenantId;
         ProfileType = profileType;
         // Inicializa com zero BRL
 

@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Core\bin\Debug\net8.0\Fintech.Core.deps.json
+D:\D.AI-bank\Fintech.Core\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Core\bin\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.sourcelink.json
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\refint\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.Core\obj\Debug\net8.0\ref\Fintech.Core.dll

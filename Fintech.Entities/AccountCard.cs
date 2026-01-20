@@ -1,10 +1,12 @@
+using Fintech.Core.Interfaces;
 using Fintech.Enums;
 
 namespace Fintech.Entities;
 
-public class AccountCard
+public class AccountCard : IMultiTenant
 {
     public Guid Id { get; private set; }
+    public Guid TenantId { get; private set; }
     public Guid AccountId { get; private set; }
     public string LastFourDigits { get; private set; }
     public string Brand { get; private set; } // Visa, Mastercard, etc.
@@ -17,10 +19,11 @@ public class AccountCard
     public DateTime ExpiryDate { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
-    public AccountCard(Guid accountId, string lastFourDigits, string brand, string holderName, CardType type, bool isVirtual, decimal creditLimit = 0)
+    public AccountCard(Guid accountId, Guid tenantId, string lastFourDigits, string brand, string holderName, CardType type, bool isVirtual, decimal creditLimit = 0)
     {
         Id = Guid.NewGuid();
         AccountId = accountId;
+        TenantId = tenantId;
         LastFourDigits = lastFourDigits;
         Brand = brand;
         HolderName = holderName;

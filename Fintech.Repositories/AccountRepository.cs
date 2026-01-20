@@ -11,17 +11,22 @@ namespace Fintech.Repositories;
 public class AccountRepository : IAccountRepository
 {
     private readonly MongoContext _context;
+    private readonly ITenantProvider _tenantProvider;
     private readonly IMongoCollection<Account> _collection;
 
-    public AccountRepository(MongoContext context)
+    public AccountRepository(MongoContext context, ITenantProvider tenantProvider)
     {
         _context = context;
+        _tenantProvider = tenantProvider;
         _collection = _context.Database.GetCollection<Account>("accounts");
     }
 
     public async Task<Account> GetByIdAsync(Guid id)
     {
-        var filter = Builders<Account>.Filter.Eq(x => x.Id, id);
+        var filter = Builders<Account>.Filter.And(
+            Builders<Account>.Filter.Eq(x => x.Id, id),
+            Builders<Account>.Filter.Eq(x => x.TenantId, _tenantProvider.TenantId)
+        );
 
         // Se houver uma transação ativa no contexto, usamos ela.
         // Isso garante "Read Your Own Writes" dentro da transação.
@@ -61,6 +66,7 @@ public class AccountRepository : IAccountRepository
         // A query de update procura pelo ID E pela Versão que foi lida da memória.
         var filter = Builders<Account>.Filter.And(
             Builders<Account>.Filter.Eq(x => x.Id, account.Id),
+            Builders<Account>.Filter.Eq(x => x.TenantId, _tenantProvider.TenantId),
             Builders<Account>.Filter.Eq(x => x.Version, account.Version)
         );
 
@@ -86,6 +92,7 @@ public class AccountRepository : IAccountRepository
 
     public async Task<IEnumerable<Account>> GetAllAsync()
     {
-        return await _collection.Find(_ => true).ToListAsync();
+        var filter = Builders<Account>.Filter.Eq(x => x.TenantId, _tenantProvider.TenantId);
+        return await _collection.Find(filter).ToListAsync();
     }
 }

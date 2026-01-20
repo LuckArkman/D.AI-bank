@@ -1,10 +1,12 @@
-﻿using Fintech.Enums;
+﻿using Fintech.Core.Interfaces;
+using Fintech.Enums;
 
 namespace Fintech.Entities;
 
-public class PixSaga
+public class PixSaga : IMultiTenant
 {
     public Guid Id { get; private set; }
+    public Guid TenantId { get; private set; }
     public Guid AccountId { get; private set; }
     public decimal Amount { get; private set; }
     public PixStatus Status { get; private set; }
@@ -12,10 +14,11 @@ public class PixSaga
     public DateTime UpdatedAt { get; private set; }
     public string PixKey { get; set; }
 
-    public PixSaga(Guid accountId, decimal amount)
+    public PixSaga(Guid accountId, Guid tenantId, decimal amount)
     {
         Id = Guid.NewGuid();
         AccountId = accountId;
+        TenantId = tenantId;
         Amount = amount;
         Status = PixStatus.Created;
         UpdatedAt = DateTime.UtcNow;

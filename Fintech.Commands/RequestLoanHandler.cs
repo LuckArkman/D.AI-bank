@@ -14,19 +14,22 @@ public class RequestLoanHandler
     private readonly IAccountRepository _accountRepo;
     private readonly DepositHandler _depositHandler;
     private readonly ITransactionManager _txManager;
+    private readonly ITenantProvider _tenantProvider;
 
     public RequestLoanHandler(
         ILoanRepository loanRepo,
         IFraudDetectionService fraudService,
         IAccountRepository accountRepo,
         DepositHandler depositHandler,
-        ITransactionManager txManager)
+        ITransactionManager txManager,
+        ITenantProvider tenantProvider)
     {
         _loanRepo = loanRepo;
         _fraudService = fraudService;
         _accountRepo = accountRepo;
         _depositHandler = depositHandler;
         _txManager = txManager;
+        _tenantProvider = tenantProvider;
     }
 
 
@@ -40,7 +43,8 @@ public class RequestLoanHandler
         if (isFraudulent) throw new Exception("Solicitação negada por análise de risco.");
 
         // Criamos o empréstimo
-        var loan = new Loan(accountId, amount, 2.5m, installments);
+        var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+        var loan = new Loan(accountId, tenantId, amount, 2.5m, installments);
         loan.Approve(); // Auto-aprovação para Sandbox
 
         await _loanRepo.AddAsync(loan);

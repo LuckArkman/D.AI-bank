@@ -9,18 +9,21 @@ public class SendPixHandler
     private readonly ISagaRepository _sagaRepo;
     private readonly ITransactionManager _txManager;
     private readonly IPixOrchestrator _orchestrator;
+    private readonly ITenantProvider _tenantProvider;
 
-    public SendPixHandler(ISagaRepository sagaRepo, ITransactionManager txManager, IPixOrchestrator orchestrator)
+    public SendPixHandler(ISagaRepository sagaRepo, ITransactionManager txManager, IPixOrchestrator orchestrator, ITenantProvider tenantProvider)
     {
         _sagaRepo = sagaRepo;
         _txManager = txManager;
         _orchestrator = orchestrator;
+        _tenantProvider = tenantProvider;
     }
 
 
     public async Task<Guid> Handle(Guid accountId, string pixKey, decimal amount)
     {
-        var saga = new PixSaga(accountId, amount)
+        var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+        var saga = new PixSaga(accountId, tenantId, amount)
         {
             PixKey = pixKey
         };

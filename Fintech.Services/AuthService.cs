@@ -17,17 +17,20 @@ public class AuthService
     private readonly CreateAccountHandler _createAccountHandler;
     private readonly ITransactionManager _txManager;
     private readonly IConfiguration _config;
+    private readonly ITenantProvider _tenantProvider;
 
     public AuthService(
         IUserRepository userRepo,
         CreateAccountHandler createAccountHandler,
         ITransactionManager txManager,
-        IConfiguration config)
+        IConfiguration config,
+        ITenantProvider tenantProvider)
     {
         _userRepo = userRepo;
         _createAccountHandler = createAccountHandler;
         _txManager = txManager;
         _config = config;
+        _tenantProvider = tenantProvider;
     }
 
     public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
@@ -38,13 +41,14 @@ public class AuthService
             if (await _userRepo.ExistsByEmailAsync(request.Email))
                 throw new Exception("Email já está em uso.");
 
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
             var accountId = await _createAccountHandler.Handle(request.InitialDeposit, request.ProfileType);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
 
             // Agora User tem Name no construtor
-            var user = new User(request.Name, request.Email, hash, accountId);
+            var user = new User(request.Name, request.Email, hash, accountId, tenantId);
 
             await _userRepo.AddAsync(user);
 
@@ -80,6 +84,7 @@ public class AuthService
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.Name, user.Name),
             new Claim("AccountId", user.AccountId.ToString()),
+            new Claim("TenantId", user.TenantId.ToString()),
             new Claim(ClaimTypes.Role, "Client")
         };
 

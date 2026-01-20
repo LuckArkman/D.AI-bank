@@ -12,15 +12,18 @@ public class DebitAccountHandler
     private readonly ITransactionManager _txManager;
     private readonly IAccountRepository _accountRepo;
     private readonly IOutboxRepository _outboxRepo;
+    private readonly ITenantProvider _tenantProvider;
 
     public DebitAccountHandler(
         ITransactionManager txManager,
         IAccountRepository accountRepo,
-        IOutboxRepository outboxRepo)
+        IOutboxRepository outboxRepo,
+        ITenantProvider tenantProvider)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
         _outboxRepo = outboxRepo;
+        _tenantProvider = tenantProvider;
     }
 
 
@@ -37,7 +40,8 @@ public class DebitAccountHandler
             await _accountRepo.UpdateAsync(account);
 
             var payload = JsonSerializer.Serialize(new { AccountId = accountId, Amount = amount, CorrelationId = correlationId });
-            var msg = new OutboxMessage("AccountDebited", payload);
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            var msg = new OutboxMessage("AccountDebited", payload, tenantId);
             await _outboxRepo.AddAsync(msg);
 
             await uow.CommitAsync();

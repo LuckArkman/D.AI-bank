@@ -9,11 +9,13 @@ public class RegisterPixKeyHandler
 {
     private readonly IPixKeyRepository _pixRepo;
     private readonly ITransactionManager _txManager;
+    private readonly ITenantProvider _tenantProvider;
 
-    public RegisterPixKeyHandler(IPixKeyRepository pixRepo, ITransactionManager txManager)
+    public RegisterPixKeyHandler(IPixKeyRepository pixRepo, ITransactionManager txManager, ITenantProvider tenantProvider)
     {
         _pixRepo = pixRepo;
         _txManager = txManager;
+        _tenantProvider = tenantProvider;
     }
 
     public async Task Handle(Guid accountId, string key, string type)
@@ -27,13 +29,14 @@ public class RegisterPixKeyHandler
             throw new DomainException("Tipo de chave Pix inválido.");
 
         using var uow = await _txManager.BeginTransactionAsync();
-        try 
+        try
         {
-            var pixKey = new PixKey(key, type.ToUpper(), accountId);
+            var tenantId = _tenantProvider.TenantId ?? throw new DomainException("TenantId não resolvido.");
+            var pixKey = new PixKey(key, type.ToUpper(), tenantId, accountId);
             await _pixRepo.AddAsync(pixKey);
             await uow.CommitAsync();
         }
-        catch 
+        catch
         {
             await uow.AbortAsync();
             throw;

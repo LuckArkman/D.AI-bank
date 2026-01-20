@@ -1,0 +1,6 @@
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Regulatory\obj\Debug\net8.0\Fintech.Regulatory.sourcelink.json

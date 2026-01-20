@@ -11,3 +11,6 @@ D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\refint\Fintech.Records.dll
 D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.pdb
 D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\ref\Fintech.Records.dll
 D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech.Records.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Records\bin\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.Records\bin\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.Records\obj\Debug\net8.0\Fintech..B0D78DDF.Up2Date

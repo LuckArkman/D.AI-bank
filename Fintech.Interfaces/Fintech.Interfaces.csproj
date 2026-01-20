@@ -23,6 +23,7 @@
       <ProjectReference Include="..\Fintech.DTOs\Fintech.DTOs.csproj" />
       <ProjectReference Include="..\Fintech.Entities\Fintech.Entities.csproj" />
       <ProjectReference Include="..\Fintech.Records\Fintech.Records.csproj" />
+      <ProjectReference Include="..\Fintech.Core\Fintech.Core.csproj" />
     </ItemGroup>
 
 </Project>

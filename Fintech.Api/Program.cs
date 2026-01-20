@@ -10,6 +10,8 @@ using Fintech.Core.Interfaces;
 using Fintech.Repositories;
 using Fintech.Messaging;
 using Fintech.Services;
+using Fintech.Regulatory;
+using Fintech.Regulatory.Packs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
@@ -90,11 +92,13 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 builder.Services.AddScoped<IInvestmentRepository, InvestmentRepository>();
+builder.Services.AddScoped<ITenantRepository, TenantRepository>();
 builder.Services.AddScoped<AccountRepository>();
 builder.Services.AddScoped<SagaRepository>();
 builder.Services.AddScoped<LedgerRepository>();
 builder.Services.AddScoped<PixKeyRepository>();
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<TenantRepository>();
 
 
 // 3. Services
@@ -117,6 +121,15 @@ builder.Services.AddScoped<IOpenBankingService, OpenBankingService>();
 builder.Services.AddScoped<IMfaService, MfaService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
+
+// Tenet Regulatory
+builder.Services.AddSingleton<IRegulatoryRegistry>(sp =>
+{
+    var registry = new RegulatoryRegistry();
+    registry.RegisterPack(new BrazilRegulatoryPack());
+    return registry;
+});
+builder.Services.AddScoped<IRegulatoryService, RegulatoryService>();
 
 
 
@@ -145,6 +158,7 @@ builder.Services.AddScoped<CreateAccountHandler>();
 // 5. Auth & User Context
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
+builder.Services.AddScoped<ITenantProvider, TenantProvider>();
 
 // Configuração JWT
 var jwtSecret = builder.Configuration["Jwt:Secret"] ?? "Segredo_Super_Secreto_Para_Dev_Local_123!";

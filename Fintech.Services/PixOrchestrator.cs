@@ -12,17 +12,20 @@ public class PixOrchestrator : IPixOrchestrator
     private readonly IAccountRepository _accountRepo;
     private readonly IPixGateway _pixGateway;
     private readonly IOutboxRepository _outboxRepo;
+    private readonly ITenantProvider _tenantProvider;
 
     public PixOrchestrator(
         ISagaRepository sagaRepo,
         IAccountRepository accountRepo,
         IPixGateway pixGateway,
-        IOutboxRepository outboxRepo)
+        IOutboxRepository outboxRepo,
+        ITenantProvider tenantProvider)
     {
         _sagaRepo = sagaRepo;
         _accountRepo = accountRepo;
         _pixGateway = pixGateway;
         _outboxRepo = outboxRepo;
+        _tenantProvider = tenantProvider;
     }
 
 
@@ -56,7 +59,8 @@ public class PixOrchestrator : IPixOrchestrator
             saga.MarkAsLocked();
 
             // Agenda o próximo passo via Outbox para processamento assíncrono
-            await _outboxRepo.AddAsync(new OutboxMessage("pix-saga-locked", saga.Id.ToString()));
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            await _outboxRepo.AddAsync(new OutboxMessage("pix-saga-locked", saga.Id.ToString(), tenantId));
         }
         catch (Exception ex)
         {

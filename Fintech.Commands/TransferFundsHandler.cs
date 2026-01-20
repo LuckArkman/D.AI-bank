@@ -4,6 +4,7 @@ using Fintech.Exceptions;
 using Fintech.Interfaces;
 using Fintech.ValueObjects;
 using MongoDB.Driver;
+using Fintech.Regulatory;
 
 namespace Fintech.Commands;
 
@@ -12,15 +13,21 @@ public class TransferFundsHandler
     private readonly ITransactionManager _txManager;
     private readonly IAccountRepository _accountRepo;
     private readonly ILedgerRepository _ledgerRepo;
+    private readonly ITenantProvider _tenantProvider;
+    private readonly IRegulatoryService _regulatoryService;
 
     public TransferFundsHandler(
         ITransactionManager txManager,
         IAccountRepository accountRepo,
-        ILedgerRepository ledgerRepo)
+        ILedgerRepository ledgerRepo,
+        ITenantProvider tenantProvider,
+        IRegulatoryService regulatoryService)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
         _ledgerRepo = ledgerRepo;
+        _tenantProvider = tenantProvider;
+        _regulatoryService = regulatoryService;
     }
 
     public async Task Handle(Guid fromAccountId, Guid toAccountId, decimal amount)
@@ -34,7 +41,9 @@ public class TransferFundsHandler
             var fromAcc = await _accountRepo.GetByIdAsync(fromAccountId);
             var toAcc = await _accountRepo.GetByIdAsync(toAccountId);
 
-            // 2. Regras de Negócio
+            // 2. Regras de Negócio & Compliance Regulatória
+            await _regulatoryService.ValidateTransactionAsync(fromAcc, amount, "TRANSFER_SENT");
+
             fromAcc.Debit(Money.BRL(amount));
             toAcc.Credit(Money.BRL(amount));
 
@@ -44,8 +53,9 @@ public class TransferFundsHandler
 
             // 4. Ledger (Dupla entrada para rastreabilidade)
             var correlationId = Guid.NewGuid();
-            await _ledgerRepo.AddAsync(new LedgerEvent(fromAccountId, "TRANSFER_SENT", amount, correlationId));
-            await _ledgerRepo.AddAsync(new LedgerEvent(toAccountId, "TRANSFER_RECEIVED", amount, correlationId));
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            await _ledgerRepo.AddAsync(new LedgerEvent(fromAccountId, tenantId, "TRANSFER_SENT", amount, correlationId));
+            await _ledgerRepo.AddAsync(new LedgerEvent(toAccountId, tenantId, "TRANSFER_RECEIVED", amount, correlationId));
 
             await uow.CommitAsync();
         }
