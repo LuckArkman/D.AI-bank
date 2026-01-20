@@ -139,7 +139,6 @@ D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Interfaces.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Persistence.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Records.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Repositories.dll
-D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Services.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Telemetry.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.ValueObjects.dll
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Commands.pdb
@@ -150,7 +149,6 @@ D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Interfaces.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Persistence.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Records.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Repositories.pdb
-D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Services.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Telemetry.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.ValueObjects.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\obj\Debug\net8.0\Fintech.ArchitectureTests.csproj.AssemblyReference.cache

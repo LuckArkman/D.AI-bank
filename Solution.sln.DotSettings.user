@@ -18,5 +18,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=49dcaf1d_002Da3e4_002D49de_002Dadfc_002D1c66add1a094/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Rollback_Deve_Funcionar_Se_Erro_Ocorrer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::0D3D408B-08FB-470D-B01E-6AE3FDF4528F::net8.0::Fintech.IntegrationTests.TransactionTests.Rollback_Deve_Funcionar_Se_Erro_Ocorrer&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::781B53C5-CA9E-4689-ABAE-B88D22A25322::net8.0::Fintech.UnitTests.MoneyTests.Deve_Subtrair_Corretamente&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
