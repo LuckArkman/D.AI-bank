@@ -85,6 +85,22 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.MongoDb": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "AspNetCore.HealthChecks.Rabbitmq": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "AspNetCore.HealthChecks.Redis": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "BCrypt": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -106,6 +122,10 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
@@ -972,6 +992,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
+              },
               "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
               },

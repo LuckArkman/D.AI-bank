@@ -32,7 +32,7 @@ public class AuthService
 
     public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
     {
-        //using var uow = await _txManager.BeginTransactionAsync();
+        using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             if (await _userRepo.ExistsByEmailAsync(request.Email))
@@ -41,22 +41,24 @@ public class AuthService
             var accountId = await _createAccountHandler.Handle(request.InitialDeposit);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            
+
             // Agora User tem Name no construtor
             var user = new User(request.Name, request.Email, hash, accountId);
 
             await _userRepo.AddAsync(user);
 
-            //await uow.CommitAsync();
+            await uow.CommitAsync();
 
             var token = GenerateJwt(user);
             return new AuthResponse(token, user.Name, user.Email, user.AccountId);
         }
         catch
         {
+            await uow.AbortAsync();
             throw;
         }
     }
+
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request)
     {
@@ -76,12 +78,14 @@ public class AuthService
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.Name, user.Name),
-            new Claim("AccountId", user.AccountId.ToString()), 
+            new Claim("AccountId", user.AccountId.ToString()),
             new Claim(ClaimTypes.Role, "Client")
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Secret"]));
+        var secret = _config["Jwt:Secret"] ?? "Segredo_Super_Secreto_Para_Dev_Local_123!";
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
 
         var token = new JwtSecurityToken(
             issuer: "Fintech.Api",

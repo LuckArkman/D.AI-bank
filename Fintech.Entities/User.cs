@@ -8,7 +8,10 @@ public class User
     public string PasswordHash { get; private set; }
     public Guid AccountId { get; private set; } // FK para a Conta Bancária
     public List<string> Roles { get; private set; }
+    public bool TwoFactorEnabled { get; set; }
+    public string? TwoFactorSecret { get; set; }
     public DateTime CreatedAt { get; private set; }
+
 
     public User(string name, string email, string passwordHash, Guid accountId)
     {

@@ -1,23 +1,24 @@
-﻿using Fintech.Entities;
+﻿using Fintech.Core.Interfaces;
+using Fintech.Entities;
 using Fintech.Interfaces;
 using Fintech.ValueObjects;
 using Fintech.Exceptions;
-using Fintech.Repositories;
 
 namespace Fintech.Application.Commands;
 
 public class DepositHandler
 {
     private readonly ITransactionManager _txManager;
-    private readonly AccountRepository _accountRepo;
-    private readonly LedgerRepository _ledgerRepo;
+    private readonly IAccountRepository _accountRepo;
+    private readonly ILedgerRepository _ledgerRepo;
 
-    public DepositHandler(ITransactionManager txManager, AccountRepository accountRepo, LedgerRepository ledgerRepo)
+    public DepositHandler(ITransactionManager txManager, IAccountRepository accountRepo, ILedgerRepository ledgerRepo)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
         _ledgerRepo = ledgerRepo;
     }
+
 
     public async Task Handle(Guid accountId, decimal amount)
     {
@@ -27,12 +28,12 @@ public class DepositHandler
         try
         {
             var account = await _accountRepo.GetByIdAsync(accountId);
-            
+
             // Credita o valor
             account.Credit(Money.BRL(amount));
-            
+
             await _accountRepo.UpdateAsync(account);
-            
+
             // Registra no Ledger
             await _ledgerRepo.AddAsync(new LedgerEvent(accountId, "DEPOSIT_BOLETO", amount, Guid.NewGuid()));
 

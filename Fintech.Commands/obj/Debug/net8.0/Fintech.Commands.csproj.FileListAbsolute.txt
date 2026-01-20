@@ -30,3 +30,5 @@ D:\D.AI-bank\Fintech.Commands\obj\Debug\net8.0\Fintech.Commands.dll
 D:\D.AI-bank\Fintech.Commands\obj\Debug\net8.0\refint\Fintech.Commands.dll
 D:\D.AI-bank\Fintech.Commands\obj\Debug\net8.0\Fintech.Commands.pdb
 D:\D.AI-bank\Fintech.Commands\obj\Debug\net8.0\ref\Fintech.Commands.dll
+D:\D.AI-bank\Fintech.Commands\bin\Debug\net8.0\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.Commands\bin\Debug\net8.0\Fintech.DTOs.pdb

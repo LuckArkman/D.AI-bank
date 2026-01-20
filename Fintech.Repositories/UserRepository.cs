@@ -39,7 +39,16 @@ public class UserRepository : IUserRepository
         return await _collection.Find(u => u.Id == id).FirstOrDefaultAsync();
     }
 
+    public async Task UpdateAsync(User user)
+    {
+        if (_context.Session != null)
+            await _collection.ReplaceOneAsync(_context.Session, u => u.Id == user.Id, user);
+        else
+            await _collection.ReplaceOneAsync(u => u.Id == user.Id, user);
+    }
+
     public async Task<bool> ExistsAsync(string email)
+
     {
         return await _collection.Find(u => u.Email == email).AnyAsync();
     }

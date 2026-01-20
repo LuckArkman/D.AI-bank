@@ -657,20 +657,22 @@ POST /api/v1/pix/send
 - [x] Chaos Engineering
 - [x] Optimistic Concurrency
 - [x] Infrastructure as Code (Terraform)
+- [x] Health checks
+- [x] Circuit breaker
+- [x] Rate limiting
+- [x] CORS configurado
+- [x] Índices MongoDB
+- [x] Multi-factor authentication (MFA)
+- [x] Notificações (email, SMS)
+- [x] Dashboard administrativo (Admin Admin)
+- [x] Open Banking (API v1)
+- [x] Detecção de fraudes (ML Simulator)
 
 ### 🔄 Em Desenvolvimento
-- [ ] Health checks
-- [ ] Circuit breaker
-- [ ] Rate limiting
-- [ ] CORS configurado
-- [ ] Índices MongoDB
+- [ ] Melhorias de UI/UX
+- [ ] Novas integrações de pagamento
 
-### 📅 Planejado
-- [ ] Multi-factor authentication
-- [ ] Notificações (email, SMS)
-- [ ] Dashboard administrativo
-- [ ] Open Banking
-- [ ] Detecção de fraudes (ML)
+
 
 ---
 

@@ -8,6 +8,9 @@ public class OutboxMessage
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public bool Processed { get; set; } = false;
     public DateTime? ProcessedAt { get; set; }
+    public string? LockedBy { get; set; }
+    public DateTime? LockedAt { get; set; }
+
 
     public OutboxMessage(string topic, string payloadJson)
     {

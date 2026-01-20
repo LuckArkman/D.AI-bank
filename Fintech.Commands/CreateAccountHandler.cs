@@ -7,14 +7,14 @@ namespace Fintech.Commands;
 
 public class CreateAccountHandler : ICreateAccountHandler
 {
-    private readonly AccountRepository _accountRepo;
+    private readonly IAccountRepository _accountRepo;
     private readonly ITransactionManager _txManager;
-    private readonly LedgerRepository _ledgerRepo;
+    private readonly ILedgerRepository _ledgerRepo;
 
     public CreateAccountHandler(
-        AccountRepository accountRepo,
+        IAccountRepository accountRepo,
         ITransactionManager txManager,
-        LedgerRepository ledgerRepo)
+        ILedgerRepository ledgerRepo)
     {
         _accountRepo = accountRepo;
         _txManager = txManager;
@@ -23,11 +23,16 @@ public class CreateAccountHandler : ICreateAccountHandler
 
     public async Task<Guid> Handle(decimal initialBalance)
     {
-        //using var uow = await _txManager.BeginTransactionAsync();
+        using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             var accountId = Guid.NewGuid();
             var account = new Account(accountId);
+
+            if (initialBalance > 0)
+            {
+                account.Credit(Fintech.ValueObjects.Money.BRL(initialBalance));
+            }
 
             await _accountRepo.AddAsync(account);
 
@@ -36,16 +41,17 @@ public class CreateAccountHandler : ICreateAccountHandler
                 AccountId = accountId,
                 Type = "ACCOUNT_CREATED",
                 Amount = initialBalance,
-                Timestamp = DateTime.UtcNow
+                Timestamp = DateTime.UtcNow,
+                CorrelationId = Guid.NewGuid()
             };
             await _ledgerRepo.AddAsync(ledger);
 
-            //await uow.CommitAsync();
+            await uow.CommitAsync();
             return accountId;
         }
         catch
         {
-            //await uow.AbortAsync();
+            await uow.AbortAsync();
             throw;
         }
     }

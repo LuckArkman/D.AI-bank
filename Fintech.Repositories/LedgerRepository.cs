@@ -21,7 +21,7 @@ public class LedgerRepository : ILedgerRepository
     {
         // O Ledger é Append-Only (Apenas inserção).
         // Se houver sessão, participa da transação ACID (Atomicidade com o Saldo).
-        
+
         if (_context.Session != null)
         {
             await _collection.InsertOneAsync(_context.Session, ledgerEvent);
@@ -31,5 +31,15 @@ public class LedgerRepository : ILedgerRepository
             // Em cenários raros (ex: log de erro fora de tx), permite insert direto.
             await _collection.InsertOneAsync(ledgerEvent);
         }
+    }
+
+    public async Task<IEnumerable<LedgerEvent>> GetAllAsync()
+    {
+        return await _collection.Find(_ => true).ToListAsync();
+    }
+
+    public async Task<IEnumerable<LedgerEvent>> GetByAccountIdAsync(Guid accountId)
+    {
+        return await _collection.Find(e => e.AccountId == accountId).ToListAsync();
     }
 }

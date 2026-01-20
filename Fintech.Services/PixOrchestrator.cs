@@ -1,5 +1,5 @@
 ﻿using Fintech.Entities;
-using Fintech.Repositories;
+using Fintech.Core.Interfaces;
 using Fintech.Enums;
 using Fintech.Interfaces;
 using Fintech.ValueObjects;
@@ -8,14 +8,14 @@ namespace Fintech.Services;
 
 public class PixOrchestrator : IPixOrchestrator
 {
-    private readonly SagaRepository _sagaRepo;
-    private readonly AccountRepository _accountRepo;
+    private readonly ISagaRepository _sagaRepo;
+    private readonly IAccountRepository _accountRepo;
     private readonly IPixGateway _pixGateway;
     private readonly IOutboxRepository _outboxRepo;
 
     public PixOrchestrator(
-        SagaRepository sagaRepo,
-        AccountRepository accountRepo,
+        ISagaRepository sagaRepo,
+        IAccountRepository accountRepo,
         IPixGateway pixGateway,
         IOutboxRepository outboxRepo)
     {
@@ -24,6 +24,7 @@ public class PixOrchestrator : IPixOrchestrator
         _pixGateway = pixGateway;
         _outboxRepo = outboxRepo;
     }
+
 
     public async Task ProcessPixSaga(Guid sagaId)
     {
@@ -67,8 +68,8 @@ public class PixOrchestrator : IPixOrchestrator
     {
         try
         {
-            // Nota: PixKey deveria vir do Saga. Usando stub por enquanto.
-            var response = await _pixGateway.SendPixAsync("fake-pix-key", saga.Amount);
+            var response = await _pixGateway.SendPixAsync(saga.PixKey, saga.Amount);
+
 
             if (response.Success)
             {
