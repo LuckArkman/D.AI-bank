@@ -34,6 +34,22 @@ public class CardsController : ControllerBase
         var cardId = await handler.Handle(_currentUser.AccountId, request.Brand, request.Type, request.IsVirtual, request.CreditLimit);
         return Ok(new { CardId = cardId });
     }
+
+    [HttpPost("{id}/toggle-block")]
+    public async Task<IActionResult> ToggleBlock(Guid id, [FromServices] CardActionHandler handler)
+    {
+        await handler.HandleToggleBlock(id, _currentUser.AccountId);
+        return Ok(new { Message = "Status do cartão alterado com sucesso." });
+    }
+
+    [HttpPatch("{id}/limit")]
+    public async Task<IActionResult> UpdateLimit(Guid id, [FromBody] UpdateLimitRequest request, [FromServices] CardActionHandler handler)
+    {
+        await handler.HandleUpdateLimit(id, _currentUser.AccountId, request.NewLimit);
+        return Ok(new { Message = "Limite atualizado com sucesso." });
+    }
 }
 
 public record IssueCardRequest(string Brand, CardType Type, bool IsVirtual, decimal CreditLimit = 0);
+public record UpdateLimitRequest(decimal NewLimit);
+

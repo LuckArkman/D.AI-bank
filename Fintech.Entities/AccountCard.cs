@@ -35,4 +35,15 @@ public class AccountCard
 
     public void Block() => Status = CardStatus.Blocked;
     public void Unblock() => Status = CardStatus.Active;
+
+    public void UpdateLimit(decimal newLimit)
+    {
+        if (Type == CardType.Debit && newLimit > 0)
+            throw new InvalidOperationException("Não é possível definir limite em cartões de débito puro.");
+
+        CreditLimit = newLimit;
+        // Ajuste simples para o disponível
+        AvailableCredit = newLimit;
+    }
 }
+

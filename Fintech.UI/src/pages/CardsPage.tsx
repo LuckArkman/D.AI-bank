@@ -59,6 +59,17 @@ const CardsPage = () => {
         }
     };
 
+    const handleToggleBlock = async (cardId: string) => {
+        try {
+            await axios.post(`/api/v1/cards/${cardId}/toggle-block`, {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            fetchCards();
+        } catch (err) {
+            console.error('Error toggling card block', err);
+        }
+    };
+
     return (
         <div className="space-y-10">
             <div className="flex justify-between items-center">
@@ -94,7 +105,7 @@ const CardsPage = () => {
                         </motion.div>
                     ) : (
                         cards.map((card) => (
-                            <CardWidget key={card.id} card={card} />
+                            <CardWidget key={card.id} card={card} onToggleBlock={() => handleToggleBlock(card.id)} />
                         ))
                     )}
                 </AnimatePresence>
@@ -166,8 +177,9 @@ const CardsPage = () => {
     );
 };
 
-const CardWidget = ({ card }: { card: Card }) => {
+const CardWidget = ({ card, onToggleBlock }: { card: Card, onToggleBlock: () => void }) => {
     const [showNumber, setShowNumber] = useState(false);
+    const isBlocked = card.status === 2; // Blocked=2 based on enum card order Active, Inactive, Blocked
 
     return (
         <motion.div
@@ -175,7 +187,16 @@ const CardWidget = ({ card }: { card: Card }) => {
             animate={{ opacity: 1, scale: 1 }}
             className="relative group h-60"
         >
-            <div className={`absolute inset-0 rounded-3xl transition-all duration-500 overflow-hidden shadow-2xl ${card.isVirtual ? 'bg-gradient-to-br from-indigo-600 to-purple-800' : 'bg-gradient-to-br from-surface-800 to-surface-950 border border-white/10'}`}>
+            <div className={`absolute inset-0 rounded-3xl transition-all duration-500 overflow-hidden shadow-2xl ${card.isVirtual ? 'bg-gradient-to-br from-indigo-600 to-purple-800' : 'bg-gradient-to-br from-surface-800 to-surface-950 border border-white/10'} ${isBlocked ? 'grayscale-[0.8] opacity-80' : ''}`}>
+
+                {isBlocked && (
+                    <div className="absolute inset-0 bg-red-950/20 backdrop-blur-[1px] flex items-center justify-center z-20">
+                        <div className="bg-red-500 text-white text-[10px] font-bold px-4 py-1 rounded-full shadow-lg rotate-[-10deg]">
+                            BLOQUEADO
+                        </div>
+                    </div>
+                )}
+
                 {/* Chip & Logo */}
                 <div className="p-8 h-full flex flex-col justify-between">
                     <div className="flex justify-between items-start">
@@ -202,7 +223,7 @@ const CardWidget = ({ card }: { card: Card }) => {
                             </div>
                             <div className="text-right">
                                 <p className="text-[8px] uppercase opacity-50 mb-1">Validade</p>
-                                <p className="text-sm font-bold">08/30</p>
+                                <p className="text-sm font-bold">{new Date(card.expiryDate).toLocaleDateString(undefined, { month: '2-digit', year: '2-digit' })}</p>
                             </div>
                         </div>
                     </div>
@@ -217,16 +238,20 @@ const CardWidget = ({ card }: { card: Card }) => {
             </div>
 
             {/* Hover Info */}
-            <div className="absolute -bottom-8 left-0 right-0 flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="text-[10px] font-bold py-1 px-3 glass rounded-full flex items-center gap-1 hover:text-brand-400">
-                    <Lock className="w-3 h-3" /> Bloquear
+            <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-bottom-8">
+                <button
+                    onClick={onToggleBlock}
+                    className={`text-[10px] font-bold py-1.5 px-4 glass rounded-full flex items-center gap-2 transition-all ${isBlocked ? 'text-emerald-400 hover:bg-emerald-500/10' : 'text-red-400 hover:bg-red-500/10'}`}
+                >
+                    <Lock className="w-3 h-3" /> {isBlocked ? 'Desbloquear' : 'Bloquear'}
                 </button>
-                <button className="text-[10px] font-bold py-1 px-3 glass rounded-full flex items-center gap-1 hover:text-brand-400">
+                <button className="text-[10px] font-bold py-1.5 px-4 glass rounded-full flex items-center gap-2 hover:text-brand-400 transition-all">
                     <Shield className="w-3 h-3" /> Ajustar Limite
                 </button>
             </div>
         </motion.div>
     );
 };
+
 
 export default CardsPage;

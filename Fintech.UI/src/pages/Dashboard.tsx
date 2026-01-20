@@ -12,7 +12,8 @@ import {
     ArrowDownLeft,
     Search,
     Plus,
-    RefreshCcw
+    RefreshCcw,
+    TrendingUp
 } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { motion } from 'framer-motion';
@@ -22,9 +23,10 @@ import { twMerge } from 'tailwind-merge';
 import PixManagement from './PixManagement';
 import CardsPage from './CardsPage';
 import LoansPage from './LoansPage';
+import InvestmentsPage from './InvestmentsPage';
 import DepositModal from '../components/DepositModal';
 import PixTransferModal from '../components/PixTransferModal';
-import { Landmark } from 'lucide-react';
+import { Landmark, PieChart } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -35,6 +37,8 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const [balance, setBalance] = useState({ amount: 0, currency: 'BRL' });
     const [transactions, setTransactions] = useState<any[]>([]);
+    const [cards, setCards] = useState<any[]>([]);
+    const [goals, setGoals] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
     // Modals state
@@ -44,21 +48,33 @@ const Dashboard = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const balanceRes = await axios.get(`/api/v1/open-banking/accounts/${user?.accountId}/balance`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setBalance(balanceRes.data);
+            const [balanceRes, transactionsRes, cardsRes, goalsRes] = await Promise.all([
+                axios.get(`/api/v1/open-banking/accounts/${user?.accountId}/balance`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                }),
+                axios.get(`/api/v1/open-banking/accounts/${user?.accountId}/transactions`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                }),
+                axios.get(`/api/v1/cards`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                }),
+                axios.get(`/api/v1/investments/goals`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+            ]);
 
-            const transactionsRes = await axios.get(`/api/v1/open-banking/accounts/${user?.accountId}/transactions`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            setBalance(balanceRes.data);
             setTransactions(transactionsRes.data);
+            setCards(cardsRes.data);
+            setGoals(goalsRes.data);
+
         } catch (err) {
             console.error('Error fetching dashboard data', err);
         } finally {
             setLoading(false);
         }
     };
+
 
     useEffect(() => {
         fetchData();
@@ -84,7 +100,9 @@ const Dashboard = () => {
                     <MenuLink to="/dashboard/pix" icon={<Zap />} label="Área Pix" />
                     <MenuLink to="/dashboard/cards" icon={<CreditCard />} label="Meus Cartões" />
                     <MenuLink to="/dashboard/loans" icon={<Landmark />} label="Créditos" />
+                    <MenuLink to="/dashboard/investments" icon={<PieChart />} label="Investimentos" />
                     <MenuLink to="/dashboard/settings" icon={<Settings />} label="Configurações" />
+
 
                 </nav>
 
@@ -165,8 +183,9 @@ const Dashboard = () => {
                                         <QuickAction onClick={() => navigate('/dashboard/pix')} icon={<Zap />} label="Pix" color="bg-brand-500" />
                                         <QuickAction onClick={() => setIsPixTransferOpen(true)} icon={<ArrowUpRight />} label="Pagar" color="bg-orange-500" />
                                         <QuickAction onClick={() => setIsDepositOpen(true)} icon={<Plus />} label="Adicionar" color="bg-emerald-500" />
-                                        <QuickAction onClick={() => navigate('/dashboard/cards')} icon={<CreditCard />} label="Cartões" color="bg-blue-500" />
+                                        <QuickAction onClick={() => navigate('/dashboard/investments')} icon={<TrendingUp />} label="Investir" color="bg-indigo-500" />
                                     </div>
+
 
                                     {/* Transactions List */}
                                     <div className="glass-card !p-0 overflow-hidden">
@@ -217,32 +236,71 @@ const Dashboard = () => {
 
                                 {/* Cards / Right Sidebar info */}
                                 <div className="space-y-8">
-                                    <div className="glass-card h-64 relative overflow-hidden flex flex-col justify-between group">
-                                        <div className="absolute top-0 right-0 p-6 opacity-30 group-hover:scale-110 transition-transform">
-                                            <Zap className="w-24 h-24" />
-                                        </div>
-                                        <div className="relative z-10">
-                                            <p className="text-sm font-medium text-surface-400 mb-6">Cartão Digital</p>
-                                            <p className="text-xl font-mono tracking-[0.2em] mb-2">•••• •••• •••• 9012</p>
-                                            <p className="text-xs uppercase text-surface-500">Exp: 09/31</p>
-                                        </div>
-                                        <div className="flex justify-between items-end relative z-10">
-                                            <div>
-                                                <p className="text-xs text-surface-500">Titular</p>
-                                                <p className="font-bold uppercase tracking-wider">{user?.name}</p>
+                                    {cards.length > 0 ? (
+                                        <div className={cn(
+                                            "glass-card h-64 relative overflow-hidden flex flex-col justify-between group cursor-pointer transition-all hover:scale-[1.02]",
+                                            cards[0].isVirtual ? "bg-gradient-to-br from-indigo-600 to-violet-800 border-none" : ""
+                                        )} onClick={() => navigate('/dashboard/cards')}>
+                                            <div className="absolute top-0 right-0 p-6 opacity-30 group-hover:scale-110 transition-transform">
+                                                <CreditCard className="w-24 h-24" />
                                             </div>
-                                            <div className="w-12 h-8 bg-surface-800 rounded-md border border-white/10" />
+                                            <div className="relative z-10">
+                                                <div className="flex justify-between items-start mb-6">
+                                                    <p className="text-sm font-medium text-white/60">
+                                                        {cards[0].isVirtual ? 'Cartão Virtual' : 'Cartão Principal'}
+                                                    </p>
+                                                    {cards[0].status === 2 && (
+                                                        <span className="bg-red-500 text-[8px] font-black px-2 py-0.5 rounded-full">BLOQUEADO</span>
+                                                    )}
+                                                </div>
+                                                <p className="text-xl font-mono tracking-[0.2em] mb-2 text-white">•••• •••• •••• {cards[0].lastFourDigits}</p>
+                                                <p className="text-xs uppercase text-white/40">Exp: {new Date(cards[0].expiryDate).toLocaleDateString(undefined, { month: '2-digit', year: '2-digit' })}</p>
+                                            </div>
+                                            <div className="flex justify-between items-end relative z-10">
+                                                <div>
+                                                    <p className="text-xs text-white/40">Titular</p>
+                                                    <p className="font-bold uppercase tracking-wider text-sm">{cards[0].holderName}</p>
+                                                </div>
+                                                <div className="w-12 h-8 bg-white/10 rounded-md border border-white/10 backdrop-blur-md" />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div
+                                            onClick={() => navigate('/dashboard/cards')}
+                                            className="glass-card h-64 border-dashed border-white/10 flex flex-col items-center justify-center p-8 text-center group cursor-pointer hover:border-brand-500/50 transition-all"
+                                        >
+                                            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                                <Plus className="w-8 h-8 text-surface-500 group-hover:text-brand-400" />
+                                            </div>
+                                            <p className="font-bold mb-1">Nenhum cartão</p>
+                                            <p className="text-xs text-surface-500">Toque para solicitar seu primeiro cartão físico ou virtual.</p>
+                                        </div>
+                                    )}
+
+
+                                    <div className="glass-card">
+                                        <h4 className="font-bold mb-4 flex justify-between items-center">
+                                            Metas de Economia
+                                            <span className="text-[10px] text-brand-400 cursor-pointer hover:underline" onClick={() => navigate('/dashboard/investments')}>Ver todas</span>
+                                        </h4>
+                                        <div className="space-y-6">
+                                            {goals.length === 0 ? (
+                                                <div className="text-center py-4">
+                                                    <p className="text-xs text-surface-500 italic">Nenhuma meta ativa.</p>
+                                                </div>
+                                            ) : (
+                                                goals.slice(0, 3).map(goal => (
+                                                    <GoalItem
+                                                        key={goal.id}
+                                                        label={goal.name}
+                                                        progress={Math.round((goal.currentAmount / goal.targetAmount) * 100)}
+                                                        color={goal.color}
+                                                    />
+                                                ))
+                                            )}
                                         </div>
                                     </div>
 
-                                    <div className="glass-card">
-                                        <h4 className="font-bold mb-4">Metas de Economia</h4>
-                                        <div className="space-y-6">
-                                            <GoalItem label="Viagem Japão" progress={65} color="bg-brand-500" />
-                                            <GoalItem label="Nova Máquina" progress={30} color="bg-blue-500" />
-                                            <GoalItem label="Reserva Emergência" progress={90} color="bg-emerald-500" />
-                                        </div>
-                                    </div>
 
                                     <div className="bg-gradient-to-br from-indigo-600 to-violet-700 p-6 rounded-2xl shadow-xl">
                                         <h4 className="font-bold mb-2">Invite Friends</h4>
@@ -278,6 +336,8 @@ const Dashboard = () => {
                     <Route path="/pix" element={<PixManagement />} />
                     <Route path="/cards" element={<CardsPage />} />
                     <Route path="/loans" element={<LoansPage />} />
+                    <Route path="/investments" element={<InvestmentsPage />} />
+
                     <Route path="*" element={
                         <div className="p-20 text-center text-surface-400 flex flex-col items-center gap-4">
                             <Settings className="w-12 h-12 animate-spin-slow text-surface-700" />

@@ -36,3 +36,21 @@ public enum LoanStatus
     Overdue,
     Rejected
 }
+
+public enum InvestmentType
+{
+    Selection, // Seleção D.AI
+    CDB,       // Certificado de Depósito Bancário
+    LCI,       // Letra de Crédito Imobiliário
+    LCA,       // Letra de Crédito do Agronegócio
+    Stock,     // Ações
+    Crypto     // Criptomoedas
+}
+
+public enum GoalStatus
+{
+    InProgress,
+    Completed,
+    Paused
+}
+

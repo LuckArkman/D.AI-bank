@@ -28,4 +28,14 @@ public class FraudDetectionService : IFraudDetectionService
         await Task.Delay(200); // Simulando processamento ML
         return false;
     }
+
+    public async Task<bool> IsFraudulentAsync(Guid accountId, decimal amount)
+    {
+        // Para simulação de crédito, negamos se o valor for exorbitante para um score básico
+        if (amount > 500000) return true;
+
+        await Task.Delay(100);
+        return false;
+    }
 }
+
