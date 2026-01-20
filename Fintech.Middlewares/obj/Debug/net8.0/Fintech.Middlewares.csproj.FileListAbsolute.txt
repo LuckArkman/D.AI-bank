@@ -1,0 +1,16 @@
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.sourcelink.json
+D:\D.AI-bank\Fintech.Middlewares\bin\Debug\net8.0\Fintech.Middlewares.deps.json
+D:\D.AI-bank\Fintech.Middlewares\bin\Debug\net8.0\Fintech.Middlewares.dll
+D:\D.AI-bank\Fintech.Middlewares\bin\Debug\net8.0\Fintech.Middlewares.pdb
+D:\D.AI-bank\Fintech.Middlewares\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Middlewares\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech..D6683F90.Up2Date
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.dll
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\refint\Fintech.Middlewares.dll
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\Fintech.Middlewares.pdb
+D:\D.AI-bank\Fintech.Middlewares\obj\Debug\net8.0\ref\Fintech.Middlewares.dll

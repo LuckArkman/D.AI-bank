@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.DTOs.deps.json
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.DTOs.pdb
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.sourcelink.json
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\refint\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.pdb
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\ref\Fintech.DTOs.dll

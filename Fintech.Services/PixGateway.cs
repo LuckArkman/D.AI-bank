@@ -1,0 +1,29 @@
+using Fintech.Records;
+
+namespace Fintech.Services;
+
+public interface IPixGateway
+{
+    Task<PixGatewayResponse> SendPixAsync(string key, decimal amount);
+}
+
+public record PixGatewayResponse(bool Success, string? TransactionId, string? ErrorCode);
+
+public class PixGateway : IPixGateway
+{
+    private static readonly Random _random = new();
+
+    public async Task<PixGatewayResponse> SendPixAsync(string key, decimal amount)
+    {
+        // Simula latência de rede externa
+        await Task.Delay(_random.Next(500, 2000));
+
+        // Simula falhas aleatórias (10%)
+        if (_random.Next(1, 100) <= 10)
+        {
+            return new PixGatewayResponse(false, null, "EXTERNAL_GATEWAY_ERROR");
+        }
+
+        return new PixGatewayResponse(true, Guid.NewGuid().ToString("N"), null);
+    }
+}

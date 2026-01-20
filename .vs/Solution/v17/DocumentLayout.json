@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\D.AI-bank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF9336FB-222D-47B2-9BE0-C2C4194DE2F4}|Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj|d:\\d.ai-bank\\fintech.admin.cli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF9336FB-222D-47B2-9BE0-C2C4194DE2F4}|Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj|solutionrelative:fintech.admin.cli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF9336FB-222D-47B2-9BE0-C2C4194DE2F4}|Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj|d:\\d.ai-bank\\fintech.admin.cli\\fintech.admin.cli.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EF9336FB-222D-47B2-9BE0-C2C4194DE2F4}|Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj|solutionrelative:fintech.admin.cli\\fintech.admin.cli.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\D.AI-bank\\Fintech.Admin.Cli\\Program.cs",
+              "RelativeDocumentMoniker": "Fintech.Admin.Cli\\Program.cs",
+              "ToolTip": "D:\\D.AI-bank\\Fintech.Admin.Cli\\Program.cs*",
+              "RelativeToolTip": "Fintech.Admin.Cli\\Program.cs*",
+              "ViewState": "AgIAACkAAAAAAAAAAAAqwDAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T20:07:46.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Fintech.Admin.Cli",
+              "DocumentMoniker": "D:\\D.AI-bank\\Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj",
+              "RelativeDocumentMoniker": "Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj",
+              "ToolTip": "D:\\D.AI-bank\\Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj",
+              "RelativeToolTip": "Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvyAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-17T20:07:43.902Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

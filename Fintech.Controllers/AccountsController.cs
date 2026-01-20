@@ -28,7 +28,7 @@ public class AccountsController : ControllerBase
         try
         {
             // O Handler cuida de tudo: Transação, Idempotência, Outbox
-            await _debitHandler.HandleAsync(accountId, request.Amount, commandId);
+            await _debitHandler.Handle(accountId, request.Amount, commandId);
             return Accepted(); // 202 - Processado (ou enfileirado)
         }
         catch (ConcurrencyException)

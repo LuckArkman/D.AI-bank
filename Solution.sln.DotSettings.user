@@ -1,0 +1,23 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ACluster_002Ecs_002Fl_003AC_0021_003FUsers_003FMPLopes_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fd7c7403e34356448eb3f71e1a31aba667a42b871d25cacf1bbd7651a4bb32cc8_003FCluster_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ALoginRequest_002Ecs_002Fl_003AC_0021_003FUsers_003FMPLopes_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F251361482a1fa2bee4c1279ae3327ec461c81eac80b589209b48dc04f9b_003FLoginRequest_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AServiceProvider_002Ecs_002Fl_003AC_0021_003FUsers_003FMPLopes_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F7d81b2d4f22bee75e5438c707251ae43cb0974c207db91ffc159118c84b4eb9_003FServiceProvider_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=12a7fe37_002D83f8_002D46e6_002Da098_002Dae9cbcf6c3e7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LayerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::7D7A9903-4C97-431E-9661-669FAC2E2180::net8.0::Fintech.ArchitectureTests.LayerTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;Project Location="D:\D.AI-bank\Fintech.UnitTests" Presentation="&amp;lt;Fintech.UnitTests&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=41167770_002D65b4_002D46b3_002D876c_002D0873842fc579/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Domain_Should_Not_Depend_On_Infrastructure" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7D7A9903-4C97-431E-9661-669FAC2E2180::net8.0::Fintech.ArchitectureTests.LayerTests.Domain_Should_Not_Depend_On_Infrastructure&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=49dcaf1d_002Da3e4_002D49de_002Dadfc_002D1c66add1a094/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Rollback_Deve_Funcionar_Se_Erro_Ocorrer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::0D3D408B-08FB-470D-B01E-6AE3FDF4528F::net8.0::Fintech.IntegrationTests.TransactionTests.Rollback_Deve_Funcionar_Se_Erro_Ocorrer&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::781B53C5-CA9E-4689-ABAE-B88D22A25322::net8.0::Fintech.UnitTests.MoneyTests.Deve_Subtrair_Corretamente&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -2,5 +2,5 @@
 
 public interface ITransactionManager
 {
-    
+    Task<IUnitOfWork> BeginTransactionAsync();
 }

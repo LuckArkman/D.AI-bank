@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Exceptions\bin\Debug\net8.0\Fintech.Exceptions.deps.json
+D:\D.AI-bank\Fintech.Exceptions\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Exceptions\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.sourcelink.json
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\refint\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.Exceptions\obj\Debug\net8.0\ref\Fintech.Exceptions.dll
