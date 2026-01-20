@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ycQjhl39Yc0=",
+  "dgSpecHash": "i6gKKtAKBII=",
   "success": true,
   "projectFilePath": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,9 @@
     "C:\\Users\\MPLopes\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced\\3.131.1\\docker.dotnet.enhanced.3.131.1.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced.x509\\3.131.1\\docker.dotnet.enhanced.x509.3.131.1.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\dynamicexpresso.core\\2.19.3\\dynamicexpresso.core.2.19.3.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",

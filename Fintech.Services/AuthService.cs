@@ -14,14 +14,14 @@ namespace Fintech.Services;
 public class AuthService
 {
     private readonly IUserRepository _userRepo;
-    private readonly CreateAccountHandler _createAccountHandler;
+    private readonly ICreateAccountHandler _createAccountHandler;
     private readonly ITransactionManager _txManager;
     private readonly IConfiguration _config;
     private readonly ITenantProvider _tenantProvider;
 
     public AuthService(
         IUserRepository userRepo,
-        CreateAccountHandler createAccountHandler,
+        ICreateAccountHandler createAccountHandler,
         ITransactionManager txManager,
         IConfiguration config,
         ITenantProvider tenantProvider)

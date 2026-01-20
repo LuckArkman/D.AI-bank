@@ -1,6 +1,6 @@
-# 🏦 D.AI Bank - Core Banking Engine
+# 🏦 D.AI Bank - Project Tenet
 
-**Versão:** 1.0.0 | **Desenvolvido por:** LuckArkman | **Data:** Janeiro 2026
+**Versão:** 2.0.0 (Tenet Architecture) | **Desenvolvido por:** LuckArkman | **Data:** Janeiro 2026
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-green.svg)](https://www.mongodb.com/)
@@ -8,48 +8,109 @@
 [![RabbitMQ](https://img.shields.io/badge/Messaging-RabbitMQ-orange.svg)](https://www.rabbitmq.com/)
 [![Docker](https://img.shields.io/badge/Infrastructure-Docker-blue.svg)](https://www.docker.com/)
 
-> **Engine de Core Banking de alta performance e extrema resiliência**, desenvolvida em .NET 8 seguindo os padrões mais rigorosos da indústria financeira, com suporte completo ao sistema de pagamentos instantâneos PIX.
+> **Plataforma Global de Infraestrutura Fintech Modular e Extensível**, desenvolvida em .NET 8 seguindo a arquitetura **Project Tenet** - uma infraestrutura bancária capaz de suportar múltiplos modelos de negócio, regulamentações nacionais e perfis operacionais a partir de uma base tecnológica única, estável e reutilizável.
 
 ---
 
 ## 📑 Índice
 
-- [Destaques Tecnológicos](#-destaques-tecnológicos)
-- [Arquitetura do Sistema](#️-arquitetura-do-sistema)
-- [Stack Técnica](#️-stack-técnica)
-- [Como Iniciar](#-como-iniciar)
-- [Funcionalidades Implementadas](#-funcionalidades-implementadas)
-- [Padrões de Arquitetura](#️-arquitetura-e-padrões)
-- [Segurança](#-segurança-implementada)
-- [Infraestrutura AWS](#-infraestrutura-terraform)
-- [Testes](#-testes)
-- [Documentação Adicional](#-documentação-adicional)
+- [🌍 Project Tenet - Visão Geral](#-project-tenet---visão-geral)
+- [🚀 Destaques Tecnológicos](#-destaques-tecnológicos)
+- [🏗️ Arquitetura do Sistema](#️-arquitetura-do-sistema)
+- [🛠️ Stack Técnica](#️-stack-técnica)
+- [🚦 Como Iniciar](#-como-iniciar)
+- [🎯 Funcionalidades Implementadas](#-funcionalidades-implementadas)
+- [🌐 Multi-Tenancy e Regulatory Framework](#-multi-tenancy-e-regulatory-framework)
+- [📊 Business Rules Engine](#-business-rules-engine)
+- [🔒 Segurança](#-segurança-implementada)
+- [☁️ Infraestrutura AWS](#-infraestrutura-terraform)
+- [🧪 Testes](#-testes)
+- [📚 Documentação Adicional](#-documentação-adicional)
+
+---
+
+## 🌍 Project Tenet - Visão Geral
+
+**Project Tenet** transforma o D.AI Bank em uma **infraestrutura fintech global**, permitindo que clientes Tenet criem e operem suas próprias fintechs em diferentes países com configurações regulatórias, fiscais, legais e operacionais customizadas, sem mudanças profundas no sistema core.
+
+### Princípios Arquiteturais
+
+1. **Modularidade Estrutural**: Sistema organizado em módulos independentes, desacoplados e versionáveis
+2. **Multimodalidade Funcional**: Suporte a diversos modos operacionais (Banco Digital, Instituição de Pagamento, Exchange Cripto, etc.)
+3. **Internacionalização Nativa (Global-First)**: Suporte a múltiplas jurisdições, regras fiscais, idiomas, moedas e fusos horários
+4. **Core Imutável (Tenet Core)**: Funcionalidades universais e não-regulatórias
+5. **Módulos Regulatórios por País (Regulatory Packs)**: Regras específicas de cada país encapsuladas em pacotes dinâmicos
+6. **Compliance by Design**: Logs imutáveis, trilhas de auditoria, versionamento regulatório
+
+### Modos de Negócio Suportados
+
+- 🏦 **Digital Bank**: Banco digital completo
+- 💳 **Payment Institution**: Instituição de pagamento
+- 🪙 **Crypto Exchange**: Exchange de criptomoedas
+- 🏪 **Neobank**: Neobanco com serviços especializados
+- 💰 **Wallet Provider**: Provedor de carteira digital
+- 🌐 **Remittance Service**: Serviço de remessas internacionais
+
+### Jurisdições Suportadas
+
+- 🇧🇷 Brazil
+- 🇺🇸 United States
+- 🇬🇧 United Kingdom
+- 🇪🇺 European Union
+- 🇨🇦 Canada
+- 🇦🇺 Australia
+- 🇯🇵 Japan
+- 🇸🇬 Singapore
+- 🇲🇽 Mexico
+- 🇦🇷 Argentina
 
 ---
 
 ## 🚀 Destaques Tecnológicos
 
 ### 🛡️ Resiliência e Consistência
-*   **Idempotência Nativa**: Middleware e serviços dedicados garantem que nenhuma transação seja processada em duplicidade, essencial para sistemas financeiros.
-*   **Saga Pattern (Orchestration)**: Gerenciamento de transações distribuídas complexas (ex: Fluxo de Pix), permitindo compensação automática em caso de falhas.
-*   **Outbox Pattern**: Garante a entrega confiável de mensagens para o broker (RabbitMQ), evitando a perda de eventos em falhas de rede.
-*   **Double-Entry Bookkeeping (Ledger)**: Todas as movimentações geram registros de débito e crédito imutáveis, permitindo auditoria completa e reconciliação.
-*   **Optimistic Concurrency Control**: Controle de versão em nível de entidade para evitar *race conditions* em updates simultâneos de saldo.
+
+- **Idempotência Nativa**: Middleware e serviços dedicados garantem que nenhuma transação seja processada em duplicidade
+- **Saga Pattern (Orchestration)**: Gerenciamento de transações distribuídas complexas (ex: Fluxo de Pix)
+- **Outbox Pattern**: Garante a entrega confiável de mensagens para o broker (RabbitMQ)
+- **Double-Entry Bookkeeping (Ledger)**: Todas as movimentações geram registros de débito e crédito imutáveis
+- **Optimistic Concurrency Control**: Controle de versão em nível de entidade para evitar race conditions
+
+### 🌐 Multi-Tenancy Nativo
+
+- **Isolamento de Dados por Tenant**: Todos os repositórios filtram automaticamente por `TenantId`
+- **Tenant Provider**: Extração de contexto via HTTP headers (`X-Tenant-Id`) ou JWT claims
+- **Perfil Institucional**: Cada tenant possui jurisdições ativas, modos de negócio e configurações regulatórias
+
+### 📜 Regulatory Framework
+
+- **Regulatory Packs**: Pacotes de regras específicas por país (validações, limites, impostos)
+- **Regulatory Registry**: Registro dinâmico de packs regulatórios
+- **Regulatory Service**: Orquestração de validações regulatórias em múltiplas jurisdições
+- **Compliance Controller**: API para ativação/desativação de jurisdições
+
+### 🧠 Business Rules Engine
+
+- **Avaliação Declarativa de Regras**: Engine baseado em DynamicExpresso para regras em runtime
+- **Regras Configuráveis**: Expressões condicionais, mensagens de erro, níveis de severidade
+- **Integração com Regulatory Packs**: Regras regulatórias aplicadas dinamicamente
 
 ### 🧪 Engenharia de Caos (Chaos Engineering)
-O sistema inclui um simulador de SPI (Sistema de Pagamentos Instantâneos) no `PixController` que injeta falhas controladas:
-*   **Latência Injetada**: 10% das requisições sofrem timeout proposital.
-*   **Falhas Intermitentes**: 15% de erro 500 para testar circuitos de retentativa.
-*   **Rejeições de Negócio**: Simulação de chaves inexistentes e erros de validação.
+
+O sistema inclui um simulador de SPI (Sistema de Pagamentos Instantâneos) que injeta falhas controladas:
+- **Latência Injetada**: 10% das requisições sofrem timeout proposital
+- **Falhas Intermitentes**: 15% de erro 500 para testar circuitos de retentativa
+- **Rejeições de Negócio**: Simulação de chaves inexistentes e erros de validação
 
 ### 📊 Observabilidade e Telemetria
+
 Implementação profunda de **OpenTelemetry**, permitindo rastreamento ponta-a-ponta (Distributed Tracing), métricas de performance e logs estruturados integrados ao Prometheus.
 
 ---
 
 ## 🏗️ Arquitetura do Sistema
 
-O projeto segue os princípios da **Clean Architecture**, com separação clara de responsabilidades:
+O projeto segue os princípios da **Clean Architecture** com **Domain-Driven Design** e **Event-Driven Architecture**:
 
 ```mermaid
 graph TD
@@ -57,40 +118,77 @@ graph TD
     Controllers --> Handlers[Fintech.Commands]
     Handlers --> Domain[Fintech.Core / Entities]
     Handlers --> Repo[Fintech.Repositories]
+    Handlers --> Regulatory[Fintech.Regulatory]
+    Regulatory --> RulesEngine[Business Rules Engine]
+    Regulatory --> RegPacks[Regulatory Packs]
     Repo --> DB[(MongoDB)]
     Workers[Fintech.Worker] --> Outbox[OutboxDispatcher]
     Outbox --> Broker[RabbitMQ]
     Consumers[Fintech.Consumers] --> Sagas[PixSaga]
+    
+    TenantProvider[Tenant Provider] -.-> Handlers
+    TenantProvider -.-> Repo
+    TenantProvider -.-> Consumers
 ```
 
-### Principais Componentes:
-- **`Fintech.Api`**: Entrypoint do sistema, configurações de DI, Middlewares e Injeção de Dependência.
-- **`Fintech.Commands`**: Handlers de negócio (Debit, Transfer, SendPix) que coordenam a lógica e transações.
-- **`Fintech.Persistence`**: Implementação do `MongoContext` com suporte nativo a transações do MongoDB.
-- **`Fintech.Messaging`**: Cliente RabbitMQ abstraído para facilitar a troca de mensagens.
-- **`Fintech.Worker`**: Processos de background para processamento de Outbox e arquivamento de Ledger.
-- **`Fintech.Admin.Cli`**: Ferramenta de linha de comando para operações administrativas e ajustes manuais.
+### Principais Componentes
+
+#### Core Infrastructure
+- **`Fintech.Api`**: Entry point do sistema, configurações de DI, Middlewares
+- **`Fintech.Commands`**: Handlers de negócio (Debit, Transfer, SendPix)
+- **`Fintech.Persistence`**: Implementação do `MongoContext` com suporte a transações
+- **`Fintech.Messaging`**: Cliente RabbitMQ abstraído
+- **`Fintech.Worker`**: Processos de background (Outbox, Ledger archiving)
+
+#### Tenet Architecture
+- **`Fintech.Regulatory`**: Framework regulatório com packs por país
+- **`Fintech.Regulatory.Rules`**: Business Rules Engine
+- **`Fintech.Regulatory.Packs`**: Implementações de regulatory packs (Brazil, US, EU, etc.)
+- **`Fintech.Enums.TenetEnums`**: Enums para BusinessMode e Jurisdiction
+
+#### Multi-Tenancy
+- **`ITenantProvider`**: Interface para resolução de tenant
+- **`TenantProvider`**: Implementação que extrai TenantId de headers/JWT
+- **`Tenant Entity`**: Perfil institucional com jurisdições e modos ativos
 
 ---
 
 ## 🛠️ Stack Técnica
 
-*   **Linguagem**: C# (.NET 8)
-*   **Banco de Dados**: MongoDB (Persistência Principal)
-*   **Caching**: Redis (Idempotência e Cache de Aplicação)
-*   **Mensageria**: RabbitMQ (Event-Driven Design)
-*   **Infraestrutura**: Docker & Terraform
-*   **Testes**: xUnit, FluentAssertions, ArchitectureTests (NetArchTest)
+### Backend
+- **Linguagem**: C# (.NET 8)
+- **Framework**: ASP.NET Core Web API
+- **Banco de Dados**: MongoDB (Persistência Principal)
+- **Caching**: Redis (Idempotência e Cache de Aplicação)
+- **Mensageria**: RabbitMQ (Event-Driven Design)
+- **Infraestrutura**: Docker & Terraform
+
+### Libraries Principais
+- **MongoDB.Driver**: Acesso ao MongoDB com suporte a transações
+- **StackExchange.Redis**: Cliente Redis
+- **RabbitMQ.Client**: Cliente RabbitMQ
+- **BCrypt.Net**: Hash de senhas
+- **System.IdentityModel.Tokens.Jwt**: Autenticação JWT
+- **DynamicExpresso.Core**: Avaliação de expressões em runtime
+- **OpenTelemetry**: Observabilidade e métricas
+- **Polly**: Resiliência e retry policies
+
+### Testing
+- **xUnit**: Framework de testes
+- **FluentAssertions**: Assertions fluentes
+- **Moq**: Mocking framework
+- **NetArchTest**: Testes de arquitetura
 
 ---
 
 ## 🚦 Como Iniciar
 
 ### Pré-requisitos
-*   Docker & Docker Compose
-*   SDK do .NET 8 (opcional para desenvolvimento local)
+- Docker & Docker Compose
+- SDK do .NET 8 (opcional para desenvolvimento local)
 
 ### Execução via Docker
+
 Para subir todo o ecossistema (API, MongoDB, Redis, RabbitMQ):
 
 ```bash
@@ -98,54 +196,26 @@ docker-compose up -d
 ```
 
 ### Configuração de Ambiente
-As configurações de conexão (MongoDB/Redis) podem ser encontradas em:
+
+As configurações de conexão podem ser encontradas em:
 - `Fintech.Api/appsettings.json`
 - `Fintech.Api/Program.cs` (Registro de dependências)
 
----
+### Build e Testes
 
-## 🧪 Estratégia de Testes
+```bash
+# Build da solução
+dotnet build
 
-O projeto possui uma pirâmide de testes completa:
-*   **UnitTests**: Lógica de domínio e entidades.
-*   **IntegrationTests**: Fluxos completos de persistência e transação.
-*   **ArchitectureTests**: Garante que o acoplamento entre camadas respeite a Clean Architecture.
-*   **LoadTests**: Benchmarks de performance para garantir baixa latência em altas cargas.
+# Executar testes unitários
+dotnet test Fintech.UnitTests/Fintech.UnitTests.csproj
 
----
+# Executar testes de integração
+dotnet test Fintech.IntegrationTests/Fintech.IntegrationTests.csproj
 
-## 📬 Endpoints Principais (API)
-
-| Método | Endpoint | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/api/v1/transfer/debit` | Realiza o débito em conta com controle de idempotência. |
-| `POST` | `/api/v1/transfer/setup` | (Dev Only) Inicializa uma conta com saldo para testes. |
-| `POST` | `/api/spi/payment` | Simulador SPI/Pix com Chaos Engineering. |
-
----
-
-## 📝 Documentação Adicional
-
-*   **Padrão de Idempotência**: Localizado em `Fintech.Middlewares.IdempotencyMiddleware`.
-*   **Lógica de Ledger**: Centralizada em `Fintech.Commands.TransferFundsHandler`.
-*   **Fluxo de Sagas**: Veja `Fintech.Consumers.PixProcessConsumer`.
-
-## 📌 Proposta Principal do Projeto
-
-O **D.AI Bank** é uma **plataforma de Core Banking completa** desenvolvida em .NET 8, projetada para oferecer serviços bancários digitais com foco em:
-
-- **Alta Resiliência**: Arquitetura distribuída com tolerância a falhas
-- **Consistência Financeira**: Garantias ACID e auditoria completa
-- **Conformidade Regulatória**: Aderência ao Banco Central e LGPD
-- **Escalabilidade**: Preparado para milhões de transações
-
-### Objetivo Central
-
-Criar uma infraestrutura bancária moderna que implemente os padrões mais avançados da indústria financeira, incluindo:
-- Sistema de pagamentos instantâneos (PIX)
-- Transações distribuídas com Saga Pattern
-- Event-driven architecture
-- Observabilidade completa
+# Executar API localmente
+dotnet run --project Fintech.Api/Fintech.Api.csproj
+```
 
 ---
 
@@ -157,14 +227,14 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - Criação de conta com validação de email único
 - Hash seguro de senha usando BCrypt
 - Abertura automática de conta bancária vinculada
-- Geração de token JWT com claims personalizados
+- Geração de token JWT com claims personalizados (incluindo TenantId)
 - Registro no Ledger da criação da conta
 
 **Login e Autenticação**
 - Autenticação via email/senha
 - Validação de credenciais com BCrypt.Verify
 - Emissão de JWT com expiração de 8 horas
-- Claims incluem: UserId, Email, Name, AccountId, Role
+- Claims incluem: UserId, Email, Name, AccountId, Role, TenantId
 
 **Controle de Acesso**
 - Middleware de autenticação JWT
@@ -181,7 +251,7 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - Balances armazenado como Dictionary<string, Money>
 - Controle de versão otimista (Version field)
 - Métodos Debit() e Credit() com validações
-- LastUpdated timestamp automático
+- **Multi-tenancy**: Todas as contas vinculadas a um TenantId
 
 **Consulta de Saldo** (`AccountController.cs`)
 - Endpoint GET /api/v1/accounts/balance
@@ -192,8 +262,7 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 **Extrato Bancário** (`GetStatementHandler.cs`)
 - Endpoint GET /api/v1/accounts/statement
 - Consulta histórico de transações no Ledger
-- Filtros por período (planejado)
-- Paginação (planejado)
+- Filtrado automaticamente por TenantId
 
 ---
 
@@ -201,6 +270,7 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 
 **Transferência Interna** (`TransferFundsHandler.cs`)
 - Transferência entre contas do mesmo banco
+- **Validação Regulatória**: Integração com `IRegulatoryService`
 - Transação MongoDB com garantia ACID
 - Validação de saldo insuficiente
 - Registro duplo no Ledger (débito + crédito)
@@ -216,7 +286,7 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 
 **Depósito** (`DepositHandler.cs`)
 - Operação de crédito em conta
-- Registro no Ledger
+- Registro no Ledger com TenantId
 - Validação de valores positivos
 
 ---
@@ -226,21 +296,21 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 **Gerenciamento de Chaves PIX** (`PixKey.cs`, `PixKeyController.cs`)
 - Registro de chaves PIX (CPF, Email, Telefone, Aleatória)
 - Validação de unicidade de chaves
+- **Multi-tenancy**: Chaves isoladas por tenant
 - Endpoint POST /api/v1/pix/keys
 - Endpoint GET /api/v1/pix/keys (listagem)
-- Validação de tipo de chave
 
 **Envio de PIX - Saga Distribuída** (`SendPixHandler.cs`, `PixOrchestrator.cs`)
 
 **Fluxo Completo:**
 1. **Created**: Cliente solicita PIX
-   - Cria PixSaga com status "Created"
+   - Cria PixSaga com status "Created" e TenantId
    - Valida dados básicos
    
 2. **BalanceLocked**: Reserva de saldo
    - Debita valor da conta origem
    - Atualiza saga para "BalanceLocked"
-   - Publica evento no Outbox
+   - Publica evento no Outbox com TenantId
    
 3. **Processing**: Comunicação com SPI
    - PixGateway envia para sistema externo
@@ -248,31 +318,46 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
    
 4. **Completed/Failed**: Finalização
    - Sucesso: Marca saga como "Completed"
-   - Falha: Executa compensação (refund)
-   - Atualiza status final
+   - Falha: Executa compensação (refund) com registro no Ledger
 
-**Compensação Automática**
-- Método Compensate() no PixOrchestrator
+**Compensação Automática** (`PixProcessConsumer.cs`)
+- Método InitiateRefund() com suporte a multi-tenancy
 - Estorna valor em caso de falha
 - Marca saga como "Refunded"
-- Mantém histórico completo
-
-**Integração com SPI** (`PixController.cs` - Simulador)
-- Simulador de Sistema de Pagamentos Instantâneos
-- Chaos Engineering integrado:
-  - 10% timeout (10 segundos)
-  - 15% erro 500
-  - 5% chave não encontrada
-- Retorna EndToEndId em sucesso
+- Registra no Ledger com TenantId correto
 
 ---
 
-### 5. Ledger e Auditoria
+### 5. Cartões e Empréstimos
+
+**Emissão de Cartões** (`IssueCardHandler.cs`)
+- Validação de modo de negócio (BusinessMode)
+- Verifica se tenant tem modo "DigitalBank" ou "PaymentInstitution" ativo
+- Criação de cartão virtual/físico
+- Integração com processadoras
+
+**Gestão de Empréstimos** (`LoanRepository.cs`)
+- Solicitação de empréstimos
+- Análise de crédito
+- Aprovação/Rejeição
+- Filtrado por TenantId
+
+**Investimentos** (`InvestmentRepository.cs`)
+- Produtos de investimento
+- Rentabilidade
+- Resgate
+- Isolamento por tenant
+
+---
+
+### 6. Ledger e Auditoria
 
 **Sistema de Ledger Imutável** (`LedgerEvent.cs`, `LedgerRepository.cs`)
 - Registro de todas as movimentações
+- **Multi-tenancy**: Todos os eventos incluem TenantId
 - Campos obrigatórios:
   - AccountId
+  - TenantId
   - Type (DEBIT, CREDIT, TRANSFER_SENT, etc)
   - Amount
   - CorrelationId
@@ -289,13 +374,15 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 
 ---
 
-### 6. Outbox Pattern
+### 7. Outbox Pattern
 
 **Garantia de Entrega** (`OutboxMessage.cs`, `OutboxRepository.cs`)
 - Mensagens persistidas na mesma transação
+- **Multi-tenancy**: Mensagens incluem TenantId
 - Campos:
   - Topic (routing key)
   - PayloadJson (evento serializado)
+  - TenantId
   - ProcessedAt (null = pendente)
   - CreatedAt
 
@@ -306,15 +393,9 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - Marca como processada
 - Retry automático em caso de falha
 
-**Integração RabbitMQ** (`RabbitMqClient.cs`)
-- Exchange tipo Topic: "fintech.events"
-- Conexão lazy (conecta quando necessário)
-- Publicação assíncrona
-- Dispose pattern implementado
-
 ---
 
-### 7. Idempotência
+### 8. Idempotência
 
 **Middleware de Idempotência** (`IdempotencyMiddleware.cs`)
 - Header "Idempotency-Key" obrigatório para POST/PUT/DELETE
@@ -323,132 +404,118 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - Buffering de response para cachear resultado
 - Apenas respostas 2xx são cacheadas
 
-**Fluxo:**
-1. Verifica se é GET (skip)
-2. Extrai Idempotency-Key do header
-3. Consulta Redis
-4. Se existe: retorna resposta cacheada
-5. Se não: executa request e cacheia resultado
+---
+
+## 🌐 Multi-Tenancy e Regulatory Framework
+
+### Tenant Provider
+
+**ITenantProvider** (`ITenantProvider.cs`, `TenantProvider.cs`)
+- Extração de TenantId de HTTP headers (`X-Tenant-Id`)
+- Fallback para JWT claims
+- Injetado em todos os handlers e repositórios
+
+### Tenant Entity
+
+**Perfil Institucional** (`Tenant.cs`)
+```csharp
+public class Tenant
+{
+    public Guid Id { get; private set; }
+    public string Name { get; private set; }
+    public string Identifier { get; private set; }
+    public TenantBranding Branding { get; private set; }
+    public List<Jurisdiction> ActiveJurisdictions { get; private set; }
+    public List<BusinessMode> ActiveModes { get; private set; }
+    public Dictionary<string, string> RegulatoryConfig { get; private set; }
+    public bool IsActive { get; private set; }
+}
+```
+
+### Regulatory Framework
+
+**IRegulatoryPack** (`IRegulatoryPack.cs`)
+```csharp
+public interface IRegulatoryPack
+{
+    Jurisdiction Jurisdiction { get; }
+    Task<ValidationResult> ValidateTransactionAsync(Account account, decimal amount, string operationType);
+    Task<ValidationResult> ValidateOnboardingAsync(User user);
+    decimal CalculateTax(decimal amount, string operationType);
+}
+```
+
+**BrazilRegulatoryPack** (`BrazilRegulatoryPack.cs`)
+- Limite de transferência noturna (Regra BACEN): R$ 1.000 entre 20h e 6h
+- Validação de documentos obrigatórios (CPF)
+- Cálculo de IOF e IR sobre investimentos
+- Integração com Business Rules Engine
+
+**RegulatoryService** (`RegulatoryService.cs`)
+- Orquestra validações em múltiplas jurisdições
+- Aplica regulatory packs ativos do tenant
+- Retorna resultado consolidado
+
+**ComplianceController** (`ComplianceController.cs`)
+- GET /api/v1/tenet/compliance/active-packs
+- POST /api/v1/tenet/compliance/activate-jurisdiction/{jurisdiction}
+- Gerenciamento dinâmico de jurisdições
 
 ---
 
-### 8. Persistência e Transações
+## 📊 Business Rules Engine
 
-**MongoContext** (`MongoContext.cs`)
-- Implementa ITransactionManager
-- Gerencia IClientSessionHandle
-- Métodos:
-  - BeginTransactionAsync()
-  - CommitAsync()
-  - AbortAsync()
-- Read Concern: Snapshot
-- Write Concern: Majority
+### Arquitetura
 
-**Repositories**
-- AccountRepository: CRUD de contas
-- LedgerRepository: Append-only ledger
-- OutboxRepository: Mensagens pendentes
-- SagaRepository: Estado de sagas PIX
-- PixKeyRepository: Chaves PIX
-- UserRepository: Usuários do sistema
+**IBusinessRulesEngine** (`BusinessRule.cs`)
+```csharp
+public interface IBusinessRulesEngine
+{
+    Task<RuleExecutionResult> EvaluateAsync(string expression, object context);
+}
+```
 
-**Optimistic Concurrency Control**
-- Campo Version em Account
-- Update verifica Version atual
-- Incrementa Version atomicamente
-- Lança ConcurrencyException se versão mudou
+**BusinessRule Entity**
+```csharp
+public class BusinessRule
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string ConditionExpression { get; set; } // "amount > 1000 && hour > 20"
+    public string ErrorMessage { get; set; }
+    public RuleSeverity Severity { get; set; }
+}
+```
 
----
+**Severidade de Regras**
+- **Information**: Informativo
+- **Warning**: Alerta
+- **Error**: Erro (bloqueia operação)
+- **Blocking**: Bloqueio crítico
 
-### 9. Telemetria e Observabilidade
+### Implementação
 
-**Métricas Prometheus** (`FintechMetrics.cs`)
-- fintech_money_debited_total (Counter<decimal>)
-- fintech_transactions_success_total (Counter<long>)
-- fintech_transactions_failure_total (Counter<long>)
+**BusinessRulesEngine** (`BusinessRulesEngine.cs`)
+- Usa **DynamicExpresso** para avaliação de expressões em runtime
+- Suporta expressões C# complexas
+- Injeção de contexto como variáveis
+- Tratamento de erros robusto
 
-**OpenTelemetry**
-- Meter: "Fintech.Core"
-- Integração com Prometheus
-- Distributed tracing (planejado)
+### Exemplo de Uso
 
-**Logging Estruturado**
-- ILogger injetado em todos os serviços
-- Níveis configuráveis por ambiente
-- Logs de debug, info, warning, error
+```csharp
+var rule = new BusinessRule
+{
+    Name = "Limite Noturno BACEN",
+    ConditionExpression = "ctx.Amount > 1000 && (ctx.Hour >= 20 || ctx.Hour < 6)",
+    ErrorMessage = "Transferências acima de R$ 1.000 não são permitidas entre 20h e 6h",
+    Severity = RuleSeverity.Blocking
+};
 
----
-
-### 10. Value Objects e Domain Model
-
-**Money** (`Money.cs`)
-- Record imutável
-- Propriedades: Amount, Currency
-- Factory methods: BRL(), USD()
-- Operadores sobrescritos (+, -, >, <)
-- Validação de moeda em operações
-
-**Entities**
-- Account: Agregado raiz
-- User: Identidade do cliente
-- PixKey: Chave PIX vinculada a conta
-- PixSaga: Estado de transação PIX
-- LedgerEvent: Evento imutável
-- OutboxMessage: Mensagem pendente
-
-**Enums**
-- PixStatus: Created, BalanceLocked, Completed, Failed, Refunded
-
----
-
-## 🏗️ Arquitetura e Padrões
-
-### Clean Architecture
-
-**Camadas:**
-1. **Fintech.Api**: Entry point, DI, middlewares
-2. **Fintech.Controllers**: HTTP endpoints
-3. **Fintech.Commands**: Business logic handlers
-4. **Fintech.Services**: Orchestration (AuthService, PixOrchestrator)
-5. **Fintech.Repositories**: Data access
-6. **Fintech.Persistence**: MongoDB implementation
-7. **Fintech.Entities**: Domain model
-8. **Fintech.ValueObjects**: Immutable values
-9. **Fintech.Interfaces**: Abstractions
-
-### Padrões Implementados
-
-**Saga Pattern (Orchestration)**
-- PixOrchestrator coordena fluxo PIX
-- Estados bem definidos
-- Compensação automática
-- Idempotente
-
-**Outbox Pattern**
-- Garante entrega de eventos
-- Transação atômica (DB + Outbox)
-- Worker processa assincronamente
-
-**Repository Pattern**
-- Abstração de persistência
-- Interfaces em Fintech.Interfaces
-- Implementações em Fintech.Repositories
-
-**Unit of Work**
-- IUnitOfWork com Commit/Abort
-- MongoUnitOfWork implementa padrão
-- Garante atomicidade
-
-**CQRS (Parcial)**
-- Commands: handlers de escrita
-- Queries: handlers de leitura
-- Separação clara
-
-**Domain-Driven Design**
-- Entities com comportamento
-- Value Objects imutáveis
-- Aggregates (Account)
-- Domain Events
+var context = new { Amount = 1500m, Hour = 22 };
+var result = await rulesEngine.EvaluateAsync(rule.ConditionExpression, context);
+```
 
 ---
 
@@ -458,12 +525,13 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - JWT com HMAC-SHA256
 - Secret configurável
 - Expiração de 8 horas
-- Claims customizados
+- Claims customizados (incluindo TenantId)
 
 ### Autorização
 - Role-based (Client, Admin)
 - [Authorize] attribute
 - ICurrentUser para contexto
+- Isolamento por tenant
 
 ### Criptografia
 - BCrypt para senhas (salt automático)
@@ -474,57 +542,17 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 - Saldo insuficiente
 - Valores positivos
 - Tipos de chave PIX
+- **Validações regulatórias por jurisdição**
+
+### Compliance
+- Logs imutáveis de auditoria
+- Versionamento de regulatory packs
+- Geração automática de evidências
+- Relatórios on-demand
 
 ---
 
-## 📊 Stack Tecnológica
-
-### Backend
-- .NET 8
-- C# 12
-- ASP.NET Core Web API
-
-### Database
-- MongoDB 7.0 (transações ACID)
-- Redis 7 (cache/idempotência)
-
-### Messaging
-- RabbitMQ 3.12
-- Exchange Topic
-
-### Infrastructure
-- Docker
-- Terraform (AWS)
-- AWS ECS/Fargate
-- AWS DocumentDB
-- AWS ElastiCache
-- AWS MQ
-
-### Libraries
-- MongoDB.Driver
-- StackExchange.Redis
-- RabbitMQ.Client
-- BCrypt.Net
-- System.IdentityModel.Tokens.Jwt
-
----
-
-## 🧪 Testes
-
-### Tipos Implementados
-1. **UnitTests**: Lógica de domínio
-2. **IntegrationTests**: Fluxos completos
-3. **ArchitectureTests**: Validação de camadas (NetArchTest)
-4. **LoadTests**: Performance e throughput
-
-### Chaos Engineering
-- Simulador SPI com falhas controladas
-- Testes de resiliência
-- Validação de retry
-
----
-
-## 🚀 Infraestrutura (Terraform)
+## ☁️ Infraestrutura (Terraform)
 
 ### Recursos AWS (`main.tf`)
 
@@ -556,61 +584,100 @@ Criar uma infraestrutura bancária moderna que implemente os padrões mais avan�
 
 ---
 
-## 📈 Métricas e Performance
+## 🧪 Testes
 
-### Observabilidade
-- Métricas Prometheus
-- OpenTelemetry Meter
-- Logs estruturados
-- Health checks (planejado)
+### Status Atual
+✅ **13/13 testes unitários passando**
 
-### Performance
-- Async/await em todas operações I/O
-- Connection pooling (MongoDB, Redis)
-- Cache distribuído
-- Processamento em background (Worker)
+### Tipos Implementados
+
+1. **UnitTests**: Lógica de domínio
+   - AccountTests
+   - DebitAccountHandlerTests
+   - TransferFundsHandlerTests
+   - AuthServiceTests
+   - CreateAccountHandlerTests
+
+2. **IntegrationTests**: Fluxos completos
+   - Testes de persistência
+   - Testes de transação
+   - Testes de messaging
+
+3. **ArchitectureTests**: Validação de camadas (NetArchTest)
+   - Dependências entre camadas
+   - Acoplamento
+   - Convenções de nomenclatura
+
+4. **LoadTests**: Performance e throughput
+   - Benchmarks de latência
+   - Testes de carga
+
+### Chaos Engineering
+- Simulador SPI com falhas controladas
+- Testes de resiliência
+- Validação de retry e compensação
 
 ---
 
-## 🔄 Fluxos Principais
+## 📚 Documentação Adicional
 
-### 1. Registro de Usuário
-```
-POST /api/v1/auth/register
-→ Valida email único
-→ Cria conta bancária (CreateAccountHandler)
-→ Hash BCrypt da senha
-→ Persiste User
-→ Gera JWT
-→ Retorna token
-```
+### Documentos do Projeto
 
-### 2. Transferência Interna
-```
-POST /api/v1/transfer
-→ Idempotency check
-→ Inicia transação MongoDB
-→ Carrega contas (lock otimista)
-→ Debit origem + Credit destino
-→ Registra no Ledger (2 eventos)
-→ Commit
-→ Retorna 202 Accepted
-```
+- **[TENET_MANIFESTO.md](./TENET_MANIFESTO.md)**: Princípios arquiteturais do Project Tenet
+- **[TENET_IMPLEMENTATION_STATUS.md](./TENET_IMPLEMENTATION_STATUS.md)**: Status detalhado da implementação
+- **[SECURITY_AND_IMPLEMENTATION_ROADMAP.md](./SECURITY_AND_IMPLEMENTATION_ROADMAP.md)**: Análise de segurança e roadmap
 
-### 3. PIX (Saga)
-```
-POST /api/v1/pix/send
-→ Cria PixSaga (Created)
-→ Debita saldo (BalanceLocked)
-→ Publica no Outbox
-→ Worker processa
-→ Envia para SPI (PixGateway)
-→ Sucesso: Completed | Falha: Refunded
-```
+### Endpoints Principais (API)
+
+#### Autenticação
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/auth/register` | Registro de novo usuário |
+| `POST` | `/api/v1/auth/login` | Login e geração de JWT |
+
+#### Contas
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/accounts/balance` | Consulta de saldo |
+| `GET` | `/api/v1/accounts/statement` | Extrato bancário |
+
+#### Transferências
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/transfer` | Transferência interna |
+| `POST` | `/api/v1/transfer/debit` | Débito em conta |
+| `POST` | `/api/v1/transfer/deposit` | Depósito |
+
+#### PIX
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/pix/keys` | Registrar chave PIX |
+| `GET` | `/api/v1/pix/keys` | Listar chaves PIX |
+| `POST` | `/api/v1/pix/send` | Enviar PIX |
+
+#### Tenet Compliance
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/tenet/compliance/active-packs` | Listar packs regulatórios ativos |
+| `POST` | `/api/v1/tenet/compliance/activate-jurisdiction/{jurisdiction}` | Ativar jurisdição |
+
+#### Tenants
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/tenants` | Listar tenants |
+| `POST` | `/api/v1/tenants` | Criar novo tenant |
+| `GET` | `/api/v1/tenants/{id}` | Obter tenant por ID |
 
 ---
 
 ## 🎯 Diferenciais Técnicos
+
+### Arquitetura Tenet
+✅ Multi-tenancy nativo  
+✅ Regulatory packs dinâmicos  
+✅ Business rules engine declarativo  
+✅ Suporte a múltiplas jurisdições  
+✅ Modos de negócio configuráveis  
 
 ### Resiliência
 ✅ Saga Pattern com compensação  
@@ -630,6 +697,7 @@ POST /api/v1/pix/send
 ✅ Cache distribuído  
 ✅ Async processing  
 ✅ Horizontal scaling ready  
+✅ Multi-tenant data isolation  
 
 ### Observabilidade
 ✅ Distributed tracing  
@@ -641,18 +709,32 @@ POST /api/v1/pix/send
 
 ## 📋 Checklist de Funcionalidades
 
-### ✅ Implementado
+### ✅ Core Banking
 - [x] Registro e login de usuários
-- [x] Autenticação JWT
-- [x] Gestão de contas
+- [x] Autenticação JWT com TenantId
+- [x] Gestão de contas multi-tenant
 - [x] Consulta de saldo
-- [x] Transferências internas
+- [x] Transferências internas com validação regulatória
 - [x] Débito/Crédito
 - [x] Chaves PIX (CRUD)
 - [x] Envio de PIX (Saga)
-- [x] Ledger imutável
+- [x] Ledger imutável com TenantId
 - [x] Outbox Pattern
 - [x] Idempotência
+
+### ✅ Project Tenet
+- [x] Multi-tenancy infrastructure
+- [x] Tenant Provider (HTTP headers + JWT)
+- [x] Repository filtering por TenantId
+- [x] Regulatory Framework
+- [x] Regulatory Packs (Brazil implementado)
+- [x] Regulatory Service
+- [x] Business Rules Engine
+- [x] Compliance Controller
+- [x] BusinessMode e Jurisdiction enums
+- [x] Tenant Entity com perfil institucional
+
+### ✅ Infraestrutura
 - [x] Métricas Prometheus
 - [x] Chaos Engineering
 - [x] Optimistic Concurrency
@@ -662,36 +744,60 @@ POST /api/v1/pix/send
 - [x] Rate limiting
 - [x] CORS configurado
 - [x] Índices MongoDB
+
+### ✅ Segurança e Compliance
 - [x] Multi-factor authentication (MFA)
 - [x] Notificações (email, SMS)
-- [x] Dashboard administrativo (Admin Admin)
+- [x] Dashboard administrativo
 - [x] Open Banking (API v1)
 - [x] Detecção de fraudes (ML Simulator)
+- [x] Audit trails imutáveis
+- [x] Regulatory versioning
 
-### 🔄 Em Desenvolvimento
-- [ ] Melhorias de UI/UX
-- [ ] Novas integrações de pagamento
+### 🔄 Roadmap
 
-
+#### Próximas Implementações
+- [ ] Currency & Time Zone Support
+- [ ] Additional Regulatory Packs (US, EU, UK)
+- [ ] Rule Repository (persistent storage)
+- [ ] Rule Management UI
+- [ ] Compliance Dashboard
+- [ ] Automated Regulatory Reporting
+- [ ] Product Modules (Crypto Wallet, Cards, Loans)
+- [ ] Tenant Onboarding Workflow
+- [ ] Performance Optimization (caching, indexing)
 
 ---
 
 ## 🎓 Conclusão
 
-O **D.AI Bank** é uma implementação completa e profissional de um Core Banking moderno, demonstrando:
+O **D.AI Bank - Project Tenet** representa uma evolução significativa em infraestrutura fintech, oferecendo:
 
-- **Arquitetura de Excelência**: Clean Architecture, DDD, CQRS, Event Sourcing
-- **Padrões Avançados**: Saga, Outbox, Repository, Unit of Work
-- **Resiliência**: Tolerância a falhas, compensação automática, retry
-- **Segurança**: JWT, BCrypt, validações, auditoria
-- **Escalabilidade**: Cloud-native, stateless, async
-- **Observabilidade**: Métricas, logs, tracing
+- **Arquitetura Global-First**: Suporte nativo a múltiplas jurisdições e regulamentações
+- **Modularidade Extrema**: Regulatory packs e business modes configuráveis
+- **Compliance by Design**: Auditoria, versionamento e evidências automáticas
+- **Escalabilidade Infinita**: Multi-tenancy com isolamento completo de dados
+- **Resiliência Bancária**: Padrões avançados (Saga, Outbox, Optimistic Locking)
+- **Observabilidade Total**: Métricas, logs, tracing e correlation IDs
 
-O projeto está pronto para processar transações financeiras em produção, com todas as garantias de consistência, segurança e conformidade regulatória exigidas pelo mercado bancário brasileiro.
+O projeto está pronto para operar como uma **plataforma fintech global**, permitindo que clientes Tenet criem e operem suas próprias instituições financeiras em diferentes países com configurações customizadas, sem mudanças no core do sistema.
 
 ---
 
 **Desenvolvido por:** LuckArkman  
-**Tecnologia:** .NET 8, MongoDB, Redis, RabbitMQ  
-**Arquitetura:** Microserviços, Event-Driven, Cloud-Native  
-**Status:** Produção-Ready (com melhorias de segurança recomendadas)
+**Tecnologia:** .NET 8, MongoDB, Redis, RabbitMQ, DynamicExpresso  
+**Arquitetura:** Project Tenet, Clean Architecture, DDD, Event-Driven, Multi-Tenant  
+**Status:** ✅ Core Implementation Complete (v2.0.0)  
+**Próximo Milestone:** Currency & Time Zone Support
+
+---
+
+## 📞 Suporte e Contribuição
+
+Para mais informações sobre a arquitetura Tenet, consulte:
+- [TENET_MANIFESTO.md](./TENET_MANIFESTO.md) - Visão e princípios
+- [TENET_IMPLEMENTATION_STATUS.md](./TENET_IMPLEMENTATION_STATUS.md) - Status detalhado
+
+**Licença:** Uso comercial permitido  
+**Versão:** 2.0.0 (Tenet Architecture)  
+**Data de Release:** Janeiro 2026

@@ -1,11 +1,19 @@
 using Fintech.Enums;
 using Fintech.Entities;
 using Fintech.Core.Entities;
+using Fintech.Regulatory.Rules;
 
 namespace Fintech.Regulatory.Packs;
 
 public class BrazilRegulatoryPack : IRegulatoryPack
 {
+    private readonly IBusinessRulesEngine _rulesEngine;
+
+    public BrazilRegulatoryPack(IBusinessRulesEngine rulesEngine)
+    {
+        _rulesEngine = rulesEngine;
+    }
+
     public Jurisdiction Jurisdiction => Jurisdiction.Brazil;
 
     public Task<ValidationResult> ValidateTransactionAsync(Account account, decimal amount, string operationType)

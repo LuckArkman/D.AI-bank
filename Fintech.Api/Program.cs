@@ -12,6 +12,7 @@ using Fintech.Messaging;
 using Fintech.Services;
 using Fintech.Regulatory;
 using Fintech.Regulatory.Packs;
+using Fintech.Regulatory.Rules;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
@@ -123,10 +124,12 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
 
 // Tenet Regulatory
+builder.Services.AddSingleton<IBusinessRulesEngine, BusinessRulesEngine>();
 builder.Services.AddSingleton<IRegulatoryRegistry>(sp =>
 {
     var registry = new RegulatoryRegistry();
-    registry.RegisterPack(new BrazilRegulatoryPack());
+    var rulesEngine = sp.GetRequiredService<IBusinessRulesEngine>();
+    registry.RegisterPack(new BrazilRegulatoryPack(rulesEngine));
     return registry;
 });
 builder.Services.AddScoped<IRegulatoryService, RegulatoryService>();

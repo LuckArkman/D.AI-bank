@@ -117,3 +117,9 @@ D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\HealthChecks.UI.Core.dll
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Polly.dll
 D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Polly.Extensions.Http.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.Regulatory.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.Regulatory.pdb
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\DynamicExpresso.Core.dll
+D:\D.AI-bank\Fintech.Api\bin\Debug\net8.0\de\DynamicExpresso.Core.resources.dll

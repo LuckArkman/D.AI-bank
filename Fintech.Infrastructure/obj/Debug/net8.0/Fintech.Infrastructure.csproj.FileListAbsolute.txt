@@ -1,0 +1,13 @@
+D:\D.AI-bank\Fintech.Infrastructure\bin\Debug\net8.0\Fintech.Infrastructure.deps.json
+D:\D.AI-bank\Fintech.Infrastructure\bin\Debug\net8.0\Fintech.Infrastructure.dll
+D:\D.AI-bank\Fintech.Infrastructure\bin\Debug\net8.0\Fintech.Infrastructure.pdb
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.csproj.AssemblyReference.cache
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.AssemblyInfoInputs.cache
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.AssemblyInfo.cs
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.csproj.CoreCompileInputs.cache
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.sourcelink.json
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.dll
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\refint\Fintech.Infrastructure.dll
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\Fintech.Infrastructure.pdb
+D:\D.AI-bank\Fintech.Infrastructure\obj\Debug\net8.0\ref\Fintech.Infrastructure.dll

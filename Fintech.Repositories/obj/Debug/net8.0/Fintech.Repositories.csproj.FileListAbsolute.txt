@@ -28,3 +28,5 @@ D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.Records.dll
 D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.Records.pdb
 D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.DTOs.dll
 D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.DTOs.pdb
+D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Repositories\bin\Debug\net8.0\Fintech.Core.pdb

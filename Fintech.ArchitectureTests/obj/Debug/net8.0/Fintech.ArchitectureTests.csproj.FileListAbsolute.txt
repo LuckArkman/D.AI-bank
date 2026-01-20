@@ -163,3 +163,11 @@ D:\D.AI-bank\Fintech.ArchitectureTests\obj\Debug\net8.0\refint\Fintech.Architect
 D:\D.AI-bank\Fintech.ArchitectureTests\obj\Debug\net8.0\Fintech.ArchitectureTests.pdb
 D:\D.AI-bank\Fintech.ArchitectureTests\obj\Debug\net8.0\Fintech.ArchitectureTests.genruntimeconfig.cache
 D:\D.AI-bank\Fintech.ArchitectureTests\obj\Debug\net8.0\ref\Fintech.ArchitectureTests.dll
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Regulatory.dll
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.DTOs.pdb
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\Fintech.Regulatory.pdb
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\DynamicExpresso.Core.dll
+D:\D.AI-bank\Fintech.ArchitectureTests\bin\Debug\net8.0\de\DynamicExpresso.Core.resources.dll

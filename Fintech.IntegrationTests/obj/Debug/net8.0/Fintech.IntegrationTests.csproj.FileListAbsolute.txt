@@ -139,7 +139,6 @@ D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Interfaces.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Persistence.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Records.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Repositories.dll
-D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Services.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Telemetry.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.ValueObjects.dll
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Commands.pdb
@@ -150,7 +149,6 @@ D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Exceptions.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Interfaces.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Records.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Repositories.pdb
-D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Services.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Telemetry.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.ValueObjects.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\obj\Debug\net8.0\Fintech.IntegrationTests.csproj.AssemblyReference.cache
@@ -165,3 +163,11 @@ D:\D.AI-bank\Fintech.IntegrationTests\obj\Debug\net8.0\refint\Fintech.Integratio
 D:\D.AI-bank\Fintech.IntegrationTests\obj\Debug\net8.0\Fintech.IntegrationTests.pdb
 D:\D.AI-bank\Fintech.IntegrationTests\obj\Debug\net8.0\Fintech.IntegrationTests.genruntimeconfig.cache
 D:\D.AI-bank\Fintech.IntegrationTests\obj\Debug\net8.0\ref\Fintech.IntegrationTests.dll
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Regulatory.dll
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.DTOs.pdb
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\Fintech.Regulatory.pdb
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\DynamicExpresso.Core.dll
+D:\D.AI-bank\Fintech.IntegrationTests\bin\Debug\net8.0\de\DynamicExpresso.Core.resources.dll
