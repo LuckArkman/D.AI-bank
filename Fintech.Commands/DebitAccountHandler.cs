@@ -27,7 +27,7 @@ public class DebitAccountHandler
     }
 
 
-    public async Task Handle(Guid accountId, decimal amount, Guid correlationId)
+    public async Task Handle(Guid accountId, decimal amount, Guid correlationId, string currencyCode = "BRL")
     {
         using var uow = await _txManager.BeginTransactionAsync();
         try
@@ -35,7 +35,8 @@ public class DebitAccountHandler
             var account = await _accountRepo.GetByIdAsync(accountId);
 
             // Correção: Converter decimal para Money
-            account.Debit(Money.BRL(amount));
+            var money = Money.Create(amount, currencyCode);
+            account.Debit(money);
 
             await _accountRepo.UpdateAsync(account);
 

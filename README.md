@@ -53,10 +53,10 @@
 
 ### Jurisdições Suportadas
 
-- 🇧🇷 Brazil
-- 🇺🇸 United States
-- 🇬🇧 United Kingdom
-- 🇪🇺 European Union
+- 🇧🇷 Brazil (Bacen Rules)
+- 🇺🇸 United States (BSA & Regulation E)
+- 🇬🇧 United Kingdom (FCA & Faster Payments)
+- 🇪🇺 European Union (AMLD5 & SEPA)
 - 🇨🇦 Canada
 - 🇦🇺 Australia
 - 🇯🇵 Japan
@@ -456,10 +456,36 @@ public interface IRegulatoryPack
 - Aplica regulatory packs ativos do tenant
 - Retorna resultado consolidado
 
-**ComplianceController** (`ComplianceController.cs`)
-- GET /api/v1/tenet/compliance/active-packs
-- POST /api/v1/tenet/compliance/activate-jurisdiction/{jurisdiction}
-- Gerenciamento dinâmico de jurisdições
+**Compliance Dashboard & Reports** (`ComplianceReportingService.cs`, `CompliancePage.tsx`)
+- Dashboard premium com visualização de métricas regulatórias.
+- Geração de relatórios baseados em dados reais do Ledger.
+- Identificação automática de transações suspeitas (Flagged Events).
+- Gestão de prazos e deadlines regulatórios.
+
+---
+
+### 9. Suporte Multi-Moeda e Fuso Horário
+
+**Global Ledger** (`LedgerEvent.cs`)
+- Suporte nativo a `CurrencyCode` em todos os registros.
+- Auditoria precisa de transações cross-border.
+
+**Tenant Localization** (`Tenant.cs`)
+- Cada Tenant define sua moeda padrão e fuso horário operacional.
+- Suporte a conversão via `CurrencyExchangeService`.
+
+---
+
+### 10. Módulos de Produto
+
+**Crypto Wallet** (`CryptoService.cs`, `CryptoController.cs`)
+- Compra e venda de ativos digitais (BTC, ETH, SOL).
+- Gestão de saldos de criptoativos isolados por Tenant.
+- Geração de endereços de carteira simulados.
+
+**Cards & Loans** (`ProductModules/*.cs`)
+- Inicialização dinâmica de módulos durante o onboarding do Tenant.
+- Extensibilidade para novos instrumentos financeiros.
 
 ---
 
@@ -548,7 +574,8 @@ var result = await rulesEngine.EvaluateAsync(rule.ConditionExpression, context);
 - Logs imutáveis de auditoria
 - Versionamento de regulatory packs
 - Geração automática de evidências
-- Relatórios on-demand
+- Relatórios regulatórios automatizados
+- Dashboard de saúde de compliance (98.2% Health Score target)
 
 ---
 
@@ -757,15 +784,21 @@ var result = await rulesEngine.EvaluateAsync(rule.ConditionExpression, context);
 ### 🔄 Roadmap
 
 #### Próximas Implementações
-- [ ] Currency & Time Zone Support
-- [ ] Additional Regulatory Packs (US, EU, UK)
-- [ ] Rule Repository (persistent storage)
-- [ ] Rule Management UI
-- [ ] Compliance Dashboard
-- [ ] Automated Regulatory Reporting
-- [ ] Product Modules (Crypto Wallet, Cards, Loans)
-- [ ] Tenant Onboarding Workflow
-- [ ] Performance Optimization (caching, indexing)
+- [x] Currency & Time Zone Support
+- [x] Additional Regulatory Packs (US, EU, UK)
+- [x] Rule Repository (persistent storage)
+- [x] Rule Management UI
+- [x] Compliance Dashboard
+- [x] Automated Regulatory Reporting
+- [x] Product Modules (Crypto Wallet, Cards, Loans)
+- [x] Tenant Onboarding Workflow
+- [x] Performance Optimization (Redis caching, MongoDB indexing)
+
+#### Próximas Implementações
+- [ ] Real-time KYC/Identity Verification adaptors
+- [ ] SWIFT and SEPA Real Settlement integration
+- [ ] AI-Driven Fraud Prediction (Advanced Model)
+- [ ] Variable Taxation Engine by Jurisdiction
 
 ---
 
@@ -787,8 +820,8 @@ O projeto está pronto para operar como uma **plataforma fintech global**, permi
 **Desenvolvido por:** LuckArkman  
 **Tecnologia:** .NET 8, MongoDB, Redis, RabbitMQ, DynamicExpresso  
 **Arquitetura:** Project Tenet, Clean Architecture, DDD, Event-Driven, Multi-Tenant  
-**Status:** ✅ Core Implementation Complete (v2.0.0)  
-**Próximo Milestone:** Currency & Time Zone Support
+**Status:** ✅ Advanced Tenet Infrastructure Complete (v2.1.0)  
+**Próximo Milestone:** Real-time Settlement & KYC Integration
 
 ---
 

@@ -1,7 +1,7 @@
 using DynamicExpresso;
 using Fintech.Interfaces;
 
-namespace Fintech.Regulatory.Rules;
+namespace Fintech.Regulatory;
 
 public class BusinessRulesEngine : IBusinessRulesEngine
 {

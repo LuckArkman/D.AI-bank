@@ -76,5 +76,13 @@ public static class MongoDbIndexes
                 Builders<User>.IndexKeys.Ascending(x => x.TenantId)
             )
         );
+
+        // Crypto Assets
+        var cryptoCollection = db.GetCollection<CryptoAsset>("crypto_assets");
+        await cryptoCollection.Indexes.CreateOneAsync(
+            new CreateIndexModel<CryptoAsset>(
+                Builders<CryptoAsset>.IndexKeys.Ascending(x => x.AccountId).Ascending(x => x.Symbol)
+            )
+        );
     }
 }

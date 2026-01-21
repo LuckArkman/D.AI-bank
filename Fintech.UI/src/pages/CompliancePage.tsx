@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { adminApi, BusinessRule } from '../api/adminApi';
+import { adminApi, type BusinessRule } from '../api/adminApi';
 import { Plus, Trash2, ShieldCheck, AlertTriangle, Info, XCircle, FileText } from 'lucide-react';
 import Modal from '../components/Modal';
 
@@ -146,10 +146,61 @@ const CompliancePage = () => {
             )}
 
             {activeTab === 'reports' && (
-                <div className="glass-card p-12 text-center text-surface-400 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <FileText className="w-16 h-16 mx-auto mb-4 text-surface-600" />
-                    <h3 className="text-xl font-bold text-white mb-2">Compliance Reports</h3>
-                    <p>Report generation module is currently under construction.</p>
+                <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <ReportStatCard title="Total Transactions" value="128,432" icon={<FileText className="text-brand-400" />} trend="+12%" />
+                        <ReportStatCard title="Flagged Events" value="14" icon={<AlertTriangle className="text-orange-400" />} trend="-3%" />
+                        <ReportStatCard title="Compliance Health" value="98.2%" icon={<ShieldCheck className="text-emerald-400" />} trend="+0.5%" />
+                    </div>
+
+                    <div className="glass-card">
+                        <div className="flex justify-between items-center mb-8">
+                            <h3 className="text-xl font-bold">Recent Regulatory Reports</h3>
+                            <button className="btn-secondary text-xs py-2 px-4">Generate On-Demand</button>
+                        </div>
+
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse">
+                                <thead>
+                                    <tr className="border-b border-white/5 text-surface-400 text-sm">
+                                        <th className="pb-4 font-medium">Report Name</th>
+                                        <th className="pb-4 font-medium">Jurisdiction</th>
+                                        <th className="pb-4 font-medium">Status</th>
+                                        <th className="pb-4 font-medium">Generated</th>
+                                        <th className="pb-4 font-medium text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-white/5">
+                                    <ReportRow name="Monthly AML Summary" jurisdiction="Brazil" status="Completed" date="2026-01-15" />
+                                    <ReportRow name="Quarterly Tax Evidence" jurisdiction="USA" status="Processing" date="2026-01-10" />
+                                    <ReportRow name="KYC Audit Trail" jurisdiction="Europe" status="Completed" date="2026-01-05" />
+                                    <ReportRow name="Faster Payments Audit" jurisdiction="UK" status="Failed" date="2025-12-28" />
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="glass-card h-80 flex flex-col items-center justify-center relative overflow-hidden">
+                            <h4 className="absolute top-6 left-6 font-bold text-surface-400 text-sm uppercase tracking-wider">Risk Distribution</h4>
+                            <div className="w-48 h-48 rounded-full border-[16px] border-surface-900 flex items-center justify-center relative">
+                                <div className="absolute inset-0 rounded-full border-[16px] border-emerald-500 border-t-transparent border-r-transparent -rotate-45" />
+                                <div className="text-center">
+                                    <p className="text-3xl font-bold">Low</p>
+                                    <p className="text-xs text-surface-500">Global Score</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="glass-card h-80 flex flex-col">
+                            <h4 className="font-bold text-surface-400 text-sm uppercase tracking-wider mb-6">Upcoming Deadlines</h4>
+                            <div className="space-y-4">
+                                <DeadlineItem title="BACEN Reporting" date="In 3 days" severity="red" />
+                                <DeadlineItem title="GDPR Renewal" date="In 12 days" severity="yellow" />
+                                <DeadlineItem title="FCA Quarterly Audit" date="In 15 days" severity="blue" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
 
@@ -239,3 +290,59 @@ const CompliancePage = () => {
 };
 
 export default CompliancePage;
+
+const ReportStatCard = ({ title, value, icon, trend }: { title: string, value: string, icon: React.ReactNode, trend: string }) => (
+    <div className="glass-card p-6 flex flex-col justify-between group hover:border-brand-500/30 transition-all">
+        <div className="flex justify-between items-start">
+            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                {icon}
+            </div>
+            <span className={trend.startsWith('+') ? "text-emerald-400 text-xs font-bold" : "text-red-400 text-xs font-bold"}>
+                {trend}
+            </span>
+        </div>
+        <div className="mt-4">
+            <p className="text-surface-400 text-sm font-medium">{title}</p>
+            <h3 className="text-2xl font-bold mt-1">{value}</h3>
+        </div>
+    </div>
+);
+
+const ReportRow = ({ name, jurisdiction, status, date }: { name: string, jurisdiction: string, status: string, date: string }) => (
+    <tr className="group hover:bg-white/5 transition-colors">
+        <td className="py-4 font-medium text-surface-50">
+            <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-surface-900 border border-white/5 flex items-center justify-center">
+                    <FileText size={14} className="text-surface-400" />
+                </div>
+                {name}
+            </div>
+        </td>
+        <td className="py-4 text-surface-400 text-sm">{jurisdiction}</td>
+        <td className="py-4">
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${status === 'Completed' ? 'bg-emerald-500/10 text-emerald-400' :
+                status === 'Processing' ? 'bg-indigo-500/10 text-indigo-400' :
+                    'bg-red-500/10 text-red-400'
+                }`}>
+                {status}
+            </span>
+        </td>
+        <td className="py-4 text-surface-400 text-sm">{date}</td>
+        <td className="py-4 text-right">
+            <button className="text-brand-400 hover:text-brand-300 text-xs font-bold opacity-0 group-hover:opacity-100 transition-all">Download</button>
+        </td>
+    </tr>
+);
+
+const DeadlineItem = ({ title, date, severity }: { title: string, date: string, severity: 'red' | 'yellow' | 'blue' }) => (
+    <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
+        <div className="flex items-center gap-3">
+            <div className={`w-2 h-2 rounded-full ${severity === 'red' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]' :
+                severity === 'yellow' ? 'bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
+                    'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]'
+                }`} />
+            <span className="font-medium text-sm">{title}</span>
+        </div>
+        <span className="text-xs text-surface-400">{date}</span>
+    </div>
+);

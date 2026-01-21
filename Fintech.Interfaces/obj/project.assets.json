@@ -3003,11 +3003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
+      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
       "projectName": "Fintech.Interfaces",
-      "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "D:\\D.AI-bank\\Fintech.Interfaces\\obj\\",
+      "outputPath": "d:\\D.AI-bank\\Fintech.Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3029,17 +3029,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
+            "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
+            "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+            "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
+            "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
             }
           }
         }

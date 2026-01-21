@@ -2,10 +2,8 @@ using Fintech.Enums;
 using Fintech.Entities;
 using Fintech.Core.Entities;
 using Fintech.Interfaces;
-using Fintech.Regulatory.Rules;
-using Fintech.Interfaces;
 
-namespace Fintech.Regulatory.Packs;
+namespace Fintech.Regulatory;
 
 public class EURegulatoryPack : IRegulatoryPack
 {
@@ -21,21 +19,29 @@ public class EURegulatoryPack : IRegulatoryPack
     public Task<ValidationResult> ValidateTransactionAsync(Account account, decimal amount, string operationType)
     {
         // Example: AMLD5 compliance check
-        if (amount > 15000)
+        if (amount > 10000)
         {
-            return Task.FromResult(new ValidationResult(false, "Transaction exceeds standard AML threshold (AMLD5). Enhanced Due Diligence required."));
+            // Transactions over 10k EUR require strong customer authentication (SCA)
+            // and might need additional verification.
         }
+
+        if (operationType == "TRANSFER_SENT" && amount > 50000)
+        {
+            return Task.FromResult(new ValidationResult(false, "EU Transaction limit for unverified accounts exceeded. (SEPA Rule)"));
+        }
+
         return Task.FromResult(new ValidationResult(true));
     }
 
     public Task<ValidationResult> ValidateOnboardingAsync(User user)
     {
-        // GDPR Consent check implied
+        // Proof of Residence is mandatory in most EU countries
         return Task.FromResult(new ValidationResult(true));
     }
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
+        if (operationType == "VAT_TRANSACTION") return amount * 0.20m; // Average VAT
         return 0;
     }
 }

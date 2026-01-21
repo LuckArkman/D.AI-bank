@@ -1,7 +1,7 @@
 using Fintech.DTOs;
 using Fintech.Entities;
 using Fintech.Interfaces;
-using Fintech.Regulatory.Rules;
+using Fintech.Regulatory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

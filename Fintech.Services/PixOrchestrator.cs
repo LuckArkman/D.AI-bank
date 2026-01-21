@@ -53,7 +53,7 @@ public class PixOrchestrator : IPixOrchestrator
         try
         {
             var account = await _accountRepo.GetByIdAsync(saga.AccountId);
-            account.Debit(Money.BRL(saga.Amount));
+            account.Debit(Money.Create(saga.Amount, saga.CurrencyCode));
             await _accountRepo.UpdateAsync(account);
 
             saga.MarkAsLocked();
@@ -95,7 +95,7 @@ public class PixOrchestrator : IPixOrchestrator
     private async Task Compensate(PixSaga saga)
     {
         var account = await _accountRepo.GetByIdAsync(saga.AccountId);
-        account.Credit(Money.BRL(saga.Amount));
+        account.Credit(Money.Create(saga.Amount, saga.CurrencyCode));
         await _accountRepo.UpdateAsync(account);
         saga.MarkAsRefunded();
     }

@@ -45,4 +45,15 @@ public class LedgerRepository : ILedgerRepository
     {
         return await _collection.Find(e => e.AccountId == accountId && e.TenantId == _tenantProvider.TenantId).ToListAsync();
     }
+
+    public async Task<IEnumerable<LedgerEvent>> GetByTenantAndDateRangeAsync(Guid tenantId, DateTime start, DateTime end)
+    {
+        var filter = Builders<LedgerEvent>.Filter.And(
+            Builders<LedgerEvent>.Filter.Eq(x => x.TenantId, tenantId),
+            Builders<LedgerEvent>.Filter.Gte(x => x.Timestamp, start),
+            Builders<LedgerEvent>.Filter.Lte(x => x.Timestamp, end)
+        );
+
+        return await _collection.Find(filter).ToListAsync();
+    }
 }

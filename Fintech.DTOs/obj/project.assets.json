@@ -2953,11 +2953,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj",
+      "projectUniqueName": "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj",
       "projectName": "Fintech.DTOs",
-      "projectPath": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "D:\\D.AI-bank\\Fintech.DTOs\\obj\\",
+      "outputPath": "d:\\D.AI-bank\\Fintech.DTOs\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2979,11 +2979,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+            "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
+            "d:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
             }
           }
         }

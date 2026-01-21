@@ -80,11 +80,11 @@ public class PixProcessConsumer
         var account = await _accountRepo.GetByIdAsync(saga.AccountId);
 
         // Usa Money Value Object
-        account.Credit(Money.BRL(saga.Amount));
+        account.Credit(Money.Create(saga.Amount, saga.CurrencyCode));
 
         var tenantId = _tenantProvider.TenantId ?? Guid.Empty;
         await _accountRepo.UpdateAsync(account);
-        await _ledgerRepo.AddAsync(new LedgerEvent(saga.AccountId, tenantId, "PIX_REFUND", saga.Amount, saga.Id));
+        await _ledgerRepo.AddAsync(new LedgerEvent(saga.AccountId, tenantId, "PIX_REFUND", saga.Amount, saga.CurrencyCode, saga.Id));
 
         await uow.CommitAsync();
 

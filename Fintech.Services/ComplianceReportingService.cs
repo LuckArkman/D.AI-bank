@@ -1,13 +1,30 @@
 using Fintech.Interfaces;
+using Fintech.Core.Interfaces;
 
 namespace Fintech.Services;
 
 public class ComplianceReportingService : IComplianceReportingService
 {
-    public Task<ComplianceReport> GenerateReportAsync(Guid tenantId, string reportType, DateTime startDate, DateTime endDate)
+    private readonly ILedgerRepository _ledgerRepo;
+
+    public ComplianceReportingService(ILedgerRepository ledgerRepo)
     {
-        // In a real implementation, this would aggregate data from Ledger, Users, etc.
-        // and generate a format like XML (for BACEN) or CSV.
+        _ledgerRepo = ledgerRepo;
+    }
+
+    public async Task<ComplianceReport> GenerateReportAsync(Guid tenantId, string reportType, DateTime startDate, DateTime endDate)
+    {
+        // 1. Fetch data from Ledger
+        var events = await _ledgerRepo.GetByTenantAndDateRangeAsync(tenantId, startDate, endDate);
+        var ledgerList = events.ToList();
+
+        // 2. Aggregate Data
+        var totalTransactions = ledgerList.Count;
+        var totalVolume = ledgerList
+            .Where(e => e.Type.Contains("SENT") || e.Type.Contains("DEBIT"))
+            .Sum(e => e.Amount);
+
+        var flaggedTransactions = ledgerList.Count(e => e.Amount > 10000); // Simple flagging logic
 
         var report = new ComplianceReport
         {
@@ -20,17 +37,20 @@ public class ComplianceReportingService : IComplianceReportingService
             DownloadUrl = $"https://reports.tenet.finance/{tenantId}/{reportType}/{Guid.NewGuid()}.pdf",
             Data = new Dictionary<string, object>
             {
-                ["TotalTransactions"] = 10542,
-                ["TotalVolume"] = 5430000.50m,
-                ["FlaggedTransactions"] = 3
+                ["TotalTransactions"] = totalTransactions,
+                ["TotalVolume"] = totalVolume,
+                ["FlaggedTransactions"] = flaggedTransactions,
+                ["AccountCount"] = ledgerList.Select(e => e.AccountId).Distinct().Count()
             }
         };
 
-        return Task.FromResult(report);
+        // In a real scenario, we would save this report record to a database too
+        return report;
     }
 
     public Task<List<ComplianceReport>> GetReportsAsync(Guid tenantId)
     {
+        // Dummy list for now
         return Task.FromResult(new List<ComplianceReport>());
     }
 }

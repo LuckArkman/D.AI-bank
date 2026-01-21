@@ -20,10 +20,10 @@ public class SendPixHandler
     }
 
 
-    public async Task<Guid> Handle(Guid accountId, string pixKey, decimal amount)
+    public async Task<Guid> Handle(Guid accountId, string pixKey, decimal amount, string currencyCode = "BRL")
     {
         var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
-        var saga = new PixSaga(accountId, tenantId, amount)
+        var saga = new PixSaga(accountId, tenantId, amount, currencyCode)
         {
             PixKey = pixKey
         };

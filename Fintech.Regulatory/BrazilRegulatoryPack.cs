@@ -3,7 +3,7 @@ using Fintech.Entities;
 using Fintech.Core.Entities;
 using Fintech.Interfaces;
 
-namespace Fintech.Regulatory.Packs;
+namespace Fintech.Regulatory;
 
 public class BrazilRegulatoryPack : IRegulatoryPack
 {

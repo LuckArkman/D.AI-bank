@@ -30,7 +30,7 @@ public class TransferFundsHandler
         _regulatoryService = regulatoryService;
     }
 
-    public async Task Handle(Guid fromAccountId, Guid toAccountId, decimal amount)
+    public async Task Handle(Guid fromAccountId, Guid toAccountId, decimal amount, string currencyCode = "BRL")
     {
         if (fromAccountId == toAccountId) throw new DomainException("Origem e destino iguais.");
 
@@ -44,8 +44,9 @@ public class TransferFundsHandler
             // 2. Regras de Negócio & Compliance Regulatória
             await _regulatoryService.ValidateTransactionAsync(fromAcc, amount, "TRANSFER_SENT");
 
-            fromAcc.Debit(Money.BRL(amount));
-            toAcc.Credit(Money.BRL(amount));
+            var money = Money.Create(amount, currencyCode);
+            fromAcc.Debit(money);
+            toAcc.Credit(money);
 
             // 3. Persistência
             await _accountRepo.UpdateAsync(fromAcc);
@@ -54,8 +55,8 @@ public class TransferFundsHandler
             // 4. Ledger (Dupla entrada para rastreabilidade)
             var correlationId = Guid.NewGuid();
             var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
-            await _ledgerRepo.AddAsync(new LedgerEvent(fromAccountId, tenantId, "TRANSFER_SENT", amount, correlationId));
-            await _ledgerRepo.AddAsync(new LedgerEvent(toAccountId, tenantId, "TRANSFER_RECEIVED", amount, correlationId));
+            await _ledgerRepo.AddAsync(new LedgerEvent(fromAccountId, tenantId, "TRANSFER_SENT", amount, currencyCode, correlationId));
+            await _ledgerRepo.AddAsync(new LedgerEvent(toAccountId, tenantId, "TRANSFER_RECEIVED", amount, currencyCode, correlationId));
 
             await uow.CommitAsync();
         }

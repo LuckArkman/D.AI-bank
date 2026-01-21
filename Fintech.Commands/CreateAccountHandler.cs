@@ -25,13 +25,13 @@ public class CreateAccountHandler : ICreateAccountHandler
         _tenantProvider = tenantProvider;
     }
 
-    public async Task<Guid> Handle(decimal initialBalance, AccountProfileType profileType = AccountProfileType.StandardIndividual)
+    public async Task<Guid> Handle(decimal initialBalance, AccountProfileType profileType = AccountProfileType.StandardIndividual, string currencyCode = "BRL")
     {
         var tenantId = _tenantProvider.TenantId ?? throw new InvalidOperationException("TenantId não resolvido.");
-        return await Handle(initialBalance, tenantId, profileType);
+        return await Handle(initialBalance, tenantId, profileType, currencyCode);
     }
 
-    public async Task<Guid> Handle(decimal initialBalance, Guid tenantId, AccountProfileType profileType = AccountProfileType.StandardIndividual)
+    public async Task<Guid> Handle(decimal initialBalance, Guid tenantId, AccountProfileType profileType = AccountProfileType.StandardIndividual, string currencyCode = "BRL")
     {
         using var uow = await _txManager.BeginTransactionAsync();
         try
@@ -42,7 +42,7 @@ public class CreateAccountHandler : ICreateAccountHandler
 
             if (initialBalance > 0)
             {
-                account.Credit(Fintech.ValueObjects.Money.BRL(initialBalance));
+                account.Credit(Fintech.ValueObjects.Money.Create(initialBalance, currencyCode));
             }
 
             await _accountRepo.AddAsync(account);
@@ -53,6 +53,7 @@ public class CreateAccountHandler : ICreateAccountHandler
                 TenantId = tenantId,
                 Type = "ACCOUNT_CREATED",
                 Amount = initialBalance,
+                CurrencyCode = currencyCode,
                 Timestamp = DateTime.UtcNow,
                 CorrelationId = Guid.NewGuid()
             };

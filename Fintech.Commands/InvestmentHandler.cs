@@ -46,7 +46,7 @@ public class InvestmentHandler
             await _investmentRepo.AddInvestmentAsync(investment);
 
             // Ledger
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "INVESTMENT_DEBIT", amount, Guid.NewGuid()));
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "INVESTMENT_DEBIT", amount, "BRL", Guid.NewGuid()));
 
             await uow.CommitAsync();
         }
@@ -82,7 +82,7 @@ public class InvestmentHandler
             await _investmentRepo.UpdateGoalAsync(goal);
 
             var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "GOAL_DEPOSIT", amount, Guid.NewGuid()));
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "GOAL_DEPOSIT", amount, "BRL", Guid.NewGuid()));
 
             await uow.CommitAsync();
         }

@@ -2,9 +2,8 @@ using Fintech.Enums;
 using Fintech.Entities;
 using Fintech.Core.Entities;
 using Fintech.Interfaces;
-using Fintech.Regulatory.Rules;
 
-namespace Fintech.Regulatory.Packs;
+namespace Fintech.Regulatory;
 
 public class USRegulatoryPack : IRegulatoryPack
 {
@@ -19,12 +18,15 @@ public class USRegulatoryPack : IRegulatoryPack
 
     public Task<ValidationResult> ValidateTransactionAsync(Account account, decimal amount, string operationType)
     {
-        // Example: BSA (Bank Secrecy Act) - Report transactions over 10k USD (simulated validation/warning)
+        // Example: BSA (Bank Secrecy Act) - Report transactions over 10k USD
         if (amount > 10000)
         {
-            // In a real scenario, this wouldn't block, but trigger a report. 
-            // For strict compliance blocking example:
-            // return Task.FromResult(new ValidationResult(false, "Transaction requires additional KYC (BSA Rule)"));
+            // Report to FinCEN simulated
+        }
+
+        if (operationType == "TRANSFER_SENT" && amount > 50000)
+        {
+            return Task.FromResult(new ValidationResult(false, "ACH high-value transaction requires additional review. (Regulation E)"));
         }
 
         return Task.FromResult(new ValidationResult(true));
@@ -32,17 +34,14 @@ public class USRegulatoryPack : IRegulatoryPack
 
     public Task<ValidationResult> ValidateOnboardingAsync(User user)
     {
-        // Example: SSN/ITIN required
-        if (string.IsNullOrEmpty(user.Email)) // Using Email as proxy for SSN check
-        {
-            return Task.FromResult(new ValidationResult(false, "SSN/ITIN is required for US residents."));
-        }
+        // Example: SSN/ITIN required for US residents
         return Task.FromResult(new ValidationResult(true));
     }
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
-        // Simulated standard tax if applicable
+        // Note: US tax is complex, this is just a placeholder for a specific state tax simulation
+        if (operationType == "STATE_TAX_NY") return amount * 0.08875m;
         return 0;
     }
 }

@@ -22,7 +22,7 @@ public class DepositHandler
     }
 
 
-    public async Task Handle(Guid accountId, decimal amount)
+    public async Task Handle(Guid accountId, decimal amount, string currencyCode = "BRL")
     {
         if (amount <= 0) throw new DomainException("O valor do depósito deve ser positivo.");
 
@@ -32,13 +32,14 @@ public class DepositHandler
             var account = await _accountRepo.GetByIdAsync(accountId);
 
             // Credita o valor
-            account.Credit(Money.BRL(amount));
+            var money = Money.Create(amount, currencyCode);
+            account.Credit(money);
 
             await _accountRepo.UpdateAsync(account);
 
             // Registra no Ledger
             var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
-            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "DEPOSIT_BOLETO", amount, Guid.NewGuid()));
+            await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "DEPOSIT_BOLETO", amount, currencyCode, Guid.NewGuid()));
 
             await uow.CommitAsync();
         }

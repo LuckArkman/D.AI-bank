@@ -11,8 +11,6 @@ using Fintech.Repositories;
 using Fintech.Messaging;
 using Fintech.Services;
 using Fintech.Regulatory;
-using Fintech.Regulatory.Packs;
-using Fintech.Regulatory.Rules;
 using Fintech.Services.ProductModules;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -102,7 +100,7 @@ builder.Services.AddScoped<PixKeyRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TenantRepository>();
 builder.Services.AddScoped<IRuleRepository, RuleRepository>();
-builder.Services.AddScoped<RuleRepository>();
+builder.Services.AddScoped<ICryptoRepository, CryptoRepository>();
 
 
 // 3. Services
@@ -127,6 +125,7 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICurrencyExchangeService, CurrencyExchangeService>();
 builder.Services.AddScoped<IComplianceReportingService, ComplianceReportingService>();
 builder.Services.AddScoped<ITenantOnboardingService, TenantOnboardingService>();
+builder.Services.AddScoped<ICryptoService, CryptoService>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
 
 // Tenet Regulatory
