@@ -1,18 +1,25 @@
-﻿namespace Fintech.Core.Entities;
+﻿using Fintech.Core.Interfaces;
 
-public class User
+namespace Fintech.Core.Entities;
+
+public class User : IMultiTenant
 {
     public Guid Id { get; private set; }
+    public Guid TenantId { get; private set; }
     public string Name { get; private set; }
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
     public Guid AccountId { get; private set; } // FK para a Conta Bancária
     public List<string> Roles { get; private set; }
+    public bool TwoFactorEnabled { get; set; }
+    public string? TwoFactorSecret { get; set; }
     public DateTime CreatedAt { get; private set; }
 
-    public User(string name, string email, string passwordHash, Guid accountId)
+
+    public User(string name, string email, string passwordHash, Guid accountId, Guid tenantId)
     {
         Id = Guid.NewGuid();
+        TenantId = tenantId;
         Name = name;
         Email = email.ToLowerInvariant();
         PasswordHash = passwordHash;

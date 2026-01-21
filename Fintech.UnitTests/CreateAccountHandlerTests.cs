@@ -15,6 +15,7 @@ public class CreateAccountHandlerTests
     private readonly Mock<ILedgerRepository> _ledgerRepoMock;
     private readonly Mock<ITransactionManager> _txManagerMock;
     private readonly Mock<IUnitOfWork> _uowMock;
+    private readonly Mock<ITenantProvider> _tenantProviderMock;
     private readonly CreateAccountHandler _handler;
 
     public CreateAccountHandlerTests()
@@ -23,13 +24,17 @@ public class CreateAccountHandlerTests
         _ledgerRepoMock = new Mock<ILedgerRepository>();
         _txManagerMock = new Mock<ITransactionManager>();
         _uowMock = new Mock<IUnitOfWork>();
+        _tenantProviderMock = new Mock<ITenantProvider>();
 
+        var tenantId = Guid.NewGuid();
+        _tenantProviderMock.Setup(x => x.TenantId).Returns(tenantId);
         _txManagerMock.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(_uowMock.Object);
 
         _handler = new CreateAccountHandler(
-            (_accountRepoMock.Object as AccountRepository),
+            _accountRepoMock.Object,
             _txManagerMock.Object,
-            (_ledgerRepoMock.Object as LedgerRepository)
+            _ledgerRepoMock.Object,
+            _tenantProviderMock.Object
         );
     }
 
@@ -37,16 +42,16 @@ public class CreateAccountHandlerTests
     public async Task Deve_Criar_Conta_E_Registrar_Ledger()
     {
         // Act
-        var result = await _handler.Handle(1000m);
+        var result = await _handler.Handle(1000m, Fintech.Enums.AccountProfileType.StandardIndividual, "BRL");
 
         // Assert
         // 1. Verifica persistência da conta
-        _accountRepoMock.Verify(x => x.AddAsync(It.Is<Account>(a => 
+        _accountRepoMock.Verify(x => x.AddAsync(It.Is<Account>(a =>
             a.Balances["BRL"].Amount == 1000m)), Times.Once);
 
         // 2. Verifica registro no Ledger
-        _ledgerRepoMock.Verify(x => x.AddAsync(It.Is<LedgerEvent>(e => 
-            e.Type == "ACCOUNT_CREATED" && 
+        _ledgerRepoMock.Verify(x => x.AddAsync(It.Is<LedgerEvent>(e =>
+            e.Type == "ACCOUNT_CREATED" &&
             e.Amount == 1000m)), Times.Once);
 
         // 3. Verifica Commit da transação

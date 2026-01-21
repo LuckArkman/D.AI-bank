@@ -24,15 +24,37 @@ public class OperationsController : ControllerBase
         [FromBody] P2PTransferRequest request,
         [FromServices] TransferFundsHandler handler)
     {
-        var correlationId = Guid.NewGuid(); // Rastreabilidade
-        
+        var correlationId = Guid.NewGuid();
+
         await handler.Handle(
-            fromAccountId: _currentUser.AccountId, 
-            toAccountId: request.TargetAccountId, 
-            amount: request.Amount
+            fromAccountId: _currentUser.AccountId,
+            toAccountId: request.TargetAccountId,
+            amount: request.Amount,
+            currencyCode: request.CurrencyCode ?? "BRL"
         );
 
         return Accepted(new { Message = "Transferência realizada com sucesso.", OperationId = correlationId });
+    }
+
+    [HttpPost("transfer/international")]
+    public async Task<IActionResult> IntlTransfer(
+        [FromBody] InternationalTransferRequest request,
+        [FromServices] InternationalTransferHandler handler)
+    {
+        var reference = await handler.Handle(
+            fromAccountId: _currentUser.AccountId,
+            amount: request.Amount,
+            currencyCode: request.CurrencyCode,
+            network: request.Network,
+            destinationBank: request.DestinationBank,
+            destinationAccount: request.DestinationAccount
+        );
+
+        return Accepted(new
+        {
+            Message = "International transfer initiated via " + request.Network,
+            TransactionReference = reference
+        });
     }
 
     [HttpPost("transfer/pix")]
@@ -41,9 +63,10 @@ public class OperationsController : ControllerBase
         [FromServices] SendPixHandler handler)
     {
         var sagaId = await handler.Handle(_currentUser.AccountId, request.Key, request.Amount);
-        
-        return Accepted(new { 
-            Message = "Pix em processamento.", 
+
+        return Accepted(new
+        {
+            Message = "Pix em processamento.",
             SagaId = sagaId,
             StatusUrl = $"/api/v1/operations/pix/{sagaId}"
         });
@@ -57,7 +80,7 @@ public class OperationsController : ControllerBase
         // Em um cenário real, aqui geraríamos um Boleto e o crédito só ocorreria via Webhook.
         // Para este MVP, simulamos o crédito imediato (Sandbox).
         await handler.Handle(_currentUser.AccountId, request.Amount);
-        
+
         return Ok(new { Message = "Depósito recebido com sucesso." });
     }
 }

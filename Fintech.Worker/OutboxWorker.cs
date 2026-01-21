@@ -18,7 +18,8 @@ public class OutboxWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("OutboxWorker iniciado.");
+        var workerId = Guid.NewGuid().ToString();
+        _logger.LogInformation("OutboxWorker iniciado com ID: {WorkerId}", workerId);
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -28,7 +29,8 @@ public class OutboxWorker : BackgroundService
                 var outboxRepo = scope.ServiceProvider.GetRequiredService<IOutboxRepository>();
                 var bus = scope.ServiceProvider.GetRequiredService<IMessageBus>();
 
-                var messages = await outboxRepo.GetPendingAsync(20);
+                // Uso do lock para suportar múltiplos workers com segurança
+                var messages = await outboxRepo.LockAndGetAsync(20, workerId);
 
                 foreach (var msg in messages)
                 {
@@ -36,14 +38,16 @@ public class OutboxWorker : BackgroundService
                     {
                         await bus.PublishAsync(msg.Topic, msg.PayloadJson);
                         await outboxRepo.MarkAsProcessedAsync(msg.Id);
-                        _logger.LogDebug("Mensagem outbox {Id} processada.", msg.Id);
+                        _logger.LogDebug("Mensagem outbox {Id} processada pelo worker {WorkerId}.", msg.Id, workerId);
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex, "Erro ao processar mensagem outbox {Id}.", msg.Id);
+                        _logger.LogError(ex, "Erro ao processar mensagem outbox {Id}. Liberando lock.", msg.Id);
+                        await outboxRepo.UnlockAsync(msg.Id);
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro no ciclo do OutboxWorker.");

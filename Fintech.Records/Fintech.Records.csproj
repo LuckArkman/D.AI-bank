@@ -10,4 +10,9 @@
       <PackageReference Include="Testcontainers.MongoDb" Version="4.10.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Fintech.Enums\Fintech.Enums.csproj" />
+    </ItemGroup>
+
 </Project>
+

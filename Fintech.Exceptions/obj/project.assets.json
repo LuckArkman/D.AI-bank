@@ -2799,11 +2799,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
+      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
       "projectName": "Fintech.Exceptions",
-      "projectPath": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "D:\\D.AI-bank\\Fintech.Exceptions\\obj\\",
+      "outputPath": "d:\\D.AI-bank\\Fintech.Exceptions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

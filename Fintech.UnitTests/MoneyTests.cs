@@ -15,7 +15,7 @@ public class MoneyTests
         var result = m1 + m2;
 
         result.Amount.Should().Be(150);
-        result.Currency.Should().Be("BRL");
+        result.Currency.Code.Should().Be("BRL");
     }
 
     [Fact]
@@ -26,7 +26,7 @@ public class MoneyTests
 
         var action = () => m1 + m2;
 
-        action.Should().Throw<Exception>().WithMessage("*Moedas diferentes*");
+        action.Should().Throw<InvalidOperationException>().WithMessage("*Cannot add*");
     }
 
     [Fact]

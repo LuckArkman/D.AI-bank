@@ -17,6 +17,7 @@ public class AuthServiceTests
     private readonly Mock<ICreateAccountHandler> _accountHandlerMock; // Interface criada anteriormente
     private readonly Mock<ITransactionManager> _txManagerMock;
     private readonly Mock<IConfiguration> _configMock;
+    private readonly Mock<ITenantProvider> _tenantProviderMock;
     private readonly AuthService _service;
 
     public AuthServiceTests()
@@ -25,15 +26,24 @@ public class AuthServiceTests
         _accountHandlerMock = new Mock<ICreateAccountHandler>();
         _txManagerMock = new Mock<ITransactionManager>();
         _configMock = new Mock<IConfiguration>();
+        _tenantProviderMock = new Mock<ITenantProvider>();
 
         // Mock do JWT Secret
         _configMock.Setup(x => x["Jwt:Secret"]).Returns("Segredo_Super_Secreto_Para_Testes_Unitarios_123");
 
+        var tenantId = Guid.NewGuid();
+        _tenantProviderMock.Setup(x => x.TenantId).Returns(tenantId);
+
+        // Mock do Transaction Manager
+        var uowMock = new Mock<IUnitOfWork>();
+        _txManagerMock.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(uowMock.Object);
+
         _service = new AuthService(
             _userRepoMock.Object,
-            (_accountHandlerMock.Object as CreateAccountHandler),
+            _accountHandlerMock.Object,
             _txManagerMock.Object,
-            _configMock.Object
+            _configMock.Object,
+            _tenantProviderMock.Object
         );
     }
 
@@ -46,17 +56,17 @@ public class AuthServiceTests
         var accountId = Guid.NewGuid();
 
         _userRepoMock.Setup(x => x.ExistsByEmailAsync(email)).ReturnsAsync(false);
-        _accountHandlerMock.Setup(x => x.Handle(0)).ReturnsAsync(accountId);
+        _accountHandlerMock.Setup(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>(), It.IsAny<string>())).ReturnsAsync(accountId);
 
         // Act
-        var token = await _service.RegisterAsync(new RegisterRequest(email, password, "teste"));
+        var token = await _service.RegisterAsync(new RegisterRequest(email, password, "teste", 0, Fintech.Enums.AccountProfileType.StandardIndividual));
 
         // Assert
         token.Should().NotBeNull();
-        
+
         // Verifica se salvou o usuário
-        _userRepoMock.Verify(x => x.AddAsync(It.Is<User>(u => 
-            u.Email == email && 
+        _userRepoMock.Verify(x => x.AddAsync(It.Is<User>(u =>
+            u.Email == email &&
             u.AccountId == accountId)), Times.Once);
     }
 
@@ -67,10 +77,10 @@ public class AuthServiceTests
         _userRepoMock.Setup(x => x.ExistsByEmailAsync(It.IsAny<string>())).ReturnsAsync(true);
 
         // Act
-        Func<Task> action = async () => await _service.RegisterAsync(new RegisterRequest("existente@email.com", "123", "teste"));
+        Func<Task> action = async () => await _service.RegisterAsync(new RegisterRequest("existente@email.com", "123", "teste", 0, Fintech.Enums.AccountProfileType.StandardIndividual));
 
         // Assert
-        await action.Should().ThrowAsync<Exception>().WithMessage("*Email já cadastrado*");
-        _accountHandlerMock.Verify(x => x.Handle(It.IsAny<decimal>()), Times.Never);
+        await action.Should().ThrowAsync<Exception>().WithMessage("*Email já está em uso*");
+        _accountHandlerMock.Verify(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>(), It.IsAny<string>()), Times.Never);
     }
 }

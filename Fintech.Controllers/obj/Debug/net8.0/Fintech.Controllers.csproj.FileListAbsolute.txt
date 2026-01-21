@@ -36,3 +36,7 @@ D:\D.AI-bank\Fintech.Controllers\obj\Debug\net8.0\Fintech.Controllers.dll
 D:\D.AI-bank\Fintech.Controllers\obj\Debug\net8.0\refint\Fintech.Controllers.dll
 D:\D.AI-bank\Fintech.Controllers\obj\Debug\net8.0\Fintech.Controllers.pdb
 D:\D.AI-bank\Fintech.Controllers\obj\Debug\net8.0\ref\Fintech.Controllers.dll
+D:\D.AI-bank\Fintech.Controllers\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.Controllers\bin\Debug\net8.0\Fintech.Regulatory.dll
+D:\D.AI-bank\Fintech.Controllers\bin\Debug\net8.0\Fintech.Regulatory.pdb
+D:\D.AI-bank\Fintech.Controllers\bin\Debug\net8.0\Fintech.Core.pdb

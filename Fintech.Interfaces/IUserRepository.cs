@@ -15,4 +15,7 @@ public interface IUserRepository
 
     // Busca usuário pelo ID (usado para obter detalhes do perfil)
     Task<User?> GetByIdAsync(Guid id);
+
+    // Atualiza dados do usuário (MFA, etc)
+    Task UpdateAsync(User user);
 }

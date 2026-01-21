@@ -14,49 +14,56 @@ namespace Fintech.Services;
 public class AuthService
 {
     private readonly IUserRepository _userRepo;
-    private readonly CreateAccountHandler _createAccountHandler;
+    private readonly ICreateAccountHandler _createAccountHandler;
     private readonly ITransactionManager _txManager;
     private readonly IConfiguration _config;
+    private readonly ITenantProvider _tenantProvider;
 
     public AuthService(
         IUserRepository userRepo,
-        CreateAccountHandler createAccountHandler,
+        ICreateAccountHandler createAccountHandler,
         ITransactionManager txManager,
-        IConfiguration config)
+        IConfiguration config,
+        ITenantProvider tenantProvider)
     {
         _userRepo = userRepo;
         _createAccountHandler = createAccountHandler;
         _txManager = txManager;
         _config = config;
+        _tenantProvider = tenantProvider;
     }
 
     public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
     {
-        //using var uow = await _txManager.BeginTransactionAsync();
+        using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             if (await _userRepo.ExistsByEmailAsync(request.Email))
                 throw new Exception("Email já está em uso.");
 
-            var accountId = await _createAccountHandler.Handle(request.InitialDeposit);
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            var accountId = await _createAccountHandler.Handle(request.InitialDeposit, request.ProfileType, request.CurrencyCode);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            
+
+
             // Agora User tem Name no construtor
-            var user = new User(request.Name, request.Email, hash, accountId);
+            var user = new User(request.Name, request.Email, hash, accountId, tenantId);
 
             await _userRepo.AddAsync(user);
 
-            //await uow.CommitAsync();
+            await uow.CommitAsync();
 
             var token = GenerateJwt(user);
             return new AuthResponse(token, user.Name, user.Email, user.AccountId);
         }
         catch
         {
+            await uow.AbortAsync();
             throw;
         }
     }
+
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request)
     {
@@ -76,12 +83,15 @@ public class AuthService
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.Name, user.Name),
-            new Claim("AccountId", user.AccountId.ToString()), 
+            new Claim("AccountId", user.AccountId.ToString()),
+            new Claim("TenantId", user.TenantId.ToString()),
             new Claim(ClaimTypes.Role, "Client")
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Secret"]));
+        var secret = _config["Jwt:Secret"] ?? "Segredo_Super_Secreto_Para_Dev_Local_123!";
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
 
         var token = new JwtSecurityToken(
             issuer: "Fintech.Api",

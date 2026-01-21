@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oNulq8DYiGs=",
+  "dgSpecHash": "9F/+xnaQVHI=",
   "success": true,
-  "projectFilePath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
+  "projectFilePath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MPLopes\\.nuget\\packages\\bcrypt\\1.0.0\\bcrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
@@ -12,7 +12,9 @@
     "C:\\Users\\MPLopes\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced\\3.131.1\\docker.dotnet.enhanced.3.131.1.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\docker.dotnet.enhanced.x509\\3.131.1\\docker.dotnet.enhanced.x509.3.131.1.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\dynamicexpresso.core\\2.19.3\\dynamicexpresso.core.2.19.3.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
+    "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
@@ -75,9 +77,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'BCrypt 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
       "warningLevel": 1,
-      "filePath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
+      "filePath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
       "libraryId": "BCrypt",
       "targetGraphs": [
         "net8.0"

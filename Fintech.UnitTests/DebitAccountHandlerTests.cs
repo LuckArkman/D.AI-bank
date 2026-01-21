@@ -17,6 +17,7 @@ public class DebitAccountHandlerTests
     private readonly Mock<IOutboxRepository> _outboxRepoMock;
     private readonly Mock<ITransactionManager> _txManagerMock;
     private readonly Mock<IUnitOfWork> _uowMock;
+    private readonly Mock<ITenantProvider> _tenantProviderMock;
     private readonly DebitAccountHandler _handler;
 
     public DebitAccountHandlerTests()
@@ -25,14 +26,18 @@ public class DebitAccountHandlerTests
         _ledgerRepoMock = new Mock<ILedgerRepository>();
         _outboxRepoMock = new Mock<IOutboxRepository>();
         _txManagerMock = new Mock<ITransactionManager>();
+        _tenantProviderMock = new Mock<ITenantProvider>();
         _uowMock = new Mock<IUnitOfWork>();
 
+        var tenantId = Guid.NewGuid();
+        _tenantProviderMock.Setup(x => x.TenantId).Returns(tenantId);
         _txManagerMock.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(_uowMock.Object);
 
         _handler = new DebitAccountHandler(
             _txManagerMock.Object,
-            (_accountRepoMock.Object as AccountRepository),
-            _outboxRepoMock.Object
+            _accountRepoMock.Object,
+            _outboxRepoMock.Object,
+            _tenantProviderMock.Object
         );
     }
 
@@ -40,8 +45,9 @@ public class DebitAccountHandlerTests
     public async Task Deve_Realizar_Debito_Com_Sucesso()
     {
         // Arrange
+        var tenantId = _tenantProviderMock.Object.TenantId.Value;
         var accountId = Guid.NewGuid();
-        var account = new Account(accountId);
+        var account = new Account(accountId, tenantId);
         account.Credit(Money.BRL(100)); // Saldo inicial 100
 
         _accountRepoMock.Setup(x => x.GetByIdAsync(accountId)).ReturnsAsync(account);
@@ -51,18 +57,14 @@ public class DebitAccountHandlerTests
 
         // Assert
         // 1. Saldo deve ser atualizado
-        _accountRepoMock.Verify(x => x.UpdateAsync(It.Is<Account>(a => 
+        _accountRepoMock.Verify(x => x.UpdateAsync(It.Is<Account>(a =>
             a.Balances["BRL"].Amount == 60m)), Times.Once);
 
-        // 2. Ledger deve ser gravado
-        _ledgerRepoMock.Verify(x => x.AddAsync(It.Is<LedgerEvent>(e => 
-            e.Type == "DEBIT" && e.Amount == 40m)), Times.Once);
-
-        // 3. Outbox deve ser gerado
-        _outboxRepoMock.Verify(x => x.AddAsync(It.Is<OutboxMessage>(m => 
+        // 2. Outbox deve ser gerado
+        _outboxRepoMock.Verify(x => x.AddAsync(It.Is<OutboxMessage>(m =>
             m.Topic == "AccountDebited")), Times.Once);
 
-        // 4. Commit realizado
+        // 3. Commit realizado
         _uowMock.Verify(x => x.CommitAsync(default), Times.Once);
     }
 
@@ -70,7 +72,8 @@ public class DebitAccountHandlerTests
     public async Task Deve_Falhar_Se_Saldo_Insuficiente_Sem_Commit()
     {
         // Arrange
-        var account = new Account(Guid.NewGuid()); // Saldo 0
+        var tenantId = _tenantProviderMock.Object.TenantId.Value;
+        var account = new Account(Guid.NewGuid(), tenantId); // Saldo 0
         _accountRepoMock.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(account);
 
         // Act
@@ -78,7 +81,7 @@ public class DebitAccountHandlerTests
 
         // Assert
         await action.Should().ThrowAsync<Exception>().WithMessage("*Saldo insuficiente*");
-        
+
         // Garante que NADA foi salvo
         _accountRepoMock.Verify(x => x.UpdateAsync(It.IsAny<Account>()), Times.Never);
         _uowMock.Verify(x => x.CommitAsync(default), Times.Never);

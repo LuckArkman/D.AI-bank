@@ -1,8 +1,8 @@
-﻿using Fintech.Entities;
+﻿using Fintech.Core.Interfaces;
+using Fintech.Entities;
 using Fintech.Interfaces;
-using Fintech.Repositories;
 using Fintech.Telemetry;
-using Fintech.ValueObjects; // Adicionado para acessar Money
+using Fintech.ValueObjects;
 using System.Text.Json;
 
 namespace Fintech.Commands;
@@ -10,20 +10,24 @@ namespace Fintech.Commands;
 public class DebitAccountHandler
 {
     private readonly ITransactionManager _txManager;
-    private readonly AccountRepository _accountRepo;
+    private readonly IAccountRepository _accountRepo;
     private readonly IOutboxRepository _outboxRepo;
+    private readonly ITenantProvider _tenantProvider;
 
     public DebitAccountHandler(
         ITransactionManager txManager,
-        AccountRepository accountRepo,
-        IOutboxRepository outboxRepo)
+        IAccountRepository accountRepo,
+        IOutboxRepository outboxRepo,
+        ITenantProvider tenantProvider)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
         _outboxRepo = outboxRepo;
+        _tenantProvider = tenantProvider;
     }
 
-    public async Task Handle(Guid accountId, decimal amount, Guid correlationId)
+
+    public async Task Handle(Guid accountId, decimal amount, Guid correlationId, string currencyCode = "BRL")
     {
         using var uow = await _txManager.BeginTransactionAsync();
         try
@@ -31,12 +35,14 @@ public class DebitAccountHandler
             var account = await _accountRepo.GetByIdAsync(accountId);
 
             // Correção: Converter decimal para Money
-            account.Debit(Money.BRL(amount));
+            var money = Money.Create(amount, currencyCode);
+            account.Debit(money);
 
             await _accountRepo.UpdateAsync(account);
 
             var payload = JsonSerializer.Serialize(new { AccountId = accountId, Amount = amount, CorrelationId = correlationId });
-            var msg = new OutboxMessage("AccountDebited", payload);
+            var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
+            var msg = new OutboxMessage("AccountDebited", payload, tenantId);
             await _outboxRepo.AddAsync(msg);
 
             await uow.CommitAsync();

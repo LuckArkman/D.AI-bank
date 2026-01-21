@@ -10,7 +10,7 @@ public class AccountTests
     public void Deve_Debitar_Quando_Saldo_Suficiente()
     {
         // Arrange
-        var account = new Account(Guid.NewGuid());
+        var account = new Account(Guid.NewGuid(), Guid.NewGuid());
         account.Credit(Money.BRL(100)); // Saldo inicial
 
         // Act
@@ -24,7 +24,7 @@ public class AccountTests
     public void Deve_Lancar_Erro_Quando_Saldo_Insuficiente()
     {
         // Arrange
-        var account = new Account(Guid.NewGuid());
+        var account = new Account(Guid.NewGuid(), Guid.NewGuid());
         account.Credit(Money.BRL(50));
 
         // Act
@@ -37,9 +37,9 @@ public class AccountTests
     [Fact]
     public void Deve_Creditar_Corretamente()
     {
-        var account = new Account(Guid.NewGuid());
+        var account = new Account(Guid.NewGuid(), Guid.NewGuid());
         account.Credit(Money.BRL(10));
-        
+
         account.Balances["BRL"].Amount.Should().Be(10);
     }
 }
