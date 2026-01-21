@@ -740,14 +740,14 @@
         }
       }
     },
-    "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+    "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
+        "projectUniqueName": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
         "projectName": "Fintech.Interfaces",
-        "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
+        "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj",
         "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-        "outputPath": "d:\\D.AI-bank\\Fintech.Interfaces\\obj\\",
+        "outputPath": "D:\\D.AI-bank\\Fintech.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -893,8 +893,8 @@
               "D:\\D.AI-bank\\Fintech.Infrastructure\\Fintech.Infrastructure.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Infrastructure\\Fintech.Infrastructure.csproj"
               },
-              "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-                "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+              "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
               },
               "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj"
@@ -1041,8 +1041,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-                "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+              "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
               }
             }
           }
@@ -1169,8 +1169,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-                "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+              "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
               },
               "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"
@@ -1621,8 +1621,8 @@
               "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
                 "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
               },
-              "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-                "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+              "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
               }
             }
           }

@@ -10,12 +10,6 @@ public static class MongoDbIndexes
     {
         // Accounts
         var accountsCollection = db.GetCollection<Account>("accounts");
-        await accountsCollection.Indexes.CreateOneAsync(
-            new CreateIndexModel<Account>(
-                Builders<Account>.IndexKeys.Ascending(x => x.Id),
-                new CreateIndexOptions { Unique = true }
-            )
-        );
 
         // Accounts - Add TenantId index
         await accountsCollection.Indexes.CreateOneAsync(

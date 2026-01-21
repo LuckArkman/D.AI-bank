@@ -3326,11 +3326,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
+      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
       "projectName": "Fintech.Commands",
-      "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "D:\\D.AI-bank\\Fintech.Commands\\obj\\",
+      "outputPath": "d:\\D.AI-bank\\Fintech.Commands\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3358,11 +3358,11 @@
             "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
               "projectPath": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+            "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
+            "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj"

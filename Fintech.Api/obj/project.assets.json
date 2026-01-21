@@ -4652,11 +4652,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Controllers\\Fintech.Controllers.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Controllers\\Fintech.Controllers.csproj"
+            "D:\\D.AI-bank\\Fintech.Controllers\\Fintech.Controllers.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Controllers\\Fintech.Controllers.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
@@ -4664,26 +4664,26 @@
             "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
               "projectPath": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+            "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Middlewares\\Fintech.Middlewares.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Middlewares\\Fintech.Middlewares.csproj"
+            "D:\\D.AI-bank\\Fintech.Middlewares\\Fintech.Middlewares.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Middlewares\\Fintech.Middlewares.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
+            "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Repositories\\Fintech.Repositories.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
+            "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
             },
             "d:\\D.AI-bank\\Fintech.Telemetry\\Fintech.Telemetry.csproj": {
               "projectPath": "d:\\D.AI-bank\\Fintech.Telemetry\\Fintech.Telemetry.csproj"
