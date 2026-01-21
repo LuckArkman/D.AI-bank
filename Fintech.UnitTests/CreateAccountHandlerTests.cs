@@ -42,7 +42,7 @@ public class CreateAccountHandlerTests
     public async Task Deve_Criar_Conta_E_Registrar_Ledger()
     {
         // Act
-        var result = await _handler.Handle(1000m, Fintech.Enums.AccountProfileType.StandardIndividual);
+        var result = await _handler.Handle(1000m, Fintech.Enums.AccountProfileType.StandardIndividual, "BRL");
 
         // Assert
         // 1. Verifica persistência da conta

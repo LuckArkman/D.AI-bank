@@ -56,7 +56,7 @@ public class AuthServiceTests
         var accountId = Guid.NewGuid();
 
         _userRepoMock.Setup(x => x.ExistsByEmailAsync(email)).ReturnsAsync(false);
-        _accountHandlerMock.Setup(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>())).ReturnsAsync(accountId);
+        _accountHandlerMock.Setup(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>(), It.IsAny<string>())).ReturnsAsync(accountId);
 
         // Act
         var token = await _service.RegisterAsync(new RegisterRequest(email, password, "teste", 0, Fintech.Enums.AccountProfileType.StandardIndividual));
@@ -81,6 +81,6 @@ public class AuthServiceTests
 
         // Assert
         await action.Should().ThrowAsync<Exception>().WithMessage("*Email já está em uso*");
-        _accountHandlerMock.Verify(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>()), Times.Never);
+        _accountHandlerMock.Verify(x => x.Handle(It.IsAny<decimal>(), It.IsAny<Fintech.Enums.AccountProfileType>(), It.IsAny<string>()), Times.Never);
     }
 }

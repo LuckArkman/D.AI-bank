@@ -42,7 +42,7 @@ public class AuthService
                 throw new Exception("Email já está em uso.");
 
             var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
-            var accountId = await _createAccountHandler.Handle(request.InitialDeposit, request.ProfileType);
+            var accountId = await _createAccountHandler.Handle(request.InitialDeposit, request.ProfileType, request.CurrencyCode);
 
             var hash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 

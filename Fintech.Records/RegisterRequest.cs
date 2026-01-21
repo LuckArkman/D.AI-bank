@@ -8,7 +8,8 @@ public record RegisterRequest(
     [Required, MinLength(6)] string Password,
     [Required] string Name,
     [Range(0, 1000000)] decimal InitialDeposit = 0,
-    AccountProfileType ProfileType = AccountProfileType.StandardIndividual);
+    AccountProfileType ProfileType = AccountProfileType.StandardIndividual,
+    string CurrencyCode = "BRL");
 
 
 public record LoginRequest(

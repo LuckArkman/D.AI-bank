@@ -8970,11 +8970,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D.AI-bank\\Fintech.UnitTests\\Fintech.UnitTests.csproj",
+      "projectUniqueName": "d:\\D.AI-bank\\Fintech.UnitTests\\Fintech.UnitTests.csproj",
       "projectName": "Fintech.UnitTests",
-      "projectPath": "D:\\D.AI-bank\\Fintech.UnitTests\\Fintech.UnitTests.csproj",
+      "projectPath": "d:\\D.AI-bank\\Fintech.UnitTests\\Fintech.UnitTests.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "D:\\D.AI-bank\\Fintech.UnitTests\\obj\\",
+      "outputPath": "d:\\D.AI-bank\\Fintech.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8996,20 +8996,20 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+            "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
+            "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Interfaces\\Fintech.Interfaces.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
+            "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
             },
-            "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
-              "projectPath": "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"
+            "d:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
+              "projectPath": "d:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"
             }
           }
         }

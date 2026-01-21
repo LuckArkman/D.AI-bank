@@ -126,6 +126,10 @@ builder.Services.AddScoped<ICurrencyExchangeService, CurrencyExchangeService>();
 builder.Services.AddScoped<IComplianceReportingService, ComplianceReportingService>();
 builder.Services.AddScoped<ITenantOnboardingService, TenantOnboardingService>();
 builder.Services.AddScoped<ICryptoService, CryptoService>();
+builder.Services.AddScoped<ITaxationService, TaxationService>();
+builder.Services.AddScoped<IKycProvider, JumioKycProvider>();
+builder.Services.AddScoped<ISettlementGateway, SwiftGateway>();
+builder.Services.AddScoped<ISettlementGateway, SepaGateway>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
 
 // Tenet Regulatory
@@ -158,6 +162,7 @@ builder.Services.AddScoped<DepositHandler>();
 builder.Services.AddScoped<TransferFundsHandler>();
 builder.Services.AddScoped<GetStatementHandler>();
 builder.Services.AddScoped<SendPixHandler>();
+builder.Services.AddScoped<InternationalTransferHandler>();
 builder.Services.AddScoped<DebitAccountHandler>();
 builder.Services.AddScoped<IssueCardHandler>();
 builder.Services.AddScoped<RequestLoanHandler>();
