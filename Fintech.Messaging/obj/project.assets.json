@@ -3035,11 +3035,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj",
+      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj",
       "projectName": "Fintech.Messaging",
-      "projectPath": "d:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj",
+      "projectPath": "D:\\D.AI-bank\\Fintech.Messaging\\Fintech.Messaging.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "d:\\D.AI-bank\\Fintech.Messaging\\obj\\",
+      "outputPath": "D:\\D.AI-bank\\Fintech.Messaging\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

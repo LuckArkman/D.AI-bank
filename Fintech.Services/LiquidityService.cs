@@ -7,11 +7,13 @@ namespace Fintech.Services;
 public class LiquidityService : ILiquidityService
 {
     private readonly ILiquidityRepository _liquidityRepo;
+    private readonly IWeb3BridgeGateway _bridgeGateway;
     private readonly ILogger<LiquidityService> _logger;
 
-    public LiquidityService(ILiquidityRepository liquidityRepo, ILogger<LiquidityService> logger)
+    public LiquidityService(ILiquidityRepository liquidityRepo, IWeb3BridgeGateway bridgeGateway, ILogger<LiquidityService> logger)
     {
         _liquidityRepo = liquidityRepo;
+        _bridgeGateway = bridgeGateway;
         _logger = logger;
     }
 
@@ -55,5 +57,28 @@ public class LiquidityService : ILiquidityService
         pool.Deposit(amount);
         await _liquidityRepo.UpdateAsync(pool);
         _logger.LogInformation("Liquidity inflow registered: {Amount} {Currency} to {Network}", amount, currencyCode, network);
+    }
+
+    public async Task RebalanceAsync(string sourceNetwork, string targetNetwork, string currencyCode, decimal amount)
+    {
+        _logger.LogInformation("Initiating liquidity rebalance: {Amount} {Currency} from {Source} to {Target}", amount, currencyCode, sourceNetwork, targetNetwork);
+
+        // 1. Withdraw from source
+        await RegisterOutflowAsync(sourceNetwork, currencyCode, amount);
+
+        // 2. Bridge via Web3
+        var bridgeResult = await _bridgeGateway.BridgeLiquidityAsync(sourceNetwork, targetNetwork, amount, currencyCode);
+
+        if (!bridgeResult.Success)
+        {
+            _logger.LogError("Bridge failed. Rolling back source liquidity.");
+            await RegisterInflowAsync(sourceNetwork, currencyCode, amount);
+            throw new Exception("Web3 Bridge failure");
+        }
+
+        // 3. Deposit to target (minus fees)
+        await RegisterInflowAsync(targetNetwork, currencyCode, bridgeResult.FinalAmount);
+
+        _logger.LogInformation("Rebalance complete. TX: {Hash}. Fee: {Fee}", bridgeResult.TransactionHash, bridgeResult.Fee);
     }
 }

@@ -2083,8 +2083,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
+            "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
             }
           }
         }

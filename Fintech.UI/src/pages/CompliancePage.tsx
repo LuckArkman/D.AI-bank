@@ -147,6 +147,31 @@ const CompliancePage = () => {
 
             {activeTab === 'reports' && (
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="text-xl font-bold">Regulatory Audits</h3>
+                        <button
+                            onClick={async () => {
+                                try {
+                                    const res = await axios.get('/api/v1/admin/reports/generate?type=AML_AUDIT', {
+                                        headers: { Authorization: `Bearer ${token}` },
+                                        responseType: 'blob'
+                                    });
+                                    const url = window.URL.createObjectURL(new Blob([res.data]));
+                                    const link = document.createElement('a');
+                                    link.href = url;
+                                    link.setAttribute('download', `AML_Audit_${new Date().toISOString().split('T')[0]}.csv`);
+                                    document.body.appendChild(link);
+                                    link.click();
+                                } catch (err) {
+                                    console.error('Download error', err);
+                                }
+                            }}
+                            className="bg-brand-600 hover:bg-brand-500 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-brand-900/20"
+                        >
+                            <FileText size={18} />
+                            Download AML Report (CSV)
+                        </button>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <ReportStatCard title="Total Transactions" value="128,432" icon={<FileText className="text-brand-400" />} trend="+12%" />
                         <ReportStatCard title="Flagged Events" value="14" icon={<AlertTriangle className="text-orange-400" />} trend="-3%" />

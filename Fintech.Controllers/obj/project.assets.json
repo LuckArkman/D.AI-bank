@@ -3427,20 +3427,20 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
+            "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
             },
             "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
               "projectPath": "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
+            "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
+            "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Services\\Fintech.Services.csproj"
             }
           }
         }

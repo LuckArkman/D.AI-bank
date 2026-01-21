@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a8dfd02cae28893832f82355344a2ad1f0aa4f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f5148193357c40a6ab6455bb72a0e839689e7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

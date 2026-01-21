@@ -32,6 +32,14 @@ public class LiquidityAdminController : ControllerBase
         await _liquidityService.RegisterInflowAsync(request.Network, request.CurrencyCode, request.Amount);
         return Ok(new { Message = "Liquidity added successfully" });
     }
+
+    [HttpPost("rebalance")]
+    public async Task<IActionResult> Rebalance([FromBody] RebalanceRequest request)
+    {
+        await _liquidityService.RebalanceAsync(request.SourceNetwork, request.TargetNetwork, request.CurrencyCode, request.Amount);
+        return Ok(new { Message = "Rebalance initiated via Web3 Bridge" });
+    }
 }
 
 public record SeedLiquidityRequest(string Network, string CurrencyCode, decimal Amount);
+public record RebalanceRequest(string SourceNetwork, string TargetNetwork, string CurrencyCode, decimal Amount);

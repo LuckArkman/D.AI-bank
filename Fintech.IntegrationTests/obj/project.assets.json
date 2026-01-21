@@ -8760,11 +8760,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\D.AI-bank\\Fintech.IntegrationTests\\Fintech.IntegrationTests.csproj",
+      "projectUniqueName": "D:\\D.AI-bank\\Fintech.IntegrationTests\\Fintech.IntegrationTests.csproj",
       "projectName": "Fintech.IntegrationTests",
-      "projectPath": "d:\\D.AI-bank\\Fintech.IntegrationTests\\Fintech.IntegrationTests.csproj",
+      "projectPath": "D:\\D.AI-bank\\Fintech.IntegrationTests\\Fintech.IntegrationTests.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "d:\\D.AI-bank\\Fintech.IntegrationTests\\obj\\",
+      "outputPath": "D:\\D.AI-bank\\Fintech.IntegrationTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8786,11 +8786,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj"
+            "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj"
             }
           }
         }

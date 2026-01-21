@@ -25,6 +25,29 @@ const TreasuryPage = () => {
     const [pools, setPools] = useState<LiquidityPool[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const [bridging, setBridging] = useState(false);
+
+    const handleBridge = async (source: string, target: string, currency: string, amount: number) => {
+        setBridging(true);
+        try {
+            await axios.post('/api/v1/admin/liquidity/rebalance', {
+                sourceNetwork: source,
+                targetNetwork: target,
+                currencyCode: currency,
+                amount: amount
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            await fetchPools();
+            alert(`Bridged ${amount} ${currency} from ${source} to ${target} via Web3`);
+        } catch (err) {
+            console.error('Bridge error', err);
+            alert('Bridge failed. Check console.');
+        } finally {
+            setBridging(false);
+        }
+    };
+
     const fetchPools = async () => {
         setLoading(true);
         try {
@@ -199,11 +222,19 @@ const TreasuryPage = () => {
                             Seed liquidity into cross-border pools to maintain settlement uptime.
                         </p>
                         <div className="space-y-3">
-                            <button className="w-full bg-white text-brand-600 py-3 rounded-xl font-bold text-sm shadow-lg hover:translate-y-[-2px] transition-all">
-                                Inject R$ 1,000,000.00
+                            <button
+                                onClick={() => handleBridge('POLYGON', 'SWIFT', 'USD', 100000)}
+                                disabled={bridging}
+                                className="w-full bg-white text-brand-600 py-3 rounded-xl font-bold text-sm shadow-lg hover:translate-y-[-2px] transition-all disabled:opacity-50"
+                            >
+                                {bridging ? 'Bridging...' : 'Bridge 100k USDC &rarr; SWIFT'}
                             </button>
-                            <button className="w-full bg-white/10 text-white py-3 rounded-xl font-bold text-sm border border-white/10 hover:bg-white/20 transition-all">
-                                External Swap Node
+                            <button
+                                onClick={() => handleBridge('SWIFT', 'SEPA', 'EUR', 50000)}
+                                disabled={bridging}
+                                className="w-full bg-white/10 text-white py-3 rounded-xl font-bold text-sm border border-white/10 hover:bg-white/20 transition-all disabled:opacity-50"
+                            >
+                                Rebalance SWIFT &rarr; SEPA
                             </button>
                         </div>
                     </div>

@@ -128,6 +128,7 @@ builder.Services.AddScoped<IComplianceReportingService, ComplianceReportingServi
 builder.Services.AddScoped<ITenantOnboardingService, TenantOnboardingService>();
 builder.Services.AddScoped<ICryptoService, CryptoService>();
 builder.Services.AddScoped<ITaxationService, TaxationService>();
+builder.Services.AddScoped<IWeb3BridgeGateway, PolygonUsdcBridge>();
 builder.Services.AddScoped<IKycProvider, JumioKycProvider>();
 builder.Services.AddScoped<ISettlementGateway, SwiftGateway>();
 builder.Services.AddScoped<ISettlementGateway, SepaGateway>();
