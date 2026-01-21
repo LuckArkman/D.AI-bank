@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fintech.Consumers")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca96e6ba1ce39c9e7383dad8a1216e4cae863ac0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a531f3dcaf0d05f47054781488039adb4d4d60ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fintech.Consumers")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fintech.Consumers")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

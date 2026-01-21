@@ -27,10 +27,15 @@ public class CreateAccountHandler : ICreateAccountHandler
 
     public async Task<Guid> Handle(decimal initialBalance, AccountProfileType profileType = AccountProfileType.StandardIndividual)
     {
+        var tenantId = _tenantProvider.TenantId ?? throw new InvalidOperationException("TenantId não resolvido.");
+        return await Handle(initialBalance, tenantId, profileType);
+    }
+
+    public async Task<Guid> Handle(decimal initialBalance, Guid tenantId, AccountProfileType profileType = AccountProfileType.StandardIndividual)
+    {
         using var uow = await _txManager.BeginTransactionAsync();
         try
         {
-            var tenantId = _tenantProvider.TenantId ?? throw new InvalidOperationException("TenantId não resolvido.");
             var accountId = Guid.NewGuid();
             var account = new Account(accountId, tenantId, profileType);
 

@@ -1,3 +1,4 @@
+using Fintech.Core.Entities;
 using Fintech.Entities;
 using MongoDB.Driver;
 
@@ -13,6 +14,13 @@ public static class MongoDbIndexes
             new CreateIndexModel<Account>(
                 Builders<Account>.IndexKeys.Ascending(x => x.Id),
                 new CreateIndexOptions { Unique = true }
+            )
+        );
+
+        // Accounts - Add TenantId index
+        await accountsCollection.Indexes.CreateOneAsync(
+            new CreateIndexModel<Account>(
+                Builders<Account>.IndexKeys.Ascending(x => x.TenantId)
             )
         );
 
@@ -47,7 +55,26 @@ public static class MongoDbIndexes
             ),
             new CreateIndexModel<LedgerEvent>(
                 Builders<LedgerEvent>.IndexKeys.Ascending(x => x.CorrelationId)
+            ),
+            new CreateIndexModel<LedgerEvent>(
+                Builders<LedgerEvent>.IndexKeys.Ascending(x => x.TenantId)
             )
         });
+
+        // Rules
+        var rulesCollection = db.GetCollection<BusinessRule>("business_rules");
+        await rulesCollection.Indexes.CreateOneAsync(
+            new CreateIndexModel<BusinessRule>(
+                Builders<BusinessRule>.IndexKeys.Ascending(x => x.TenantId)
+            )
+        );
+
+        // Users
+        var usersCollection = db.GetCollection<User>("users");
+        await usersCollection.Indexes.CreateOneAsync(
+            new CreateIndexModel<User>(
+                Builders<User>.IndexKeys.Ascending(x => x.TenantId)
+            )
+        );
     }
 }

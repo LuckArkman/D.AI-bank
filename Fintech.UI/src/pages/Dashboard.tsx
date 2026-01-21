@@ -12,8 +12,11 @@ import {
     ArrowDownLeft,
     Search,
     Plus,
+    Globe,
+    Users,
     RefreshCcw,
-    TrendingUp
+    TrendingUp,
+    ShieldCheck
 } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { motion } from 'framer-motion';
@@ -24,6 +27,9 @@ import PixManagement from './PixManagement';
 import CardsPage from './CardsPage';
 import LoansPage from './LoansPage';
 import InvestmentsPage from './InvestmentsPage';
+import InvestmentsPage from './InvestmentsPage';
+import CompliancePage from './CompliancePage';
+import TenantOnboardingPage from './TenantOnboardingPage';
 import DepositModal from '../components/DepositModal';
 import PixTransferModal from '../components/PixTransferModal';
 import { Landmark, PieChart } from 'lucide-react';
@@ -98,6 +104,8 @@ const Dashboard = () => {
                     <MenuLink to="/dashboard" icon={<LayoutDashboard />} label="Dashboard" end />
                     <MenuLink to="/dashboard/history" icon={<History />} label="Extrato" />
                     <MenuLink to="/dashboard/pix" icon={<Zap />} label="Área Pix" />
+                    <MenuLink to="/dashboard/compliance" icon={<ShieldCheck />} label="Compliance & Rules" />
+                    <MenuLink to="/dashboard/admin/onboarding" icon={<Globe />} label="New Tenant" />
                     <MenuLink to="/dashboard/cards" icon={<CreditCard />} label="Meus Cartões" />
                     <MenuLink to="/dashboard/loans" icon={<Landmark />} label="Créditos" />
                     <MenuLink to="/dashboard/investments" icon={<PieChart />} label="Investimentos" />
@@ -337,6 +345,8 @@ const Dashboard = () => {
                     <Route path="/cards" element={<CardsPage />} />
                     <Route path="/loans" element={<LoansPage />} />
                     <Route path="/investments" element={<InvestmentsPage />} />
+                    <Route path="/compliance" element={<CompliancePage />} />
+                    <Route path="/admin/onboarding" element={<TenantOnboardingPage />} />
 
                     <Route path="*" element={
                         <div className="p-20 text-center text-surface-400 flex flex-col items-center gap-4">

@@ -13,6 +13,7 @@ using Fintech.Services;
 using Fintech.Regulatory;
 using Fintech.Regulatory.Packs;
 using Fintech.Regulatory.Rules;
+using Fintech.Services.ProductModules;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
@@ -100,6 +101,8 @@ builder.Services.AddScoped<LedgerRepository>();
 builder.Services.AddScoped<PixKeyRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TenantRepository>();
+builder.Services.AddScoped<IRuleRepository, RuleRepository>();
+builder.Services.AddScoped<RuleRepository>();
 
 
 // 3. Services
@@ -121,6 +124,9 @@ builder.Services.AddScoped<IFraudDetectionService, FraudDetectionService>();
 builder.Services.AddScoped<IOpenBankingService, OpenBankingService>();
 builder.Services.AddScoped<IMfaService, MfaService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<ICurrencyExchangeService, CurrencyExchangeService>();
+builder.Services.AddScoped<IComplianceReportingService, ComplianceReportingService>();
+builder.Services.AddScoped<ITenantOnboardingService, TenantOnboardingService>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
 
 // Tenet Regulatory
@@ -130,9 +136,17 @@ builder.Services.AddSingleton<IRegulatoryRegistry>(sp =>
     var registry = new RegulatoryRegistry();
     var rulesEngine = sp.GetRequiredService<IBusinessRulesEngine>();
     registry.RegisterPack(new BrazilRegulatoryPack(rulesEngine));
+    registry.RegisterPack(new USRegulatoryPack(rulesEngine));
+    registry.RegisterPack(new EURegulatoryPack(rulesEngine));
+    registry.RegisterPack(new UKRegulatoryPack(rulesEngine));
     return registry;
 });
 builder.Services.AddScoped<IRegulatoryService, RegulatoryService>();
+
+// Tenet Product Modules
+builder.Services.AddScoped<IProductModule, CryptoWalletModule>();
+builder.Services.AddScoped<IProductModule, CardsModule>();
+builder.Services.AddScoped<IProductModule, LoansModule>();
 
 
 

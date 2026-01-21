@@ -14,18 +14,28 @@ public class Tenant
     public bool IsActive { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
-    public Tenant(string name, string identifier, TenantBranding branding)
+    public string DefaultCurrency { get; private set; } // Stores Currency Code (e.g., "BRL", "USD")
+    public string TimeZoneId { get; private set; } // Stores TimeZone Id
+    public List<string> ActiveProducts { get; private set; }
+
+    public Tenant(string name, string identifier, TenantBranding branding, string defaultCurrency = "BRL", string timeZoneId = "E. South America Standard Time")
     {
         Id = Guid.NewGuid();
         Name = name;
         Identifier = identifier.ToLowerInvariant();
         Branding = branding;
+        DefaultCurrency = defaultCurrency;
+        TimeZoneId = timeZoneId;
         ActiveJurisdictions = new List<Jurisdiction>();
         ActiveModes = new List<BusinessMode>();
+        ActiveProducts = new List<string>();
         RegulatoryConfig = new Dictionary<string, string>();
         IsActive = true;
         CreatedAt = DateTime.UtcNow;
     }
+
+    public void ActivateProduct(string moduleId) { if (!ActiveProducts.Contains(moduleId)) ActiveProducts.Add(moduleId); }
+    public void DeactivateProduct(string moduleId) => ActiveProducts.Remove(moduleId);
 
     public void AddJurisdiction(Jurisdiction jurisdiction) => ActiveJurisdictions.Add(jurisdiction);
     public void AddBusinessMode(BusinessMode mode) => ActiveModes.Add(mode);

@@ -1189,6 +1189,8 @@
         "dependencies": {
           "BCrypt": "1.0.0",
           "BCrypt.Net-Core": "1.6.0",
+          "Fintech.Entities": "1.0.0",
+          "Fintech.Enums": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",

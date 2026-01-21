@@ -30,28 +30,29 @@ public class Account : IMultiTenant
     // Correção: O método agora aceita o ValueObject Money
     public void Debit(Money amount)
     {
-        if (!Balances.ContainsKey(amount.Currency))
+        if (!Balances.ContainsKey(amount.Currency.Code))
             throw new InvalidOperationException("Conta não possui saldo nesta moeda.");
 
-        var currentBalance = Balances[amount.Currency];
+        var currentBalance = Balances[amount.Currency.Code];
 
         if (currentBalance < amount)
             throw new InvalidOperationException("Saldo insuficiente.");
 
         // Atualiza o saldo
-        Balances[amount.Currency] = currentBalance - amount;
+        Balances[amount.Currency.Code] = currentBalance - amount;
 
         LastUpdated = DateTime.UtcNow;
     }
 
     public void Credit(Money amount)
     {
-        if (!Balances.ContainsKey(amount.Currency))
+        // Se a moeda não existe, inicializa com zero daquela moeda
+        if (!Balances.ContainsKey(amount.Currency.Code))
         {
-            Balances[amount.Currency] = Money.BRL(0);
+            Balances[amount.Currency.Code] = Money.Create(0, amount.Currency.Code);
         }
 
-        Balances[amount.Currency] = Balances[amount.Currency] + amount;
+        Balances[amount.Currency.Code] = Balances[amount.Currency.Code] + amount;
         LastUpdated = DateTime.UtcNow;
     }
 }

@@ -11,3 +11,14 @@ D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.dll
 D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\refint\Fintech.DTOs.dll
 D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech.DTOs.pdb
 D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\ref\Fintech.DTOs.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Core.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Entities.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Enums.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Exceptions.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.ValueObjects.dll
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Enums.pdb
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Entities.pdb
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Core.pdb
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.Exceptions.pdb
+D:\D.AI-bank\Fintech.DTOs\bin\Debug\net8.0\Fintech.ValueObjects.pdb
+D:\D.AI-bank\Fintech.DTOs\obj\Debug\net8.0\Fintech..6CFB1B69.Up2Date

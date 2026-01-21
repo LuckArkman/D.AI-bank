@@ -4,169 +4,103 @@
 
 ### 1. Multi-Tenancy Core Infrastructure
 - **ITenantProvider & TenantProvider**: Extracts `TenantId` from HTTP headers (`X-Tenant-Id`) or JWT claims
-- **Tenant Entity**: Refactored to represent "Institutional Profile" with:
-  - `ActiveJurisdictions` (List of `Jurisdiction` enum)
-  - `ActiveModes` (List of `BusinessMode` enum)
-  - `RegulatoryConfig` (Dictionary for declarative rules)
-- **Repository Filtering**: All repositories automatically filter by `TenantId`:
-  - AccountRepository
-  - UserRepository
-  - CardRepository
-  - LoanRepository
-  - InvestmentRepository
-  - LedgerRepository
-  - PixKeyRepository
-  - SagaRepository
+- **Tenant Entity**: Enhanced with `ActiveProducts`, `DefaultCurrency`, `TimeZoneId`.
+- **Repository Filtering**: All repositories automatically filter by `TenantId`.
+- **Performance**: 
+  - Distributed Cache (Redis) implemented for TenantRepository.
+  - MongoDB Indexes added for `TenantId` on critical collections (Accounts, Ledger, Rules, Users).
 
 ### 2. Regulatory Framework (Fintech.Regulatory)
-- **IRegulatoryPack**: Interface for country-specific regulatory rules
-- **RegulatoryRegistry**: Dynamic registry for regulatory packs
-- **BrazilRegulatoryPack**: Example implementation with:
-  - Night transfer limits (BACEN rule)
-  - Mandatory document validation
-  - Tax calculation (IOF, IR)
-- **IRegulatoryService**: Orchestrates regulatory checks across active jurisdictions
-- **ComplianceController**: API endpoints to manage active jurisdictions
+- **IRegulatoryPack**: Interface for country-specific regulatory rules.
+- **Implemented Packs**:
+  - `BrazilRegulatoryPack`: BACEN rules, Tax.
+  - `USRegulatoryPack`: BSA validation, SSN checks.
+  - `EURegulatoryPack`: AMLD5 checks.
+  - `UKRegulatoryPack`: Faster Payments limits.
+- **RegulatoryRegistry**: Dynamic registry for regulatory packs.
 
 ### 3. Business Rules Engine
-- **IBusinessRulesEngine**: Interface for declarative rule evaluation
-- **BusinessRulesEngine**: Implementation using DynamicExpresso for runtime expression evaluation
-- **BusinessRule**: Entity representing declarative rules with:
-  - Condition expressions
-  - Error messages
-  - Severity levels (Information, Warning, Error, Blocking)
-- **RuleExecutionResult**: Result object with success status, errors, and warnings
+- **IBusinessRulesEngine**: Interface for declarative rule evaluation.
+- **BusinessRulesEngine**: Implementation using DynamicExpresso.
+- **Persistence**: `RuleRepository` implementation with MongoDB.
+- **UI**: Rule Management Dashboard implemented in React/Vite (`CompliancePage.tsx`) with CRUD capabilities.
 
-### 4. Command Handlers Updated for Multi-Tenancy
-All command handlers now inject `ITenantProvider` and use `TenantId`:
-- RegisterPixKeyHandler
-- DebitAccountHandler
-- TransferFundsHandler (with regulatory validation)
-- DepositHandler
-- SendPixHandler
-- PixOrchestrator
-- IssueCardHandler (with multimodal checks)
+### 4. Currency and Time Zone Support
+- **Currency Value Object**: Support for Fiat (USD, BRL, EUR, GBP, JPY) and Crypto (BTC).
+- **Money Value Object**: Updated to use `Currency` object, validation for mixed-currency operations.
+- **Localization**: `TimeZoneInfo` value object for tenant-specific time handling.
+- **Exchange Service**: `CurrencyExchangeService` implemented (mock rates).
 
-### 5. Consumers Updated for Multi-Tenancy
-- **PixProcessConsumer**: Now injects `ITenantProvider` and uses `TenantId` for refund operations
+### 5. Product Modules
+- **Architecture**: Modular product system using `IProductModule` interface.
+- **Implemented Modules**:
+  - `CryptoWalletModule`
+  - `CardsModule`
+  - `LoansModule`
+- **Tenant Configuration**: `Tenant` entity tracks active products.
 
-### 6. Frontend Integration
-- **Centralized API Client** (`api.ts`): Axios instance with interceptors for:
-  - Authorization token
-  - X-Tenant-Id header
-- **BrandingProvider**: Dynamic tenant branding with CSS variables
-- **AuthStore**: Stores `tenantId` in global state
+### 6. Tenant Management & Onboarding
+- **Onboarding Service**: `TenantOnboardingService` creates Tenant, Admin User, Account, and API Key.
+- **UI**: Dedicated `TenantOnboardingPage` with form for Name, Mode, Jurisdiction, and Branding.
+- **API**: Admin API endpoints for onboarding and rule management.
 
-### 7. Enums for Tenet Architecture
-- **BusinessMode**: DigitalBank, PaymentInstitution, CryptoExchange, Neobank, etc.
-- **Jurisdiction**: Brazil, UnitedStates, UnitedKingdom, EuropeanUnion, etc.
+### 7. Frontend Integration (Fintech.UI)
+- **Tech Stack**: React, Vite, TailwindCSS (Premium Aesthetics).
+- **Admin Dashboard**:
+  - Compliance & Rules Tab.
+  - Active Rules List with severity badges.
+  - Rule Creation Modal with C# expression helper.
+  - Tenant Onboarding Wizard.
 
 ### 8. Testing
-- **All Unit Tests Passing**: 13/13 tests successful
-- Updated tests for:
-  - DebitAccountHandler (removed ledger verification)
-  - TransferFundsHandler (added regulatory service mock)
-  - AuthService (added transaction manager mock)
-  - CreateAccountHandler (added tenant provider mock)
-  - Account entity (added tenantId parameter)
+- **Unit Tests**: All 13 tests passing.
+- **Build Status**: Solution builds successfully.
 
 ## 📊 Build Status
 - **Solution Build**: ✅ Successful
 - **Unit Tests**: ✅ 13/13 Passing
-- **Warnings**: 56 (mostly BCrypt compatibility warnings - non-critical)
+- **Warnings**: ~50 (mostly BCrypt compatibility - non-critical)
 
-## 🔧 Technical Improvements
+## 🎯 Next Steps (Refinement & Advanced)
 
-### Dependencies Added
-- **DynamicExpresso.Core**: For runtime expression evaluation in Business Rules Engine
+### 1. Advanced Compliance Features
+- **Real-time Reporting**: Implement `ComplianceReportingService` with real data aggregation.
+- **Audit Trails**: Visual timeline of rule executions and failures.
+- **PDF Export**: Generate official regulatory reports (XML/PDF).
 
-### Project References
-- Fintech.Api → Fintech.Regulatory
-- Fintech.Commands → Fintech.Regulatory
-- Fintech.Services → Fintech.Regulatory
-- Fintech.Controllers → Fintech.Regulatory
-- Fintech.Regulatory → Fintech.Interfaces, Fintech.Enums, Fintech.Entities, Fintech.Core.Entities
+### 2. Product Module Deep Dive
+- **Crypto Wallet**: Integrate with actual blockchain nodes or mock integration.
+- **Cards**: Implement card issuance workflow and transaction simulation.
+- **Loans**: Implement credit scoring and loan approval workflow.
 
-## 🎯 Next Steps (Roadmap)
+### 3. User Experience
+- **Tenant Dashboard**: Customized dashboard based on `ActiveProducts`.
+- **Branding**: Apply tenant-specific colors/logos dynamically in the UI (started in BrandingProvider).
 
-### 1. Currency & Time Zone Support
-- Update `Money` Value Object to handle multiple currencies
-- Implement currency conversion services
-- Add time zone handling for tenant-specific operations
-
-### 2. Enhanced Business Rules Engine
-- Create rule repository for persistent storage
-- Build rule management UI
-- Implement rule versioning
-- Add rule testing framework
-
-### 3. Additional Regulatory Packs
-- Implement US regulatory pack (FinCEN, FDIC)
-- Implement EU regulatory pack (PSD2, GDPR)
-- Implement UK regulatory pack (FCA)
-
-### 4. Compliance Features
-- Automated regulatory reporting
-- Audit trail visualization
-- Compliance dashboard
-- Evidence generation for regulatory audits
-
-### 5. Product Modules (Multimodal)
-- Digital Account module
-- Crypto Wallet module
-- Card management module
-- Loan/Credit module
-- Investment module
-
-### 6. Tenant Management
-- Tenant onboarding workflow
-- License type configuration
-- Partner integration management
-- Branding customization UI
-
-### 7. Performance Optimization
-- Implement caching for tenant configurations
-- Optimize regulatory pack loading
-- Add database indexing for tenant queries
+### 4. Security
+- **RBAC**: Enforce strict Role-Based Access Control for Admin API.
+- **API Key Management**: Rotation and scoping of API keys.
 
 ## 📝 Known Issues
 
 ### Warnings
-- **BCrypt Compatibility**: Package 'BCrypt 1.0.0' restored using .NET Framework instead of net8.0
-  - **Impact**: Low - Package works but may have compatibility issues
-  - **Solution**: Consider migrating to BCrypt.Net-Next
-
-### Nullable Warnings
-- Some unit tests have nullable value type warnings
-  - **Impact**: Very Low - Tests are passing
-  - **Solution**: Add null-forgiving operators or null checks
+- **BCrypt Compatibility**: Package 'BCrypt 1.0.0' restored using .NET Framework instead of net8.0.
+- **TypeScript Lints**: Minor unused variable warnings in UI code.
 
 ## 🏗️ Architecture Highlights
 
 ### Immutable Core Principle
-The Tenet Core remains stable and universal, containing no country-specific rules. All regulatory logic is externalized into pluggable packs.
+The Tenet Core remains stable and universal. All regulatory logic is externalized into pluggable packs.
 
 ### Dynamic Configuration
-Tenants can activate/deactivate jurisdictions and business modes at runtime without code changes.
-
-### Compliance by Design
-- Immutable audit logs
-- Regulatory versioning
-- Automated evidence generation
-- On-demand compliance reports
+Tenants can activate/deactivate jurisdictions, business modes, and product modules at runtime.
 
 ### Scalability
-- Multi-tenant data isolation
-- Horizontal scalability through tenant partitioning
-- Microservices-ready architecture with outbox pattern
-
-## 📚 Documentation
-- `TENET_MANIFESTO.md`: Architectural principles and vision
-- `README.md`: Project overview and setup instructions
-- `SECURITY_AND_IMPLEMENTATION_ROADMAP.md`: Security analysis and roadmap
+- **Multi-tenant data isolation** via filtered repositories.
+- **Performance** optimized with Caching and Indexing.
 
 ---
 
 **Last Updated**: 2026-01-20
-**Status**: ✅ Core Implementation Complete
-**Next Milestone**: Currency & Time Zone Support
+**Status**: ✅ Core Tenet Features Implemented
+**Next Milestone**: Advanced Reporting & Deep Product Integration

@@ -26,10 +26,10 @@ public class OpenBankingService : IOpenBankingService
     public async Task<BalanceDto> GetBalanceAsync(Guid accountId)
     {
         var account = await _accountRepo.GetByIdAsync(accountId);
-        if (account == null) return null;
+        if (account == null) throw new KeyNotFoundException("Account not found");
 
         var balance = account.Balances.FirstOrDefault().Value; // Simplificado
-        return new BalanceDto(balance.Amount, balance.Currency);
+        return new BalanceDto(balance.Amount, balance.Currency.Code);
     }
 
     public async Task<IEnumerable<TransactionDto>> GetTransactionsAsync(Guid accountId)

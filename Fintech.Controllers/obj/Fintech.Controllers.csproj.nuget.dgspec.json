@@ -450,7 +450,14 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
+              },
+              "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
+                "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

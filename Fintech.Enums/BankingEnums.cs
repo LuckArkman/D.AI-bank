@@ -8,7 +8,8 @@ public enum AccountProfileType
     SmallBusiness,      // MEI/Pequena Empresa
     Salary,             // Conta Salário
     PaymentProvider,    // Conta de Pagamento
-    Institutional       // Institucional (Bancos/Corretoras)
+    Institutional,       // Institucional (Bancos/Corretoras)
+    Business
 }
 
 public enum CardType

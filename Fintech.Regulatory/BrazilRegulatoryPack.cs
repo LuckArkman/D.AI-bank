@@ -1,7 +1,7 @@
 using Fintech.Enums;
 using Fintech.Entities;
 using Fintech.Core.Entities;
-using Fintech.Regulatory.Rules;
+using Fintech.Interfaces;
 
 namespace Fintech.Regulatory.Packs;
 
