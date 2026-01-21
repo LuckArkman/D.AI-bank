@@ -16,6 +16,7 @@ public class InternationalTransferHandler
     private readonly IRegulatoryService _regulatoryService;
     private readonly IEnumerable<ISettlementGateway> _settlementGateways;
     private readonly ITaxationService _taxationService;
+    private readonly ILiquidityService _liquidityService;
 
     public InternationalTransferHandler(
         ITransactionManager txManager,
@@ -24,7 +25,8 @@ public class InternationalTransferHandler
         ITenantProvider tenantProvider,
         IRegulatoryService regulatoryService,
         IEnumerable<ISettlementGateway> settlementGateways,
-        ITaxationService taxationService)
+        ITaxationService taxationService,
+        ILiquidityService liquidityService)
     {
         _txManager = txManager;
         _accountRepo = accountRepo;
@@ -33,6 +35,7 @@ public class InternationalTransferHandler
         _regulatoryService = regulatoryService;
         _settlementGateways = settlementGateways;
         _taxationService = taxationService;
+        _liquidityService = liquidityService;
     }
 
     public async Task<string> Handle(Guid fromAccountId, decimal amount, string currencyCode, string network, string destinationBank, string destinationAccount)
@@ -45,6 +48,9 @@ public class InternationalTransferHandler
 
             // 1. Regulatory Validation
             await _regulatoryService.ValidateTransactionAsync(fromAcc, amount, "INTERNATIONAL_TRANSFER");
+
+            // 1.1 Liquidity Check
+            await _liquidityService.EnsureLiquidityAsync(network, currencyCode, amount);
 
             // 2. Taxation
             var totalTax = await _taxationService.CalculateTotalTaxAsync(fromAcc, amount, "INTERNATIONAL_TRANSFER");
@@ -78,6 +84,9 @@ public class InternationalTransferHandler
             {
                 throw new DomainException($"Settlement failed: {settlementResponse.ErrorMessage}");
             }
+
+            // 6. Liquidity Accounting
+            await _liquidityService.RegisterOutflowAsync(network, currencyCode, amount);
 
             await uow.CommitAsync();
             return settlementResponse.TransactionReference;

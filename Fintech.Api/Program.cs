@@ -101,6 +101,7 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TenantRepository>();
 builder.Services.AddScoped<IRuleRepository, RuleRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoRepository>();
+builder.Services.AddScoped<ILiquidityRepository, LiquidityRepository>();
 
 
 // 3. Services
@@ -130,6 +131,7 @@ builder.Services.AddScoped<ITaxationService, TaxationService>();
 builder.Services.AddScoped<IKycProvider, JumioKycProvider>();
 builder.Services.AddScoped<ISettlementGateway, SwiftGateway>();
 builder.Services.AddScoped<ISettlementGateway, SepaGateway>();
+builder.Services.AddScoped<ILiquidityService, LiquidityService>();
 builder.Services.AddSingleton<IMessageBus, RabbitMqClient>();
 
 // Tenet Regulatory

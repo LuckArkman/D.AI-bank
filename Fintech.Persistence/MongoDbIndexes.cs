@@ -84,5 +84,13 @@ public static class MongoDbIndexes
                 Builders<CryptoAsset>.IndexKeys.Ascending(x => x.AccountId).Ascending(x => x.Symbol)
             )
         );
+        // Liquidity Pools
+        var liquidityCollection = db.GetCollection<LiquidityPool>("liquidity_pools");
+        await liquidityCollection.Indexes.CreateOneAsync(
+            new CreateIndexModel<LiquidityPool>(
+                Builders<LiquidityPool>.IndexKeys.Ascending(x => x.Network).Ascending(x => x.CurrencyCode),
+                new CreateIndexOptions { Unique = true }
+            )
+        );
     }
 }
