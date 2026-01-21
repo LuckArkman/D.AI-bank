@@ -40,7 +40,8 @@ public class UKRegulatoryPack : IRegulatoryPack
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
-        if (operationType == "STAMP_DUTY") return amount * 0.005m; // 0.5% Stamp Duty
+        if (operationType == "STAMP_DUTY") return amount * 0.005m;
+        if (operationType == "INTERNATIONAL_TRANSFER") return 10.0m; // fixed GBP 10.00 fee
         return 0;
     }
 }

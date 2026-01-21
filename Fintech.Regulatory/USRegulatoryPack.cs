@@ -40,8 +40,8 @@ public class USRegulatoryPack : IRegulatoryPack
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
-        // Note: US tax is complex, this is just a placeholder for a specific state tax simulation
         if (operationType == "STATE_TAX_NY") return amount * 0.08875m;
+        if (operationType == "INTERNATIONAL_TRANSFER") return 15.0m; // Fixed compliance fee
         return 0;
     }
 }

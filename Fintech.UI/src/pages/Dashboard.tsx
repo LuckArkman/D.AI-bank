@@ -13,7 +13,6 @@ import {
     Search,
     Plus,
     Globe,
-    Users,
     RefreshCcw,
     TrendingUp,
     ShieldCheck
@@ -27,9 +26,9 @@ import PixManagement from './PixManagement';
 import CardsPage from './CardsPage';
 import LoansPage from './LoansPage';
 import InvestmentsPage from './InvestmentsPage';
-import InvestmentsPage from './InvestmentsPage';
 import CompliancePage from './CompliancePage';
 import TenantOnboardingPage from './TenantOnboardingPage';
+import TreasuryPage from './TreasuryPage';
 import DepositModal from '../components/DepositModal';
 import PixTransferModal from '../components/PixTransferModal';
 import { Landmark, PieChart } from 'lucide-react';
@@ -105,6 +104,7 @@ const Dashboard = () => {
                     <MenuLink to="/dashboard/history" icon={<History />} label="Extrato" />
                     <MenuLink to="/dashboard/pix" icon={<Zap />} label="Área Pix" />
                     <MenuLink to="/dashboard/compliance" icon={<ShieldCheck />} label="Compliance & Rules" />
+                    <MenuLink to="/dashboard/treasury" icon={<Landmark />} label="Treasury & Flows" />
                     <MenuLink to="/dashboard/admin/onboarding" icon={<Globe />} label="New Tenant" />
                     <MenuLink to="/dashboard/cards" icon={<CreditCard />} label="Meus Cartões" />
                     <MenuLink to="/dashboard/loans" icon={<Landmark />} label="Créditos" />
@@ -346,6 +346,7 @@ const Dashboard = () => {
                     <Route path="/loans" element={<LoansPage />} />
                     <Route path="/investments" element={<InvestmentsPage />} />
                     <Route path="/compliance" element={<CompliancePage />} />
+                    <Route path="/treasury" element={<TreasuryPage />} />
                     <Route path="/admin/onboarding" element={<TenantOnboardingPage />} />
 
                     <Route path="*" element={

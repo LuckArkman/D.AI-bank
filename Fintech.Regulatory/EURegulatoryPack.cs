@@ -41,7 +41,8 @@ public class EURegulatoryPack : IRegulatoryPack
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
-        if (operationType == "VAT_TRANSACTION") return amount * 0.20m; // Average VAT
+        if (operationType == "VAT_TRANSACTION") return amount * 0.20m;
+        if (operationType == "INTERNATIONAL_TRANSFER") return amount * 0.005m; // 0.5% Cross-border fee
         return 0;
     }
 }

@@ -41,11 +41,8 @@ public class BrazilRegulatoryPack : IRegulatoryPack
 
     public decimal CalculateTax(decimal amount, string operationType)
     {
-        // Exemplo: IOF ou imposto sobre investimentos
-        if (operationType == "INVESTMENT_GAIN")
-        {
-            return amount * 0.15m; // 15% IR
-        }
+        if (operationType == "INVESTMENT_GAIN") return amount * 0.15m;
+        if (operationType == "INTERNATIONAL_TRANSFER") return amount * 0.011m; // 1.1% IOF
         return 0;
     }
 }
