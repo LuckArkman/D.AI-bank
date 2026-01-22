@@ -3029,8 +3029,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
+            "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
             },
             "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.DTOs\\Fintech.DTOs.csproj"
@@ -3038,8 +3038,8 @@
             "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
+            "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj"
             }
           }
         }

@@ -26,7 +26,7 @@ public class DepositHandler
     {
         if (amount <= 0) throw new DomainException("O valor do depósito deve ser positivo.");
 
-        using var uow = await _txManager.BeginTransactionAsync();
+        //using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             var account = await _accountRepo.GetByIdAsync(accountId);
@@ -41,11 +41,11 @@ public class DepositHandler
             var tenantId = _tenantProvider.TenantId ?? throw new Exception("TenantId não resolvido.");
             await _ledgerRepo.AddAsync(new LedgerEvent(accountId, tenantId, "DEPOSIT_BOLETO", amount, currencyCode, Guid.NewGuid()));
 
-            await uow.CommitAsync();
+            //await uow.CommitAsync();
         }
         catch
         {
-            await uow.AbortAsync();
+            //await uow.AbortAsync();
             throw;
         }
     }

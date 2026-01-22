@@ -1,0 +1,127 @@
+@page "/login"
+@layout Layout.EmptyLayout
+@using Fintech.Web.Models
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="auth-page d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="card border-0 shadow-lg p-4 rounded-4">
+                    <div class="text-center mb-4">
+                        <a href="/" class="text-decoration-none">
+                            <span class="fs-2 fw-bold text-primary">D.AI</span> <span
+                                class="fs-2 fw-bold text-dark">Bank</span>
+                        </a>
+                        <p class="text-muted mt-2">Acesse sua conta para continuar</p>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @errorMessage
+                        </div>
+                    }
+
+                    <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+                        <DataAnnotationsValidator />
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase">E-mail</label>
+                            <InputText @bind-Value="loginModel.Email"
+                                class="form-control form-control-lg bg-light border-0 shadow-none fs-6"
+                                placeholder="nome@exemplo.com" />
+                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger small" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase">Senha</label>
+                            <InputText @bind-Value="loginModel.Password" type="password"
+                                class="form-control form-control-lg bg-light border-0 shadow-none fs-6"
+                                placeholder="••••••••" />
+                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small" />
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg shadow fs-6 py-3"
+                                disabled="@isSubmitting">
+                                @if (isSubmitting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"
+                                        aria-hidden="true"></span>
+                                    <span>Entrando...</span>
+                                }
+                                else
+                                {
+                                    <span>Entrar</span>
+                                }
+                            </button>
+                        </div>
+                    </EditForm>
+
+                    <div class="text-center mt-4">
+                        <p class="small text-muted mb-0">Não tem uma conta? <a href="/register"
+                                class="text-primary fw-bold text-decoration-none">Abra agora</a></p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="/" class="text-muted small text-decoration-none"><i class="bi bi-arrow-left me-1"></i>
+                        Voltar para Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginViewModel loginModel = new();
+    private string? errorMessage;
+    private bool isSubmitting = false;
+
+    private async Task HandleLogin()
+    {
+        errorMessage = null;
+        isSubmitting = true;
+
+        try
+        {
+            var request = new LoginRequest(loginModel.Email, loginModel.Password);
+            var result = await AuthService.LoginAsync(request);
+            if (result == null)
+            {
+                Navigation.NavigateTo("/profile");
+            }
+            else
+            {
+                errorMessage = result;
+            }
+        }
+        catch (Exception)
+        {
+            errorMessage = "Ocorreu um erro ao processar sua solicitação.";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}
+
+<style>
+    .auth-page {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+    }
+
+    .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1) !important;
+        border: 1px solid #0d6efd !important;
+    }
+</style>

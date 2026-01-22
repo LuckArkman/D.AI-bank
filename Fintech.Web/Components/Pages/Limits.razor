@@ -1,0 +1,102 @@
+@page "/limits"
+@attribute [Authorize]
+@inject BankingService BankingService
+
+<div class="dashboard-header mb-4">
+    <h1 class="fw-bold h2">Configurações de Limites</h1>
+    <p class="text-muted">Personalize seus limites diários e mensais para maior segurança.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <div class="limit-item mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="fw-bold mb-1">Transferências e PIX</h5>
+                            <p class="small text-muted mb-0">Limite máximo por transação instantânea.</p>
+                        </div>
+                        <span class="fs-4 fw-bold text-primary">R$ 5.000,00</span>
+                    </div>
+                    <input type="range" class="form-range" min="0" max="20000" step="100" value="5000">
+                    <div class="d-flex justify-content-between small text-muted mt-2">
+                        <span>R$ 0</span>
+                        <span>R$ 20.000</span>
+                    </div>
+                </div>
+
+                <div class="limit-item mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="fw-bold mb-1">Pagamentos de Boletos</h5>
+                            <p class="small text-muted mb-0">Limite diário para liquidação de títulos.</p>
+                        </div>
+                        <span class="fs-4 fw-bold text-primary">R$ 10.000,00</span>
+                    </div>
+                    <input type="range" class="form-range" min="0" max="50000" step="500" value="10000">
+                    <div class="d-flex justify-content-between small text-muted mt-2">
+                        <span>R$ 0</span>
+                        <span>R$ 50.000</span>
+                    </div>
+                </div>
+
+                <div class="limit-item mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="fw-bold mb-1">Compras no Cartão (Físico)</h5>
+                            <p class="small text-muted mb-0">Limite máximo para transações presence.</p>
+                        </div>
+                        <span class="fs-4 fw-bold text-primary">R$ 3.500,00</span>
+                    </div>
+                    <input type="range" class="form-range" min="0" max="15000" step="100" value="3500">
+                    <div class="d-flex justify-content-between small text-muted mt-2">
+                        <span>R$ 0</span>
+                        <span>R$ 15.000</span>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="alert alert-info border-0 rounded-4 p-3 mb-4">
+                    <div class="d-flex">
+                        <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Horário Noturno (20h às 06h)</h6>
+                            <p class="small mb-0">Por regras do BACEN, o limite para transferências neste período é
+                                fixado em R$ 1.000,00 para sua segurança.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary py-3 rounded-4 shadow">Salvar Novas Configurações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 bg-dark text-white p-2">
+            <div class="card-body">
+                <h5 class="fw-bold mb-4">Dicas de Segurança</h5>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-3 d-flex align-items-start">
+                        <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                        <span class="small opacity-75">Mantenha seus limites baixos quando não for utilizá-los.</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-start">
+                        <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                        <span class="small opacity-75">Use cartões virtuais para compras online e defina limites
+                            específicos para cada um.</span>
+                    </li>
+                    <li class="d-flex align-items-start">
+                        <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                        <span class="small opacity-75">Ative notificações push para ser avisado de qualquer movimentação
+                            suspeita.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

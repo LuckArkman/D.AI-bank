@@ -59,7 +59,7 @@ public class TenantOnboardingService : ITenantOnboardingService
         await _tenantRepo.AddAsync(tenant);
 
         // 2. Create Admin User via Transaction
-        using var uow = await _txManager.BeginTransactionAsync();
+        //using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             // Create Bank Account for Admin using the specific TenantId
@@ -71,7 +71,7 @@ public class TenantOnboardingService : ITenantOnboardingService
 
             await _userRepo.AddAsync(adminUser);
 
-            await uow.CommitAsync();
+            //await uow.CommitAsync();
 
             // Generate API Key (placeholder logic)
             var apiKey = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
@@ -80,7 +80,7 @@ public class TenantOnboardingService : ITenantOnboardingService
         }
         catch
         {
-            await uow.AbortAsync();
+            //await uow.AbortAsync();
             throw;
         }
     }

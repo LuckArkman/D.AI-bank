@@ -2799,11 +2799,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj",
+      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj",
       "projectName": "Fintech.Core",
-      "projectPath": "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj",
+      "projectPath": "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "d:\\D.AI-bank\\Fintech.Core\\obj\\",
+      "outputPath": "D:\\D.AI-bank\\Fintech.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

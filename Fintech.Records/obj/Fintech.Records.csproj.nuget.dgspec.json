@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {}
+    "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {}
   },
   "projects": {
     "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
@@ -100,14 +100,14 @@
         }
       }
     },
-    "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
+    "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj",
+        "projectUniqueName": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj",
         "projectName": "Fintech.Records",
-        "projectPath": "d:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj",
+        "projectPath": "D:\\D.AI-bank\\Fintech.Records\\Fintech.Records.csproj",
         "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-        "outputPath": "d:\\D.AI-bank\\Fintech.Records\\obj\\",
+        "outputPath": "D:\\D.AI-bank\\Fintech.Records\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -8786,8 +8786,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Persistence\\Fintech.Persistence.csproj"

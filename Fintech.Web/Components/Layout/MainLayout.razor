@@ -1,0 +1,80 @@
+﻿@inherits LayoutComponentBase
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="page">
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-dark text-white"
+        style="width: 280px; height: 100vh; position: fixed;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-4 fw-bold"><span class="text-primary">D.AI</span> Bank</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <NavLink class="nav-link text-white d-flex align-items-center" href="/profile" Match="NavLinkMatch.All">
+                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="nav-link text-white d-flex align-items-center" href="/cards">
+                    <i class="bi bi-credit-card me-2"></i> Cartões
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="nav-link text-white d-flex align-items-center" href="/operations">
+                    <i class="bi bi-arrow-left-right me-2"></i> Operações
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="nav-link text-white d-flex align-items-center" href="/limits">
+                    <i class="bi bi-sliders me-2"></i> Limites
+                </NavLink>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <AuthorizeView>
+                <Authorized>
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=@context.User.Identity?.Name&background=0d6efd&color=fff"
+                            alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>@context.User.Identity?.Name</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><button class="dropdown-item" @onclick="HandleLogout">Sair</button></li>
+                    </ul>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+
+    <main class="content-wrapper" style="margin-left: 280px;">
+        <div class="container-fluid p-4">
+            @Body
+        </div>
+    </main>
+</div>
+
+@code {
+    private async Task HandleLogout()
+    {
+        await AuthService.LogoutAsync();
+        Navigation.NavigateTo("/");
+    }
+}
+
+<style>
+    .nav-link.active {
+        background-color: #0d6efd !important;
+    }
+
+    .nav-link:hover:not(.active) {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .content-wrapper {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+    }
+</style>

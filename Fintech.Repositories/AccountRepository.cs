@@ -27,9 +27,6 @@ public class AccountRepository : IAccountRepository
             Builders<Account>.Filter.Eq(x => x.Id, id),
             Builders<Account>.Filter.Eq(x => x.TenantId, _tenantProvider.TenantId)
         );
-
-        // Se houver uma transação ativa no contexto, usamos ela.
-        // Isso garante "Read Your Own Writes" dentro da transação.
         var account = _context.Session != null
             ? await _collection.Find(_context.Session, filter).FirstOrDefaultAsync()
             : await _collection.Find(filter).FirstOrDefaultAsync();
@@ -56,34 +53,21 @@ public class AccountRepository : IAccountRepository
 
     public async Task UpdateAsync(Account account)
     {
-        // Regra de segurança: Updates de saldo DEVEM ocorrer dentro de transação/UoW
         if (_context.Session == null)
         {
             throw new InvalidOperationException("Operações de escrita em Conta exigem uma Transação ativa (UnitOfWork).");
         }
-
-        // --- OPTIMISTIC CONCURRENCY CONTROL (OCC) ---
-        // A query de update procura pelo ID E pela Versão que foi lida da memória.
         var filter = Builders<Account>.Filter.And(
             Builders<Account>.Filter.Eq(x => x.Id, account.Id),
             Builders<Account>.Filter.Eq(x => x.TenantId, _tenantProvider.TenantId),
             Builders<Account>.Filter.Eq(x => x.Version, account.Version)
         );
-
-        // Preparamos o update:
-        // 1. Atualiza os saldos (Value Object Money já serializado corretamente)
-        // 2. Atualiza data
-        // 3. Incrementa a versão (+1) atomicamente no banco
         var update = Builders<Account>.Update
             .Set(x => x.Balances, account.Balances)
             .Set(x => x.LastUpdated, DateTime.UtcNow)
             .Inc(x => x.Version, 1);
 
         var result = await _collection.UpdateOneAsync(_context.Session, filter, update);
-
-        // Se ModifiedCount for 0, significa que:
-        // A) A conta não existe mais.
-        // B) A versão no banco mudou desde que lemos (Race Condition).
         if (result.ModifiedCount == 0)
         {
             throw new ConcurrencyException("Falha de concorrência: O registro foi modificado por outra transação antes da conclusão desta.");

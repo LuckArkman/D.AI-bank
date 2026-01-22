@@ -1,0 +1,164 @@
+@page "/register"
+@layout Layout.EmptyLayout
+@using Fintech.Web.Models
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="auth-page d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card border-0 shadow-lg p-4 rounded-4">
+                    <div class="text-center mb-4">
+                        <a href="/" class="text-decoration-none">
+                            <span class="fs-2 fw-bold text-primary">D.AI</span> <span
+                                class="fs-2 fw-bold text-dark">Bank</span>
+                        </a>
+                        <p class="text-muted mt-2">Crie sua conta global agora</p>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @errorMessage
+                        </div>
+                    }
+
+                    <EditForm Model="registerModel" OnValidSubmit="HandleRegister">
+                        <DataAnnotationsValidator />
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-bold small text-uppercase">Nome Completo</label>
+                                <InputText @bind-Value="registerModel.Name"
+                                    class="form-control form-control-lg bg-light border-0 fs-6"
+                                    placeholder="Ex: João Silva" />
+                                <ValidationMessage For="@(() => registerModel.Name)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-bold small text-uppercase">E-mail</label>
+                                <InputText @bind-Value="registerModel.Email"
+                                    class="form-control form-control-lg bg-light border-0 fs-6"
+                                    placeholder="nome@exemplo.com" />
+                                <ValidationMessage For="@(() => registerModel.Email)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-bold small text-uppercase">Senha</label>
+                                <InputText @bind-Value="registerModel.Password" type="password"
+                                    class="form-control form-control-lg bg-light border-0 fs-6"
+                                    placeholder="••••••••" />
+                                <ValidationMessage For="@(() => registerModel.Password)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-bold small text-uppercase">Depósito Inicial
+                                    (Opcional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-0">R$</span>
+                                    <InputNumber @bind-Value="registerModel.InitialDeposit"
+                                        class="form-control form-control-lg bg-light border-0 fs-6" />
+                                </div>
+                                <ValidationMessage For="@(() => registerModel.InitialDeposit)"
+                                    class="text-danger small" />
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-4 mt-2">
+                            <input class="form-check-input" type="checkbox" id="terms" required>
+                            <label class="form-check-label small text-muted" for="terms">
+                                Eu concordo com os Termos de Uso e Política de Privacidade.
+                            </label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg shadow fs-6 py-3"
+                                disabled="@isSubmitting">
+                                @if (isSubmitting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"
+                                        aria-hidden="true"></span>
+                                    <span>Criando Conta...</span>
+                                }
+                                else
+                                {
+                                    <span>Cadastrar e Abrir Conta</span>
+                                }
+                            </button>
+                        </div>
+                    </EditForm>
+
+                    <div class="text-center mt-4">
+                        <p class="small text-muted mb-0">Já tem uma conta? <a href="/login"
+                                class="text-primary fw-bold text-decoration-none">Fazer Login</a></p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="/" class="text-muted small text-decoration-none"><i class="bi bi-arrow-left me-1"></i>
+                        Voltar para Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegisterViewModel registerModel = new();
+    private string? errorMessage;
+    private bool isSubmitting = false;
+
+    private async Task HandleRegister()
+    {
+        errorMessage = null;
+        isSubmitting = true;
+
+        try
+        {
+            var request = new RegisterRequest(
+            registerModel.Email,
+            registerModel.Password,
+            registerModel.Name,
+            registerModel.InitialDeposit,
+            AccountProfileType.StandardIndividual,
+            "BRL"
+            );
+
+            var result = await AuthService.RegisterAsync(request);
+            if (result == null)
+            {
+                Navigation.NavigateTo("/login?registered=true");
+            }
+            else
+            {
+                errorMessage = result;
+            }
+        }
+        catch (Exception)
+        {
+            errorMessage = "Ocorreu um erro ao processar sua solicitação.";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}
+
+<style>
+    .auth-page {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+    }
+
+    .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1) !important;
+        border: 1px solid #0d6efd !important;
+    }
+</style>

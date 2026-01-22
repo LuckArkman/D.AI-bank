@@ -1,0 +1,177 @@
+@page "/cards"
+@attribute [Authorize]
+@using Fintech.Web.Models
+@inject CardService CardService
+
+<div class="dashboard-header mb-4 d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="fw-bold h2">Gestão de Cartões</h1>
+        <p class="text-muted">Controle seus cartões físicos e virtuais.</p>
+    </div>
+    <button class="btn btn-primary rounded-4 px-4 py-2" data-bs-toggle="modal" data-bs-target="#issueCardModal">
+        <i class="bi bi-plus-lg me-2"></i> Novo Cartão
+    </button>
+</div>
+
+<div class="row g-4">
+    @if (cards == null)
+    {
+        <div class="col-12 text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3">Carregando seus cartões...</p>
+        </div>
+    }
+    else if (!cards.Any())
+    {
+        <div class="col-12 text-center py-5 bg-white rounded-4 shadow-sm">
+            <i class="bi bi-credit-card-2-back display-4 text-muted"></i>
+            <p class="mt-3 text-muted">Você ainda não possui cartões ativos.</p>
+        </div>
+    }
+    else
+    {
+        foreach (var card in cards)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+                    <div class="card-body p-4 @(card.IsVirtual ? "bg-dark" : "bg-gradient-blue") text-white position-relative">
+                        <div class="d-flex justify-content-between mb-5">
+                            <span class="badge bg-white bg-opacity-25 rounded-pill px-3">@(card.IsVirtual ? "Virtual" :
+                                                        "Físico")</span>
+                            <span class="fw-bold">@card.Brand</span>
+                        </div>
+
+                        <div class="mb-5">
+                            <h4 class="fw-medium mb-1" style="letter-spacing: 2px;">@(card.IsBlocked ? "**** **** **** ****" :
+                                                        card.CardNumber)</h4>
+                            <p class="small opacity-75 mb-0">VALIDADE: @card.ExpirationDate</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div>
+                                <p class="small text-uppercase opacity-75 mb-0">Titular</p>
+                                <p class="mb-0 fw-bold">@card.CardHolderName</p>
+                            </div>
+                            @if (!card.IsBlocked)
+                            {
+                                <div class="text-end">
+                                    <p class="small text-uppercase opacity-75 mb-0">CVV</p>
+                                    <p class="mb-0 fw-bold">@card.Cvv</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted small fw-bold text-uppercase">Limite Disponível</span>
+                            <span class="fw-bold">R$ @card.CreditLimit.ToString("N2")</span>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button
+                                class="btn @(card.IsBlocked ? "btn-outline-success" : "btn-outline-danger") btn-sm rounded-pill"
+                                @onclick="() => ToggleBlock(card.Id)">
+                                <i class="bi @(card.IsBlocked ? "bi-unlock" : "bi-lock") me-2"></i>
+                                @(card.IsBlocked ? "Desbloquear" : "Bloquear")
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm rounded-pill" data-bs-toggle="modal"
+                                data-bs-target="#editLimitModal" @onclick="() => selectedCard = card">
+                                <i class="bi bi-pencil me-2"></i> Ajustar Limite
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- Issue Card Modal -->
+<div class="modal fade" id="issueCardModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow">
+            <div class="modal-header border-0 p-4 pb-0">
+                <h5 class="modal-title fw-bold">Novo Cartão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-uppercase">Bandeira</label>
+                    <select class="form-select bg-light border-0" @bind="newCardModel.Brand">
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="Visa">Visa</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-uppercase">Tipo</label>
+                    <div class="d-flex gap-2">
+                        <button
+                            class="btn @(newCardModel.IsVirtual ? "btn-primary" : "btn-outline-primary") flex-grow-1"
+                            @onclick="() => newCardModel.IsVirtual = true">Virtual</button>
+                        <button
+                            class="btn @(!newCardModel.IsVirtual ? "btn-primary" : "btn-outline-primary") flex-grow-1"
+                            @onclick="() => newCardModel.IsVirtual = false">Físico</button>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-uppercase">Limite Sugerido</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-0">R$</span>
+                        <input type="number" class="form-control bg-light border-0" @bind="newCardModel.CreditLimit">
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 py-3 shadow" @onclick="IssueCard" data-bs-dismiss="modal">Confirmar
+                    Solicitação</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<CardDto>? cards;
+    private IssueCardViewModel newCardModel = new();
+    private CardDto? selectedCard;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCards();
+    }
+
+    private async Task LoadCards()
+    {
+        cards = await CardService.ListCardsAsync();
+    }
+
+    private async Task IssueCard()
+    {
+        var request = new IssueCardRequest(newCardModel.Brand, newCardModel.Type, newCardModel.IsVirtual,
+        newCardModel.CreditLimit);
+        var result = await CardService.IssueCardAsync(request);
+        if (result)
+        {
+            await LoadCards();
+        }
+    }
+
+    private async Task ToggleBlock(Guid cardId)
+    {
+        var result = await CardService.ToggleBlockAsync(cardId);
+        if (result)
+        {
+            await LoadCards();
+        }
+    }
+}
+
+<style>
+    .bg-gradient-blue {
+        background: linear-gradient(135deg, #0d6efd 0%, #003da1 100%);
+    }
+
+    .card {
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>

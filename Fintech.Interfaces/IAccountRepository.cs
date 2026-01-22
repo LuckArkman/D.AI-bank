@@ -5,7 +5,7 @@ namespace Fintech.Core.Interfaces;
 
 public interface IAccountRepository
 {
-    Task<Account> GetByIdAsync(Guid id);
+    Task<Account> GetByIdAsync(Guid accountId);
     Task AddAsync(Account account);
     Task UpdateAsync(Account account);
     Task<IEnumerable<Account>> GetAllAsync();

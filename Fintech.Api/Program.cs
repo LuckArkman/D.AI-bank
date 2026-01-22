@@ -20,7 +20,6 @@ using MongoDB.Bson.Serialization.Serializers;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.RateLimiting;
-using System.Threading.RateLimiting;
 using Polly;
 using Polly.Extensions.Http;
 
@@ -55,7 +54,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Default", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Exemplo de frontend
+        policy.SetIsOriginAllowed(origin => true) // Para desenvolvimento, permite qualquer origem
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
@@ -93,12 +92,6 @@ builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 builder.Services.AddScoped<IInvestmentRepository, InvestmentRepository>();
 builder.Services.AddScoped<ITenantRepository, TenantRepository>();
-builder.Services.AddScoped<AccountRepository>();
-builder.Services.AddScoped<SagaRepository>();
-builder.Services.AddScoped<LedgerRepository>();
-builder.Services.AddScoped<PixKeyRepository>();
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<TenantRepository>();
 builder.Services.AddScoped<IRuleRepository, RuleRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoRepository>();
 builder.Services.AddScoped<ILiquidityRepository, LiquidityRepository>();

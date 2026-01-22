@@ -35,7 +35,7 @@ public class AuthService
 
     public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
     {
-        using var uow = await _txManager.BeginTransactionAsync();
+        //using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             if (await _userRepo.ExistsByEmailAsync(request.Email))
@@ -52,14 +52,14 @@ public class AuthService
 
             await _userRepo.AddAsync(user);
 
-            await uow.CommitAsync();
+            //await uow.CommitAsync();
 
             var token = GenerateJwt(user);
             return new AuthResponse(token, user.Name, user.Email, user.AccountId);
         }
         catch
         {
-            await uow.AbortAsync();
+            //await uow.AbortAsync();
             throw;
         }
     }

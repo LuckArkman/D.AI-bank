@@ -33,7 +33,7 @@ public class CreateAccountHandler : ICreateAccountHandler
 
     public async Task<Guid> Handle(decimal initialBalance, Guid tenantId, AccountProfileType profileType = AccountProfileType.StandardIndividual, string currencyCode = "BRL")
     {
-        using var uow = await _txManager.BeginTransactionAsync();
+        //using var uow = await _txManager.BeginTransactionAsync();
         try
         {
             var accountId = Guid.NewGuid();
@@ -59,12 +59,12 @@ public class CreateAccountHandler : ICreateAccountHandler
             };
             await _ledgerRepo.AddAsync(ledger);
 
-            await uow.CommitAsync();
+            //await uow.CommitAsync();
             return accountId;
         }
         catch
         {
-            await uow.AbortAsync();
+            //await uow.AbortAsync();
             throw;
         }
     }

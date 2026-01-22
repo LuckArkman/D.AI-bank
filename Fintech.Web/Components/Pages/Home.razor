@@ -1,0 +1,167 @@
+﻿@page "/"
+@layout Layout.EmptyLayout
+
+<div class="landing-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <span class="text-primary">D.AI</span> Bank
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#features">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary px-4 ms-lg-3" href="/login">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary px-4 ms-lg-3 text-white" href="/register">Abrir Conta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section d-flex align-items-center">
+        <div class="container text-center text-white">
+            <h1 class="display-3 fw-bold mb-4 animate-fade-in-up">O Futuro das Finanças é <span
+                    class="text-primary">Inteligente</span></h1>
+            <p class="lead mb-5 opacity-75">Uma infraestrutura bancária global, modular e segura. Desenvolvida para a
+                nova economia digital.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/register" class="btn btn-primary btn-lg px-5 py-3 fs-5 shadow">Começar Agora</a>
+                <a href="#features" class="btn btn-outline-light btn-lg px-5 py-3 fs-5">Saiba Mais</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold fs-1">Por que escolher o D.AI Bank?</h2>
+                <p class="text-muted fs-5">Tecnologia de ponta para sua liberdade financeira.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="feature-icon mb-4">
+                            <i class="bi bi-shield-lock-fill fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h4 fw-bold">Segurança Máxima</h3>
+                        <p class="text-muted">Arquitetura baseada em ledger imutável e autenticação multifator para
+                            proteger seu patrimônio.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="feature-icon mb-4">
+                            <i class="bi bi-globe fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h4 fw-bold">Global-First</h3>
+                        <p class="text-muted">Suporte nativo a múltiplas moedas e jurisdições, facilitando suas
+                            transações internacionais.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="feature-icon mb-4">
+                            <i class="bi bi-lightning-charge-fill fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h4 fw-bold">PIX Instantâneo</h3>
+                        <p class="text-center">Envie e receba pagamentos em segundos com nossa tecnologia de
+                            orquestração de alta performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark text-white text-center">
+        <div class="container py-5">
+            <h2 class="display-5 fw-bold mb-4">Pronto para transformar sua vida financeira?</h2>
+            <p class="lead mb-5 opacity-75">Junte-se a milhares de usuários que já confiam no D.AI Bank.</p>
+            <a href="/register" class="btn btn-primary btn-lg px-5 py-3 fs-5">Abra sua conta gratuita</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black text-white">
+        <div class="container text-center">
+            <div class="mb-4">
+                <span class="fs-4 fw-bold text-primary">D.AI Bank</span>
+            </div>
+            <p class="opacity-50">&copy; 2026 D.AI Bank. Todos os direitos reservados. Projeto Tenet.</p>
+        </div>
+    </footer>
+</div>
+
+<style>
+    .landing-page {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
+        height: 100vh;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+
+    .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    body {
+        scroll-behavior: smooth;
+    }
+</style>

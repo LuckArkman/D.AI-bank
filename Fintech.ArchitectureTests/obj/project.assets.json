@@ -8760,11 +8760,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\D.AI-bank\\Fintech.ArchitectureTests\\Fintech.ArchitectureTests.csproj",
+      "projectUniqueName": "D:\\D.AI-bank\\Fintech.ArchitectureTests\\Fintech.ArchitectureTests.csproj",
       "projectName": "Fintech.ArchitectureTests",
-      "projectPath": "d:\\D.AI-bank\\Fintech.ArchitectureTests\\Fintech.ArchitectureTests.csproj",
+      "projectPath": "D:\\D.AI-bank\\Fintech.ArchitectureTests\\Fintech.ArchitectureTests.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "d:\\D.AI-bank\\Fintech.ArchitectureTests\\obj\\",
+      "outputPath": "D:\\D.AI-bank\\Fintech.ArchitectureTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8786,8 +8786,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
+            "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Commands\\Fintech.Commands.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Entities\\Fintech.Entities.csproj"

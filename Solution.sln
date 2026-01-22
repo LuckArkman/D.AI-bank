@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Gateways", "Fintech
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Regulatory", "Fintech.Regulatory\Fintech.Regulatory.csproj", "{D691F8A0-A8DD-4FD8-9567-FE904F0FD852}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Web", "Fintech.Web\Fintech.Web.csproj", "{44540DBE-B065-4337-9B85-1FE460C38803}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -409,6 +411,18 @@ Global
 		{D691F8A0-A8DD-4FD8-9567-FE904F0FD852}.Release|x64.Build.0 = Release|Any CPU
 		{D691F8A0-A8DD-4FD8-9567-FE904F0FD852}.Release|x86.ActiveCfg = Release|Any CPU
 		{D691F8A0-A8DD-4FD8-9567-FE904F0FD852}.Release|x86.Build.0 = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|x64.Build.0 = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Debug|x86.Build.0 = Debug|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|x64.ActiveCfg = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|x64.Build.0 = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|x86.ActiveCfg = Release|Any CPU
+		{44540DBE-B065-4337-9B85-1FE460C38803}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {}
+    "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {}
   },
   "projects": {
-    "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
+    "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
+        "projectUniqueName": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
         "projectName": "Fintech.Exceptions",
-        "projectPath": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
+        "projectPath": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj",
         "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-        "outputPath": "d:\\D.AI-bank\\Fintech.Exceptions\\obj\\",
+        "outputPath": "D:\\D.AI-bank\\Fintech.Exceptions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

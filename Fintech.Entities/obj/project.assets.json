@@ -2946,14 +2946,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
+            "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Core\\Fintech.Core.csproj"
             },
             "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.Enums\\Fintech.Enums.csproj"
             },
-            "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
-              "projectPath": "d:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj"
+            "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj": {
+              "projectPath": "D:\\D.AI-bank\\Fintech.Exceptions\\Fintech.Exceptions.csproj"
             },
             "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj": {
               "projectPath": "D:\\D.AI-bank\\Fintech.ValueObjects\\Fintech.ValueObjects.csproj"

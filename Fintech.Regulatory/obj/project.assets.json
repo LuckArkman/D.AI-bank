@@ -3132,11 +3132,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj",
+      "projectUniqueName": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj",
       "projectName": "Fintech.Regulatory",
-      "projectPath": "d:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj",
+      "projectPath": "D:\\D.AI-bank\\Fintech.Regulatory\\Fintech.Regulatory.csproj",
       "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-      "outputPath": "d:\\D.AI-bank\\Fintech.Regulatory\\obj\\",
+      "outputPath": "D:\\D.AI-bank\\Fintech.Regulatory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
