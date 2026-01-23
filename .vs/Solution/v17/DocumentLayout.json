@@ -54,8 +54,7 @@
               "RelativeToolTip": "Fintech.Repositories\\AccountRepository.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAhwBsAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T16:48:49.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T16:48:49.75Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "Fintech.Commands\\DebitAccountHandler.cs",
               "ViewState": "AgIAABwAAAAAAAAAAIA1wCIAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T16:48:22.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T16:48:22.512Z"
             },
             {
               "$type": "Document",
@@ -78,7 +76,7 @@
               "RelativeDocumentMoniker": "Fintech.Controllers\\AccountController.cs",
               "ToolTip": "D:\\D.AI-bank\\Fintech.Controllers\\AccountController.cs",
               "RelativeToolTip": "Fintech.Controllers\\AccountController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAIAxwCIAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAASwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-21T16:47:16.213Z",
               "EditorCaption": ""
@@ -93,8 +91,7 @@
               "RelativeToolTip": "Fintech.Controllers\\AccountsController.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T16:47:12.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T16:47:12.008Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "Fintech.Repositories\\UserRepository.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAAABgAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:29:36.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:29:36.708Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "Fintech.Services\\AuthService.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAhwEUAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:28:59.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:28:59.654Z"
             },
             {
               "$type": "Document",
@@ -132,8 +127,7 @@
               "RelativeToolTip": "Fintech.Admin.Cli\\Program.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAC4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:07:46.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T20:07:46.11Z"
             },
             {
               "$type": "Document",
@@ -145,8 +139,7 @@
               "RelativeToolTip": "Fintech.Admin.Cli\\Fintech.Admin.Cli.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvyAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-17T20:07:43.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T20:07:43.902Z"
             }
           ]
         }
